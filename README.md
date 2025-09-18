@@ -70,6 +70,7 @@ My core stack includes **Java (Spring Boot)**, **Python (Flask, FastAPI)**, and 
 | **AI-Driven Resume Tailoring System** | Automated resume tailoring with **LLMs**, reducing manual effort by 90% and cost by 200x. Deployed via CI/CD with 100% test reliability. |
 | **SimCricketX - IPL Simulation Engine** | Scalable **Node.js/Java/Python backend** for real-time cricket simulations with REST + WebSockets. Fine-tuned LLM improved accuracy by 45%. |
 | **Emotion Detector from Text** | ML pipeline for multi-class emotion detection. Achieved **91.87% F1-score** with SVM, Logistic Regression, and MLP models. Deployed on Hugging Face. |
+| **URL Shortener** | A full-stack URL shortening tool built with **React**, **Node.js**, and **MongoDB**. Key features: user registration/login, JWT-based authentication, ability to generate short URLs (with optional custom aliases), public redirect of short URLs, global error handling, dockerized DB setup, and environment configurable parameters. |
 
 ---
 
