@@ -2,10 +2,6 @@
   <h1>Hi there, I'm Manish Botta 👋</h1>
 </div>
 
-<div align="center">
-  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbm9oNGI4cThvOTN1b2dybmFma2k5enJ6a3JqMW50bnhscjRxbGZqbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qgQUggAC3Pfv687qPC/giphy.gif" width="600" height="300"/>
-</div>
-
 ---
 
 ### 👨‍💻 About Me
@@ -24,6 +20,12 @@ My core stack includes **Java (Spring Boot)**, **Python (Flask, FastAPI)**, and 
 <div align="center">
   <a href="https://linkedin.com/in/manish-reddyb/">
     <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
+  </a>
+  <a href="mailto:manish.botta@protonmail.com">
+    <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/>
+  </a>
+  <a href="https://your-portfolio-link.com">
+    <img src="https://img.shields.io/badge/Portfolio-FF4088?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio"/>
   </a>
 </div>
 
