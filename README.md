@@ -24,7 +24,7 @@ My core stack includes **Java (Spring Boot)**, **Python (Flask, FastAPI)**, and 
   <a href="mailto:manish.botta@protonmail.com">
     <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/>
   </a>
-  <a href="https://your-portfolio-link.com">
+  <a href="https://manishbotta.me">
     <img src="https://img.shields.io/badge/Portfolio-FF4088?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio"/>
   </a>
 </div>
