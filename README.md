@@ -70,7 +70,7 @@
   <h3>AI-Driven Resume Tailoring System</h3>
   <p>Automated resume tailoring with **LLMs**, reducing manual effort by 90% and infrastructure cost by 200x. Deployed via a robust CI/CD pipeline with 100% test reliability.</p>
   <p>
-    <a href="[YOUR_REPO_LINK]"><strong>GitHub Repo →</strong></a>
+    <a href="https://github.com/Manishrdy/AI-Driven-Resume-Builder"><strong>GitHub Repo →</strong></a>
   </p>
   <p>
     <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>
@@ -83,7 +83,8 @@
   <h3>SimCricketX - IPL Simulation Engine</h3>
   <p>Scalable **Node.js/Java/Python** backend for real-time cricket simulations with REST and WebSockets. A fine-tuned LLM improved simulation accuracy by 45%.</p>
   <p>
-    <a href="[YOUR_REPO_LINK]"><strong>GitHub Repo →</strong></a>
+    <a href="https://github.com/Manishrdy/SimCricketX"><strong>GitHub Repo →</strong></a>
+    <a href="http://simcricketx.manishbotta.me/"><strong>Live Demo →</strong></a>
   </p>
   <p>
     <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js"/>
@@ -97,8 +98,8 @@
   <h3>Emotion Detector from Text</h3>
   <p>An ML pipeline for multi-class emotion detection. Achieved a **91.87% F1-score** with SVM, Logistic Regression, and MLP models. Deployed on Hugging Face.</p>
   <p>
-    <a href="[YOUR_REPO_LINK]"><strong>GitHub Repo →</strong></a> |
-    <a href="[YOUR_LIVE_DEMO_LINK]"><strong>Live Demo →</strong></a>
+    <a href="https://github.com/Manishrdy/Emotion-Detector--Text-Based-Emotion-Classification-Using-Machine-Learning"><strong>GitHub Repo →</strong></a> |
+    <a href="https://huggingface.co/spaces/martianthe/emotion-detector"><strong>Live Demo →</strong></a>
   </p>
   <p>
     <img src="https://img.shields.io/badge/Scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white" alt="Scikit-learn"/>
@@ -109,7 +110,7 @@
   <h3>Full-Stack URL Shortener</h3>
   <p>A complete URL shortening service built with **React, Node.js, and MongoDB**. Features JWT authentication, custom aliases, and a fully Dockerized database setup.</p>
   <p>
-    <a href="[YOUR_REPO_LINK]"><strong>GitHub Repo →</strong></a>
+    <a href="https://github.com/Manishrdy/url_shortener"><strong>GitHub Repo →</strong></a>
   </p>
   <p>
     <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React"/>
