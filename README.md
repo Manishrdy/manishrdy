@@ -129,7 +129,6 @@
   <img src="https://github-readme-stats.vercel.app/api?username=manishrdy&show_icons=true&theme=radical&rank_icon=github" alt="GitHub stats" />
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=manishrdy&layout=compact&theme=radical" alt="Top Languages" />
   <img src="https://github-readme-activity-graph.vercel.app/graph?username=manishrdy&theme=react-dark&bg_color=20232a&hide_border=true" />
-  <img src="https://raw.githubusercontent.com/manishrdy/manishrdy/output/github-contribution-grid-snake.svg" alt="Contribution Snake" />
 </p>
 
 <p align="center">
