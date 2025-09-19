@@ -1,6 +1,7 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/manishrdy/manishrdy/main/assets/banner.png" alt="Manish Botta - Backend & AI Engineer Banner">
-  </div>
+  <h1>Manish Botta 👋</h1>
+  <h3>Backend Software Engineer | Generative AI & Machine Learning</h3>
+</div>
 
 <div align="center">
   <a href="https://linkedin.com/in/manish-reddyb/">
