@@ -4,35 +4,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manish Botta | Backend & AI Engineer</title>
+    <title>Manish Botta | AI & Backend Engineer</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <style>
         :root {
-            --bg-dark: #0d1117;
-            --bg-darker: #010409;
-            --text-primary: #e6edf3;
-            --text-secondary: #8b949e;
-            --accent-blue: #58a6ff;
-            --accent-purple: #bc8cff;
-            --accent-pink: #db61a2;
-            --border-color: #30363d;
-            --card-bg: rgba(22, 27, 34, 0.8);
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-secondary);
-            background-image: 
-                radial-gradient(circle at 25px 25px, var(--border-color) 2px, transparent 0),
-                radial-gradient(circle at 75px 75px, var(--border-color) 2px, transparent 0);
-            background-size: 100px 100px;
+            --ai-primary: #00D4FF;
+            --ai-secondary: #7C3AED;
+            --ai-accent: #F97316;
+            --bg-primary: #0A0A0F;
+            --bg-secondary: #1A1B23;
+            --bg-tertiary: #252631;
+            --text-primary: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --text-muted: #64748B;
+            --border: rgba(148, 163, 184, 0.1);
+            --glow-primary: 0 0 20px rgba(0, 212, 255, 0.5);
+            --glow-secondary: 0 0 20px rgba(124, 58, 237, 0.3);
         }
 
-        /* Subtle cursor spotlight effect */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-secondary);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* AI-themed background */
         body::before {
             content: '';
             position: fixed;
@@ -40,919 +55,1251 @@
             left: 0;
             width: 100%;
             height: 100vh;
-            background: radial-gradient(800px at var(--x) var(--y), rgba(88, 166, 255, 0.06), transparent 80%);
-            pointer-events: none;
-            z-index: -10;
-            transition: background 0.2s ease-out;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(124, 58, 237, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(249, 115, 22, 0.05) 0%, transparent 60%);
+            z-index: -2;
+            animation: aiBackground 20s linear infinite;
         }
 
-        /* Custom selection color */
-        ::selection {
-            background-color: var(--accent-blue);
-            color: var(--bg-darker);
+        @keyframes aiBackground {
+
+            0%,
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: scale(1.1) rotate(180deg);
+                opacity: 0.6;
+            }
         }
 
-        h1, h2, h3, h4, .text-glow {
-            color: var(--text-primary);
+        /* Neural network animation */
+        .neural-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            opacity: 0.1;
         }
 
-        .group:hover .group-hover-effect,
-        .group:hover .group-hover-arrow {
-            color: var(--accent-blue);
+        /* Glowing effects */
+        .glow-primary {
+            box-shadow: var(--glow-primary);
         }
 
-        .group:hover .group-hover-arrow {
-            transform: translateX(5px) translateY(-5px);
+        .glow-secondary {
+            box-shadow: var(--glow-secondary);
         }
 
-        .fade-in-section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-
-        .fade-in-section.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Active Nav Link Style */
-        nav a:hover .nav-indicator {
-            width: 50px;
-            background-color: var(--accent-blue);
-        }
-
-        .nav-indicator {
-            width: 25px;
-            height: 2px;
-            background-color: var(--border-color);
+        /* AI Card styling */
+        .ai-card {
+            background: linear-gradient(135deg,
+                    rgba(26, 27, 35, 0.8) 0%,
+                    rgba(37, 38, 49, 0.6) 100%);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
             transition: all 0.3s ease;
         }
 
-        .active .nav-indicator {
-            width: 50px;
-            background-color: var(--accent-blue);
+        .ai-card:hover {
+            border-color: var(--ai-primary);
+            box-shadow: var(--glow-primary);
+            transform: translateY(-5px);
         }
 
-        /* Enhance cards with subtle borders */
-        .border-gray-800 {
-            border-color: var(--border-color);
+        /* Typing animation */
+        .typing-animation::after {
+            content: '|';
+            animation: blink 1s infinite;
+            color: var(--ai-primary);
         }
 
-        .bg-gray-800\/20 {
-            background-color: var(--card-bg);
-            backdrop-filter: blur(8px);
+        @keyframes blink {
+
+            0%,
+            50% {
+                opacity: 1;
+            }
+
+            51%,
+            100% {
+                opacity: 0;
+            }
         }
-        
-        /* Skill tags customization */
-        .bg-pink-500\/10 {
-            background-color: rgba(219, 97, 162, 0.1);
+
+        /* Matrix rain effect */
+        .matrix-rain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
         }
-        
-        .text-pink-300 {
-            color: var(--accent-pink);
+
+        .matrix-rain span {
+            position: absolute;
+            top: -100px;
+            color: var(--ai-primary);
+            font-size: 14px;
+            animation: rain linear infinite;
         }
-        
-        .bg-green-500\/10 {
-            background-color: rgba(88, 166, 255, 0.1);
+
+        @keyframes rain {
+            to {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
         }
-        
-        .text-green-300 {
-            color: var(--accent-blue);
+
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            background: var(--ai-primary);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
         }
-        
-        .bg-yellow-500\/10 {
-            background-color: rgba(188, 140, 255, 0.1);
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.7;
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+                opacity: 1;
+            }
         }
-        
-        .text-yellow-300 {
-            color: var(--accent-purple);
+
+        /* Skill bars with AI glow */
+        .skill-bar {
+            background: rgba(148, 163, 184, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .skill-progress {
+            background: linear-gradient(90deg, var(--ai-primary), var(--ai-secondary));
+            height: 8px;
+            border-radius: 10px;
+            position: relative;
+            animation: skillGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes skillGlow {
+            from {
+                box-shadow: 0 0 5px var(--ai-primary);
+            }
+
+            to {
+                box-shadow: 0 0 20px var(--ai-primary), 0 0 30px var(--ai-secondary);
+            }
+        }
+
+        /* Navigation */
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--ai-primary), var(--ai-secondary));
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Button styling */
+        .ai-btn {
+            background: linear-gradient(135deg, var(--ai-primary), var(--ai-secondary));
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ai-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .ai-btn:hover::before {
+            left: 100%;
+        }
+
+        .ai-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--glow-primary);
+        }
+
+        /* Project cards */
+        .project-card {
+            background: linear-gradient(135deg,
+                    rgba(26, 27, 35, 0.9) 0%,
+                    rgba(37, 38, 49, 0.8) 100%);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg,
+                    rgba(0, 212, 255, 0.05) 0%,
+                    rgba(124, 58, 237, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-card:hover {
+            border-color: var(--ai-primary);
+            transform: translateY(-10px);
+            box-shadow:
+                var(--glow-primary),
+                0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Text effects */
+        .ai-text-primary {
+            color: var(--text-primary);
+        }
+
+        .ai-text-secondary {
+            color: var(--text-secondary);
+        }
+
+        .ai-text-accent {
+            background: linear-gradient(135deg, var(--ai-primary), var(--ai-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Enhanced skill tags */
+        .enhanced-skill-tag {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(124, 58, 237, 0.1));
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            color: var(--text-primary);
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .enhanced-skill-tag:hover {
+            border-color: var(--ai-primary);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Loading animation */
+        .loading-dots::after {
+            content: '';
+            animation: loadingDots 1.4s ease-in-out infinite;
+        }
+
+        @keyframes loadingDots {
+
+            0%,
+            80%,
+            100% {
+                opacity: 0;
+            }
+
+            40% {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .project-card {
+                margin-bottom: 20px;
+            }
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--ai-primary), var(--ai-secondary));
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+
+        /* Secondary button styling */
+        .ai-btn-secondary {
+            background: transparent;
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ai-btn-secondary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .ai-btn-secondary:hover::before {
+            left: 100%;
+        }
+
+        .ai-btn-secondary:hover {
+            transform: translateY(-2px);
+            border-color: var(--ai-primary);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+            background: rgba(0, 212, 255, 0.1);
         }
     </style>
 </head>
 
-<body class="antialiased">
+<body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-indicator" style="width: 0%"></div>
 
-    <div class="mx-auto min-h-screen max-w-screen-xl px-6 py-12 font-sans md:px-12 md:py-20 lg:px-24 lg:py-0">
-        <div class="lg:flex lg:justify-between lg:gap-4">
-            <!-- Left Column: Header & Nav -->
-            <header class="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24">
-                <div>
-                    <h1 class="text-4xl font-bold tracking-tight text-glow sm:text-5xl">Manish Botta</h1>
-                    <h2 class="mt-3 text-lg font-medium tracking-tight text-glow sm:text-xl">
-                        Backend & AI Engineer
-                    </h2>
-                    <p class="mt-4 max-w-xs leading-normal">
-                        Delivering powerful backend systems driven by a passion for solving real-world challenges.
+    <!-- Neural Network Background -->
+    <div class="neural-bg">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern id="neural-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                    <circle cx="50" cy="50" r="2" fill="var(--ai-primary)" opacity="0.3" />
+                    <line x1="50" y1="50" x2="100" y2="0" stroke="var(--ai-primary)" stroke-width="1" opacity="0.2" />
+                    <line x1="50" y1="50" x2="0" y2="100" stroke="var(--ai-primary)" stroke-width="1" opacity="0.2" />
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#neural-pattern)" />
+        </svg>
+    </div>
+
+    <!-- Matrix Rain Effect -->
+    <div class="matrix-rain" id="matrix-rain"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="text-xl font-bold font-mono ai-text-accent">
+                    &lt;ManishCrafts/&gt;
+                </div>
+
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="nav-link ai-text-secondary hover:text-white transition-colors">About</a>
+                    <a href="#experience"
+                        class="nav-link ai-text-secondary hover:text-white transition-colors">Experience</a>
+                    <a href="#projects"
+                        class="nav-link ai-text-secondary hover:text-white transition-colors">Projects</a>
+                    <a href="#skills" class="nav-link ai-text-secondary hover:text-white transition-colors">Skills</a>
+                    <a href="#contact" class="nav-link ai-text-secondary hover:text-white transition-colors">Contact</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden ai-text-secondary hover:text-white" x-data="{ open: false }"
+                    @click="open = !open">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
+        <!-- Floating Particles -->
+        <div class="absolute inset-0">
+            <div class="particle" style="top: 20%; left: 10%; width: 4px; height: 4px; animation-delay: 0s;"></div>
+            <div class="particle" style="top: 60%; left: 20%; width: 6px; height: 6px; animation-delay: 2s;"></div>
+            <div class="particle" style="top: 40%; right: 15%; width: 3px; height: 3px; animation-delay: 4s;"></div>
+            <div class="particle" style="bottom: 30%; right: 25%; width: 5px; height: 5px; animation-delay: 1s;"></div>
+        </div>
+
+        <div class="text-center max-w-4xl mx-auto">
+            <div class="mb-8">
+                <h1 class="hero-title text-5xl md:text-7xl font-bold mb-6 ai-text-primary">
+                    Hello, I'm <span class="ai-text-accent typing-animation">Manish</span>
+                </h1>
+                <h2 class="text-2xl md:text-3xl font-light mb-8 ai-text-secondary">
+                    AI Engineer & Backend Architect
+                </h2>
+                <p class="text-lg md:text-xl max-w-2xl mx-auto ai-text-secondary leading-relaxed">
+                    Building resilient systems with <span class="ai-text-accent font-semibold">scalable backends</span>,
+                    <span class="ai-text-accent font-semibold">distributed systems</span>, and cloud-native
+                    architectures.
+                    Powering 100M+ daily transactions through engineering excellence.
+                </p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <a href="https://drive.google.com/file/d/1WKyfHhD1dpiX96-XCuU3-hSrrN2EqDs1/view?usp=sharing" target="_blank" rel="noopener noreferrer"
+                    class="ai-btn text-lg px-8 py-4 rounded-lg flex items-center gap-3 relative z-20">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                        </path>
+                    </svg>
+                    View Resume
+                </a>
+
+                <a href="https://github.com/manishrdy/" target="_blank" rel="noopener noreferrer"
+                    class="border border-white/20 text-white px-8 py-4 rounded-lg hover:bg-white/10 transition-all flex items-center gap-3 relative z-20">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                    My GitHub
+                </a>
+
+                <a href="https://www.linkedin.com/in/manish-reddyb/" target="_blank" rel="noopener noreferrer"
+                    class="border border-white/20 text-white px-8 py-4 rounded-lg hover:bg-white/10 transition-all flex items-center gap-3 relative z-20">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                    </svg>
+                    Get In Touch
+                </a>
+            </div>
+
+
+
+            <!-- AI Stats -->
+            <div class="grid grid-cols-3 gap-8 mt-16 max-w-2xl mx-auto">
+                <div class="text-center">
+                    <div class="text-3xl font-bold ai-text-accent mb-2">100K+</div>
+                    <div class="text-sm ai-text-secondary">Daily Conversations</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold ai-text-accent mb-2">60%</div>
+                    <div class="text-sm ai-text-secondary">Accuracy Improvement</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold ai-text-accent mb-2">3+</div>
+                    <div class="text-sm ai-text-secondary">Years Experience</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Down Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <svg class="w-6 h-6 ai-text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3">
+                </path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 ai-text-primary">
+                About <span class="ai-text-accent">Me</span>
+            </h2>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <p class="text-lg ai-text-secondary leading-relaxed">
+                        Hello! I'm Manish, a software engineer based in <span class="ai-text-accent">San Bernardino,
+                            California</span>,
+                        originally from the vibrant city of Vijayawada, India. With over three years of experience,
+                        my professional journey has been dedicated to the world of <span class="ai-text-accent">backend
+                            development</span>
+                        and <span class="ai-text-accent">artificial intelligence</span>.
                     </p>
 
-                    <nav id="nav-menu" class="nav hidden lg:block" aria-label="In-page jump links">
-                        <ul class="mt-16 w-max">
-                            <li><a class="group flex items-center py-3 active" href="#about">
-                                    <span class="nav-indicator mr-4"></span>
-                                    <span
-                                        class="nav-text text-xs font-bold uppercase tracking-widest text-gray-500 group-hover:text-gray-200">About</span></a>
-                            </li>
-                            <li><a class="group flex items-center py-3" href="#skills">
-                                    <span class="nav-indicator mr-4"></span>
-                                    <span
-                                        class="nav-text text-xs font-bold uppercase tracking-widest text-gray-500 group-hover:text-gray-200">Skills</span></a>
-                            </li>
-                            <li><a class="group flex items-center py-3" href="#experience">
-                                    <span class="nav-indicator mr-4"></span>
-                                    <span
-                                        class="nav-text text-xs font-bold uppercase tracking-widest text-gray-500 group-hover:text-gray-200">Experience</span></a>
-                            </li>
-                            <li><a class="group flex items-center py-3" href="#projects">
-                                    <span class="nav-indicator mr-4"></span>
-                                    <span
-                                        class="nav-text text-xs font-bold uppercase tracking-widest text-gray-500 group-hover:text-gray-200">Projects</span></a>
-                            </li>
-                            <li><a class="group flex items-center py-3" href="#contact">
-                                    <span class="nav-indicator mr-4"></span>
-                                    <span
-                                        class="nav-text text-xs font-bold uppercase tracking-widest text-gray-500 group-hover:text-gray-200">Contact</span></a>
-                            </li>
-                        </ul>
-                    </nav>
+                    <p class="text-lg ai-text-secondary leading-relaxed">
+                        I'm passionate about building software that is not just functional, but also efficient,
+                        scalable,
+                        and capable of solving real-world challenges. My technical experience is highlighted by my time
+                        at
+                        <span class="ai-text-accent">Yellow.Ai</span>, where I architected a chatbot platform to handle
+                        over
+                        <span class="ai-text-accent">100,000 daily conversations</span>.
+                    </p>
+
+                    <p class="text-lg ai-text-secondary leading-relaxed">
+                        Outside of work, my lifelong passion for cricket fuels my creative projects, including game
+                        simulators
+                        and predictive ML models. I find unique focus in cooking and solving LeetCode challenges,
+                        constantly sharpening my problem-solving skills.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4 pt-6">
+                        <span class="enhanced-skill-tag px-6 py-3 rounded-full text-sm font-semibold border-2">
+                            AI Engineering
+                        </span>
+                        <span class="enhanced-skill-tag px-6 py-3 rounded-full text-sm font-semibold border-2">
+                            Backend Architecture
+                        </span>
+                        <span class="enhanced-skill-tag px-6 py-3 rounded-full text-sm font-semibold border-2">
+                            NLP & LLMs
+                        </span>
+                    </div>
                 </div>
-                <div>
-                    <ul class="ml-1 mt-8 flex items-center" aria-label="Social media">
-                        <li class="mr-5 text-xs shrink-0">
-                            <a href="https://github.com/manishrdy" target="_blank"
-                                class="block text-gray-400 hover:text-white transition" aria-label="GitHub">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
-                                    class="h-6 w-6" aria-hidden="true">
-                                    <path
-                                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+
+                <!-- Profile Image -->
+                <div class="relative flex justify-center lg:justify-end">
+                    <div class="relative">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-600/20 rounded-2xl blur-xl">
+                        </div>
+                        <img src="https://i.postimg.cc/7ZLfGwP0/2025-07-20-13-48-09.jpg"
+                            alt="Manish Botta - AI Engineer"
+                            class="relative w-full h-auto max-w-md object-cover rounded-2xl border-2 border-blue-500/30 shadow-2xl">
+                        <div
+                            class="absolute -bottom-4 -right-4 w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center animate-pulse">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 px-4 sm:px-6 lg:px-8 bg-black/20">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 ai-text-primary">
+                Professional <span class="ai-text-accent">Journey</span>
+            </h2>
+
+            <div class="space-y-12">
+                <!-- Yellow.ai Experience -->
+                <div class="ai-card p-8 rounded-2xl relative">
+                    <div class="flex flex-col lg:flex-row lg:items-start gap-6">
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-semibold ai-text-primary mb-2">Backend Engineer</h3>
+                            <h4 class="text-lg ai-text-accent mb-4"><span class="font-bold">Yellow.ai</span>, <span
+                                    class="text-green-400">Sep 2021 — Jul 2023</span></h4>
+
+                            <p class="ai-text-secondary mb-6 leading-relaxed">
+                                Architected and scaled a chatbot platform to 100K+ daily conversations using Node.js and
+                                Python microservices.
+                                Integrated NLP and LLM pipelines, boosting response accuracy by 60% and customer
+                                satisfaction by 35%.
+                                Reduced API latency by 40% through query optimization and Redis caching.
+                            </p>
+
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm">Python</span>
+                                <span
+                                    class="px-3 py-1 bg-green-500/20 text-green-300 rounded-full text-sm">Node.js</span>
+                                <span class="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm">NLP</span>
+                                <span class="px-3 py-1 bg-orange-500/20 text-orange-300 rounded-full text-sm">AWS</span>
+                                <span class="px-3 py-1 bg-red-500/20 text-red-300 rounded-full text-sm">Docker</span>
+                                <span
+                                    class="px-3 py-1 bg-yellow-500/20 text-yellow-300 rounded-full text-sm">Kafka</span>
+                            </div>
+                        </div>
+
+                        <div class="text-right">
+                            <div class="text-3xl font-bold ai-text-accent mb-2">100M+</div>
+                            <div class="text-sm ai-text-secondary">Daily Conversations</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cognizant Experience -->
+                <div class="ai-card p-8 rounded-2xl relative">
+                    <div class="flex flex-col lg:flex-row lg:items-start gap-6">
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-semibold ai-text-primary mb-2">Program Trainee Analyst</h3>
+                            <h4 class="text-lg ai-text-accent mb-4"><span class="font-bold">Cognizant</span>, <span
+                                    class="text-blue-400">Mar — Aug 2021</span></h4>
+
+                            <p class="ai-text-secondary mb-6 leading-relaxed">
+                                Developed scalable RESTful APIs and microservices for a core banking platform using Java
+                                Spring Boot.
+                                Led the migration of monolithic services to a microservices architecture, improving
+                                developer velocity
+                                and deployment time by 30%.
+                            </p>
+
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-red-500/20 text-red-300 rounded-full text-sm">Java</span>
+                                <span class="px-3 py-1 bg-green-500/20 text-green-300 rounded-full text-sm">Spring
+                                    Boot</span>
+                                <span
+                                    class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm">Microservices</span>
+                                <span
+                                    class="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm">JPA/Hibernate</span>
+                            </div>
+                        </div>
+
+                        <div class="text-right">
+                            <div class="text-3xl font-bold ai-text-accent mb-2">30%</div>
+                            <div class="text-sm ai-text-secondary">Deployment Improvement</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achiwer Experience -->
+                <div class="ai-card p-8 rounded-2xl relative">
+                    <div class="flex flex-col lg:flex-row lg:items-start gap-6">
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-semibold ai-text-primary mb-2">Software Engineer</h3>
+                            <h4 class="text-lg ai-text-accent mb-4"><span class="font-bold">Achiwer (Adhya Group
+                                    Tech)</span>, <span class="text-purple-400">Apr — Oct 2019</span></h4>
+
+                            <p class="ai-text-secondary mb-6 leading-relaxed">
+                                Built RESTful APIs using Java and Node.js for a learning platform serving 1,000+ users.
+                                Integrated databases (MySQL, MongoDB), implemented secure payment flows, and deployed
+                                services
+                                on AWS EC2 & S3, reducing hosting costs by 25%.
+                            </p>
+
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-red-500/20 text-red-300 rounded-full text-sm">Java</span>
+                                <span
+                                    class="px-3 py-1 bg-green-500/20 text-green-300 rounded-full text-sm">Node.js</span>
+                                <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm">MySQL</span>
+                                <span
+                                    class="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm">MongoDB</span>
+                                <span class="px-3 py-1 bg-orange-500/20 text-orange-300 rounded-full text-sm">AWS</span>
+                            </div>
+                        </div>
+
+                        <div class="text-right">
+                            <div class="text-3xl font-bold ai-text-accent mb-2">25%</div>
+                            <div class="text-sm ai-text-secondary">Cost Reduction</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 ai-text-primary">
+                AI <span class="ai-text-accent">Projects</span>
+            </h2>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- AI Resume Builder -->
+                <div class="project-card flex flex-col">
+                    <div class="flex-grow">
+                        <div class="mb-6">
+                            <div
+                                class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
                                     </path>
                                 </svg>
-                            </a>
-                        </li>
-                        <li class="mr-5 text-xs shrink-0">
-                            <a href="https://linkedin.com/in/manish-reddyb/" target="_blank"
-                                class="block text-gray-400 hover:text-white transition" aria-label="LinkedIn">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                    class="h-6 w-6" aria-hidden="true">
-                                    <path
-                                        d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.25 6.5 1.75 1.75 0 016.5 8.25zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z">
-                                    </path>
-                                </svg>
-                            </a>
-                        </li>
-                        <li class="mr-5 text-xs shrink-0">
-                            <a href="mailto:manish.botta@protonmail.com"
-                                class="block text-gray-400 hover:text-white transition" aria-label="Email">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                    class="h-6 w-6">
-                                    <path
-                                        d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z">
-                                    </path>
-                                    <path
-                                        d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z">
-                                    </path>
-                                </svg>
-                            </a>
-                        </li>
-                        <li class="mr-5 text-xs shrink-0">
-                            <a href="https://manishbotta.me" target="_blank" 
-                               class="block text-gray-400 hover:text-white transition"
-                               aria-label="Graphic Design Portfolio">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                    class="h-6 w-6">
-                                    <path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                                </svg>
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="mt-8">
-                        <a class="inline-flex items-center justify-center rounded-md border border-gray-700 bg-transparent px-4 py-2 text-sm font-medium text-gray-300 transition-colors hover:bg-gray-800/50 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 focus:ring-offset-gray-900 w-full"
-                            href="#" target="_blank" rel="noreferrer">
-                            View Resume
+                            </div>
+                            <h3 class="text-xl font-semibold ai-text-primary mb-3">AI-Driven Resume Builder</h3>
+                            <p class="ai-text-secondary text-sm leading-relaxed">
+                                An automation tool that leverages LLMs to tailor resumes to job descriptions.
+                                Engineered a RAG pipeline, improving task accuracy by 45% and cutting per-resume
+                                processing cost from $0.70 to $0.0003.
+                            </p>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-2 py-1 bg-blue-500/20 text-blue-300 rounded text-xs">Python</span>
+                            <span class="px-2 py-1 bg-purple-500/20 text-purple-300 rounded text-xs">LLM</span>
+                            <span class="px-2 py-1 bg-green-500/20 text-green-300 rounded text-xs">RAG</span>
+                            <span class="px-2 py-1 bg-red-500/20 text-red-300 rounded text-xs">FastAPI</span>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-center text-sm mt-auto">
+                        <span class="ai-text-accent font-semibold">45% Accuracy Boost</span>
+                        <a href="https://github.com/Manishrdy/AI-Driven-Resume-Builder" target="_blank"
+                            rel="noopener noreferrer"
+                            class="relative z-10 text-white hover:ai-text-accent transition-colors">
+                            View Project →
                         </a>
                     </div>
                 </div>
-            </header>
 
-            <!-- Right Column: Content -->
-            <main id="content" class="pt-24 lg:w-1/2 lg:py-24">
-                <section id="about" class="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24 fade-in-section">
-                    <div
-                        class="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-monokai-bg/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0 lg:backdrop-blur-none">
-                        <h2 class="text-sm font-bold uppercase tracking-widest text-white lg:sr-only">About</h2>
-                    </div>
-
-                    <div class="border border-gray-800 rounded-lg p-6 bg-gray-800/20">
-                        <img src="https://i.postimg.cc/7ZLfGwP0/2025-07-20-13-48-09.jpg" alt="Manish Botta"
-                            class="rounded-lg shadow-lg w-32 h-32 md:w-40 md:h-40 object-cover border-2 border-gray-700 float-right ml-6 mb-4 shape-outside-rectangle">
-                        <p class="mb-4">Hello! I'm Manish, a software engineer based in San Bernardino, California,
-                            though I hail from the vibrant city of Vijayawada, India. With over three years of
-                            experience, my professional journey has been dedicated to the world of backend development
-                            and artificial intelligence. I'm passionate about building software that is not just
-                            functional, but also efficient, scalable, and capable of solving real-world challenges.</p>
-                        <p class="mb-4">My technical experience is highlighted by my time at <span
-                                class="font-medium text-white">Yellow.Ai</span>, where I architected a chatbot platform
-                            to handle over 100,000 daily conversations, enhancing user engagement by 35% through the
-                            practical application of NLP and LLMs. My career foundation was built upon impactful roles
-                            at <span class="font-medium text-white">Cognizant</span> and <span
-                                class="font-medium text-white">Achiwer</span>, where I contributed to enterprise-level
-                            microservices and full-stack e-learning platforms.</p>
-                        <p>Outside of work, my lifelong passion for cricket is a constant source of inspiration, driving
-                            me to create tech projects like game simulators and predictive ML models. This same passion
-                            fuels my creative side as a freelance graphic designer, where I design cricket-related
-                            posters and stat banners. When I truly need to unwind and sharpen my focus, I find a unique
-                            sense of calm in cooking and solving LeetCode challenges.</p>
-                    </div>
-                </section>
-
-                <section id="skills" class="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24 fade-in-section">
-                    <div
-                        class="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-monokai-bg/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0 lg:backdrop-blur-none">
-                        <h2 class="text-sm font-bold uppercase tracking-widest text-white lg:sr-only">Skills</h2>
-                    </div>
-                    <div class="space-y-8">
-                        <div>
-                            <h3 class="text-sm font-bold uppercase tracking-widest text-gray-500 mb-4">Languages</h3>
-                            <div class="flex flex-wrap gap-2">
-                                <span
-                                    class="flex items-center rounded-full bg-pink-500/10 px-3 py-1 text-sm font-medium leading-5 text-pink-300">Python</span>
-                                <span
-                                    class="flex items-center rounded-full bg-pink-500/10 px-3 py-1 text-sm font-medium leading-5 text-pink-300">Java</span>
-                                <span
-                                    class="flex items-center rounded-full bg-pink-500/10 px-3 py-1 text-sm font-medium leading-5 text-pink-300">JavaScript</span>
-                                <span
-                                    class="flex items-center rounded-full bg-pink-500/10 px-3 py-1 text-sm font-medium leading-5 text-pink-300">TypeScript</span>
+                <!-- CodeMate -->
+                <div class="project-card flex flex-col">
+                    <div class="flex-grow">
+                        <div class="mb-6">
+                            <div
+                                class="w-12 h-12 bg-gradient-to-br from-green-500 to-blue-600 rounded-lg flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                                </svg>
                             </div>
+                            <h3 class="text-xl font-semibold ai-text-primary mb-3">CodeMate - RAG Coding Assistant</h3>
+                            <p class="ai-text-secondary text-sm leading-relaxed">
+                                A RAG-powered coding assistant built by fine-tuning a Large Language Model to provide
+                                context-aware code suggestions and answers with high precision.
+                            </p>
                         </div>
-                        <div>
-                            <h3 class="text-sm font-bold uppercase tracking-widest text-gray-500 mb-4">Backend & APIs
+
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-2 py-1 bg-blue-500/20 text-blue-300 rounded text-xs">Python</span>
+                            <span class="px-2 py-1 bg-purple-500/20 text-purple-300 rounded text-xs">LLM</span>
+                            <span class="px-2 py-1 bg-green-500/20 text-green-300 rounded text-xs">RAG</span>
+                            <span class="px-2 py-1 bg-orange-500/20 text-orange-300 rounded text-xs">Fine-Tuning</span>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-center text-sm mt-auto">
+                        <span class="ai-text-accent font-semibold">Context-Aware AI</span>
+                        <a href="https://github.com/Manishrdy/CodeMate--A-Fine-Tuned-LLM---RAG-Powered-Coding-Assistant"
+                            target="_blank" rel="noopener noreferrer"
+                            class="relative z-10 text-white hover:ai-text-accent transition-colors">
+                            View Project →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- SimCricketX -->
+                <div class="project-card flex flex-col">
+                    <div class="flex-grow">
+                        <div class="mb-6">
+                            <div
+                                class="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold ai-text-primary mb-3">SimCricketX - IPL Simulation Engine
                             </h3>
-                            <div class="flex flex-wrap gap-2">
-                                <span
-                                    class="flex items-center rounded-full bg-pink-500/10 px-3 py-1 text-sm font-medium leading-5 text-pink-300">Spring
-                                    Boot</span>
-                                <span
-                                    class="flex items-center rounded-full bg-pink-500/10 px-3 py-1 text-sm font-medium leading-5 text-pink-300">Flask</span>
-                                <span
-                                    class="flex items-center rounded-full bg-pink-500/10 px-3 py-1 text-sm font-medium leading-5 text-pink-300">FastAPI</span>
-                                <span
-                                    class="flex items-center rounded-full bg-pink-500/10 px-3 py-1 text-sm font-medium leading-5 text-pink-300">Node.js
-                                    (Express)</span>
-                                <span
-                                    class="flex items-center rounded-full bg-pink-500/10 px-3 py-1 text-sm font-medium leading-5 text-pink-300">Microservices</span>
-                                <span
-                                    class="flex items-center rounded-full bg-pink-500/10 px-3 py-1 text-sm font-medium leading-5 text-pink-300">REST</span>
-                                <span
-                                    class="flex items-center rounded-full bg-pink-500/10 px-3 py-1 text-sm font-medium leading-5 text-pink-300">GraphQL</span>
-                                <span
-                                    class="flex items-center rounded-full bg-pink-500/10 px-3 py-1 text-sm font-medium leading-5 text-pink-300">gRPC</span>
-                            </div>
+                            <p class="ai-text-secondary text-sm leading-relaxed">
+                                A full-stack simulation engine with multiple backend technologies. Integrated an ML/LLM
+                                model to increase simulation accuracy by 45% across different technology stacks.
+                            </p>
                         </div>
-                        <div>
-                            <h3 class="text-sm font-bold uppercase tracking-widest text-gray-500 mb-4">AI & Machine
-                                Learning</h3>
-                            <div class="flex flex-wrap gap-2">
-                                <span
-                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-sm font-medium leading-5 text-green-300">LLMs
-                                    & Transformers</span>
-                                <span
-                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-sm font-medium leading-5 text-green-300">Prompt
-                                    Engineering</span>
-                                <span
-                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-sm font-medium leading-5 text-green-300">RAG
-                                    & Fine-Tuning</span>
-                                <span
-                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-sm font-medium leading-5 text-green-300">NLP
-                                    (spaCy, BERT)</span>
-                                <span
-                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-sm font-medium leading-5 text-green-300">Scikit-learn</span>
-                                <span
-                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-sm font-medium leading-5 text-green-300">TensorFlow</span>
-                            </div>
-                        </div>
-                        <div>
-                            <h3 class="text-sm font-bold uppercase tracking-widest text-gray-500 mb-4">Databases &
-                                Messaging</h3>
-                            <div class="flex flex-wrap gap-2">
-                                <span
-                                    class="flex items-center rounded-full bg-yellow-500/10 px-3 py-1 text-sm font-medium leading-5 text-yellow-300">MySQL</span>
-                                <span
-                                    class="flex items-center rounded-full bg-yellow-500/10 px-3 py-1 text-sm font-medium leading-5 text-yellow-300">MongoDB</span>
-                                <span
-                                    class="flex items-center rounded-full bg-yellow-500/10 px-3 py-1 text-sm font-medium leading-5 text-yellow-300">Redis</span>
-                                <span
-                                    class="flex items-center rounded-full bg-yellow-500/10 px-3 py-1 text-sm font-medium leading-5 text-yellow-300">Apache
-                                    Kafka</span>
-                            </div>
-                        </div>
-                        <div>
-                            <h3 class="text-sm font-bold uppercase tracking-widest text-gray-500 mb-4">Cloud & DevOps
-                            </h3>
-                            <div class="flex flex-wrap gap-2">
-                                <span
-                                    class="flex items-center rounded-full bg-blue-500/10 px-3 py-1 text-sm font-medium leading-5 text-blue-300">AWS
-                                    (EC2, S3, Lambda)</span>
-                                <span
-                                    class="flex items-center rounded-full bg-blue-500/10 px-3 py-1 text-sm font-medium leading-5 text-blue-300">Docker</span>
-                                <span
-                                    class="flex items-center rounded-full bg-blue-500/10 px-3 py-1 text-sm font-medium leading-5 text-blue-300">CI/CD
-                                    (Jenkins, Git)</span>
-                                <span
-                                    class="flex items-center rounded-full bg-blue-500/10 px-3 py-1 text-sm font-medium leading-5 text-blue-300">Oracle
-                                    Cloud</span>
-                            </div>
+
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-2 py-1 bg-blue-500/20 text-blue-300 rounded text-xs">Python (Flask)</span>
+                            <span class="px-2 py-1 bg-red-500/20 text-red-300 rounded text-xs">Java (Spring)</span>
+                            <span class="px-2 py-1 bg-green-500/20 text-green-300 rounded text-xs">Node.js</span>
+                            <span class="px-2 py-1 bg-purple-500/20 text-purple-300 rounded text-xs">Docker</span>
                         </div>
                     </div>
-                </section>
 
+                    <div class="flex justify-between items-center text-sm mt-auto">
+                        <span class="ai-text-accent font-semibold">45% Accuracy</span>
+                        <a href="https://github.com/manishrdy/SimCricketX" target="_blank" rel="noopener noreferrer"
+                            class="relative z-10 text-white hover:ai-text-accent transition-colors">
+                            View Project →
+                        </a>
+                    </div>
+                </div>
 
-                <section id="experience" class="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24 fade-in-section">
-                    <div
-                        class="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-monokai-bg/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0 lg:backdrop-blur-none">
-                        <h2 class="text-sm font-bold uppercase tracking-widest text-white lg:sr-only">Experience</h2>
-                    </div>
-                    <div>
-                        <ol class="group/list">
-                            <li class="mb-12">
-                                <div class="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4">
-                                    <div
-                                        class="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-gray-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg">
-                                    </div>
-                                    <header
-                                        class="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-gray-500 sm:col-span-2">
-                                        Sep 2021 — Jul 2023</header>
-                                    <div class="z-10 sm:col-span-6">
-                                        <h3 class="font-medium leading-snug text-white">
-                                            <div>
-                                                <a class="inline-flex items-baseline font-medium leading-tight text-white hover:text-pink-300 focus-visible:text-pink-300 group/link text-base"
-                                                    href="https://yellow.ai" target="_blank" rel="noreferrer">
-                                                    <span
-                                                        class="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
-                                                    <span class="inline-block font-bold">Software Engineer · Yellow.Ai
-                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                                            fill="currentColor"
-                                                            class="inline-block h-4 w-4 shrink-0 transition-transform group-hover-arrow"
-                                                            aria-hidden="true">
-                                                            <path fill-rule="evenodd"
-                                                                d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z"
-                                                                clip-rule="evenodd"></path>
-                                                        </svg>
-                                                    </span>
-                                                </a>
-                                            </div>
-                                        </h3>
-                                        <p class="mt-2 text-sm leading-normal">Architected and scaled a chatbot platform
-                                            to 100K+ daily conversations using Node.js and Python microservices.
-                                            Integrated NLP and LLM pipelines, boosting response accuracy by 60% and
-                                            customer satisfaction by 35%. Reduced API latency by 40% through query
-                                            optimization and Redis caching.</p>
-                                        <ul class="mt-2 flex flex-wrap" aria-label="Technologies used">
-                                            <li class="mr-1.5 mt-2">
-                                                <div
-                                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium leading-5 text-green-300">
-                                                    Python</div>
-                                            </li>
-                                            <li class="mr-1.5 mt-2">
-                                                <div
-                                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium leading-5 text-green-300">
-                                                    Node.js</div>
-                                            </li>
-                                            <li class="mr-1.5 mt-2">
-                                                <div
-                                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium leading-5 text-green-300">
-                                                    NLP</div>
-                                            </li>
-                                            <li class="mr-1.5 mt-2">
-                                                <div
-                                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium leading-5 text-green-300">
-                                                    AWS</div>
-                                            </li>
-                                            <li class="mr-1.5 mt-2">
-                                                <div
-                                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium leading-5 text-green-300">
-                                                    Docker</div>
-                                            </li>
-                                            <li class="mr-1.5 mt-2">
-                                                <div
-                                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium leading-5 text-green-300">
-                                                    Kafka</div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="mb-12">
-                                <div class="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4">
-                                    <div
-                                        class="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-gray-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg">
-                                    </div>
-                                    <header
-                                        class="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-gray-500 sm:col-span-2">
-                                        Mar — Aug 2021</header>
-                                    <div class="z-10 sm:col-span-6">
-                                        <h3 class="font-medium leading-snug text-white">
-                                            <div>
-                                                <a class="inline-flex items-baseline font-medium leading-tight text-white hover:text-pink-300 focus-visible:text-pink-300 group/link text-base"
-                                                    href="https://www.cognizant.com" target="_blank" rel="noreferrer">
-                                                    <span
-                                                        class="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
-                                                    <span class="inline-block font-bold">Program Trainee Analyst ·
-                                                        Cognizant
-                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                                            fill="currentColor"
-                                                            class="inline-block h-4 w-4 shrink-0 transition-transform group-hover-arrow"
-                                                            aria-hidden="true">
-                                                            <path fill-rule="evenodd"
-                                                                d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z"
-                                                                clip-rule="evenodd"></path>
-                                                        </svg>
-                                                    </span>
-                                                </a>
-                                            </div>
-                                        </h3>
-                                        <p class="mt-2 text-sm leading-normal">Developed scalable RESTful APIs and
-                                            microservices for a core banking platform using Java Spring Boot. Led the
-                                            migration of monolithic services to a microservices architecture, improving
-                                            developer velocity and deployment time by 30%.</p>
-                                        <ul class="mt-2 flex flex-wrap" aria-label="Technologies used">
-                                            <li class="mr-1.5 mt-2">
-                                                <div
-                                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium leading-5 text-green-300">
-                                                    Java</div>
-                                            </li>
-                                            <li class="mr-1.5 mt-2">
-                                                <div
-                                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium leading-5 text-green-300">
-                                                    Spring Boot</div>
-                                            </li>
-                                            <li class="mr-1.5 mt-2">
-                                                <div
-                                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium leading-5 text-green-300">
-                                                    Microservices</div>
-                                            </li>
-                                            <li class="mr-1.5 mt-2">
-                                                <div
-                                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium leading-5 text-green-300">
-                                                    JPA/Hibernate</div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="mb-12">
-                                <div class="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4">
-                                    <div
-                                        class="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-gray-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg">
-                                    </div>
-                                    <header
-                                        class="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-gray-500 sm:col-span-2">
-                                        Apr — Oct 2019</header>
-                                    <div class="z-10 sm:col-span-6">
-                                        <h3 class="font-medium leading-snug text-white">
-                                            <div>
-                                                <span class="inline-block font-bold text-base">Software Engineer ·
-                                                    Achiwer (Adhya Group Tech)</span>
-                                            </div>
-                                        </h3>
-                                        <p class="mt-2 text-sm leading-normal">Built RESTful APIs using Java and Node.js
-                                            for a learning platform serving 1,000+ users. Integrated databases (MySQL,
-                                            MongoDB), implemented secure payment flows, and deployed services on AWS EC2
-                                            & S3, reducing hosting costs by 25%.</p>
-                                        <ul class="mt-2 flex flex-wrap" aria-label="Technologies used">
-                                            <li class="mr-1.5 mt-2">
-                                                <div
-                                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium leading-5 text-green-300">
-                                                    Java</div>
-                                            </li>
-                                            <li class="mr-1.5 mt-2">
-                                                <div
-                                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium leading-5 text-green-300">
-                                                    Node.js</div>
-                                            </li>
-                                            <li class="mr-1.5 mt-2">
-                                                <div
-                                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium leading-5 text-green-300">
-                                                    MySQL</div>
-                                            </li>
-                                            <li class="mr-1.5 mt-2">
-                                                <div
-                                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium leading-5 text-green-300">
-                                                    MongoDB</div>
-                                            </li>
-                                            <li class="mr-1.5 mt-2">
-                                                <div
-                                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium leading-5 text-green-300">
-                                                    AWS</div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                        </ol>
-                    </div>
-                </section>
-
-                <section id="projects" class="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24 fade-in-section">
-                    <div
-                        class="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-monokai-bg/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0 lg:backdrop-blur-none">
-                        <h2 class="text-sm font-bold uppercase tracking-widest text-white lg:sr-only">Projects</h2>
-                    </div>
-                    <div>
-                        <ul class="group/list">
-                            <li class="mb-12">
-                                <div
-                                    class="group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4">
-                                    <div
-                                        class="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-gray-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg">
-                                    </div>
-                                    <div class="z-10 sm:order-2 sm:col-span-6">
-                                        <h3>
-                                            <a class="inline-flex items-baseline font-medium leading-tight text-white hover:text-pink-300 focus-visible:text-pink-300 group/link text-base"
-                                                href="https://github.com/Manishrdy/AI-Driven-Resume-Builder"
-                                                target="_blank" rel="noreferrer">
-                                                <span
-                                                    class="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
-                                                <span class="inline-block font-bold">AI-Driven Resume Builder
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                                        fill="currentColor"
-                                                        class="inline-block h-4 w-4 shrink-0 transition-transform group-hover-arrow"
-                                                        aria-hidden="true">
-                                                        <path fill-rule="evenodd"
-                                                            d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z"
-                                                            clip-rule="evenodd"></path>
-                                                    </svg>
-                                                </span>
-                                            </a>
-                                        </h3>
-                                        <p class="mt-2 text-sm leading-normal">An automation tool that leverages LLMs to
-                                            tailor resumes to job descriptions. Engineered a RAG pipeline, improving
-                                            task accuracy by 45% and cutting per-resume processing cost from $0.70 to
-                                            $0.0003.</p>
-                                        <ul class="mt-2 flex flex-wrap" aria-label="Technologies used">
-                                            <li class="mr-1.5 mt-2">
-                                                <div
-                                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium leading-5 text-green-300">
-                                                    Python</div>
-                                            </li>
-                                            <li class="mr-1.5 mt-2">
-                                                <div
-                                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium leading-5 text-green-300">
-                                                    LLM</div>
-                                            </li>
-                                            <li class="mr-1.5 mt-2">
-                                                <div
-                                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium leading-5 text-green-300">
-                                                    RAG</div>
-                                            </li>
-                                            <li class="mr-1.5 mt-2">
-                                                <div
-                                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium leading-5 text-green-300">
-                                                    FastAPI</div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <img alt="AI Resume Builder placeholder image" loading="lazy" width="200"
-                                        height="48" decoding="async" data-nimg="1"
-                                        class="rounded border-2 border-gray-200/10 transition group-hover:border-gray-200/30 sm:order-1 sm:col-span-2 sm:translate-y-1"
-                                        style="color:transparent"
-                                        src="https://placehold.co/200x112/2D2A2E/C4C1C5?text=AI+Resume">
-                                </div>
-                            </li>
-                            <li class="mb-12">
-                                <div
-                                    class="group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4">
-                                    <div
-                                        class="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-gray-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg">
-                                    </div>
-                                    <div class="z-10 sm:order-2 sm:col-span-6">
-                                        <h3>
-                                            <a class="inline-flex items-baseline font-medium leading-tight text-white hover:text-pink-300 focus-visible:text-pink-300 group/link text-base"
-                                                href="https://github.com/Manishrdy/CodeMate--A-Fine-Tuned-LLM---RAG-Powered-Coding-Assistant"
-                                                target="_blank" rel="noreferrer">
-                                                <span
-                                                    class="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
-                                                <span class="inline-block font-bold">CodeMate - RAG Coding Assistant
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                                        fill="currentColor"
-                                                        class="inline-block h-4 w-4 shrink-0 transition-transform group-hover-arrow"
-                                                        aria-hidden="true">
-                                                        <path fill-rule="evenodd"
-                                                            d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z"
-                                                            clip-rule="evenodd"></path>
-                                                    </svg>
-                                                </span>
-                                            </a>
-                                        </h3>
-                                        <p class="mt-2 text-sm leading-normal">A RAG-powered coding assistant built by
-                                            fine-tuning a Large Language Model to provide context-aware code suggestions
-                                            and answers.</p>
-                                        <ul class="mt-2 flex flex-wrap" aria-label="Technologies used">
-                                            <li class="mr-1.5 mt-2">
-                                                <div
-                                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium leading-5 text-green-300">
-                                                    Python</div>
-                                            </li>
-                                            <li class="mr-1.5 mt-2">
-                                                <div
-                                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium leading-5 text-green-300">
-                                                    LLM</div>
-                                            </li>
-                                            <li class="mr-1.5 mt-2">
-                                                <div
-                                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium leading-5 text-green-300">
-                                                    RAG</div>
-                                            </li>
-                                            <li class="mr-1.5 mt-2">
-                                                <div
-                                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium leading-5 text-green-300">
-                                                    Fine-Tuning</div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <img alt="CodeMate placeholder image" loading="lazy" width="200" height="48"
-                                        decoding="async" data-nimg="1"
-                                        class="rounded border-2 border-gray-200/10 transition group-hover:border-gray-200/30 sm:order-1 sm:col-span-2 sm:translate-y-1"
-                                        style="color:transparent"
-                                        src="https://placehold.co/200x112/2D2A2E/C4C1C5?text=CodeMate">
-                                </div>
-                            </li>
-                            <li class="mb-12">
-                                <div
-                                    class="group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4">
-                                    <div
-                                        class="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-gray-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg">
-                                    </div>
-                                    <div class="z-10 sm:order-2 sm:col-span-6">
-                                        <h3>
-                                            <a class="inline-flex items-baseline font-medium leading-tight text-white hover:text-pink-300 focus-visible:text-pink-300 group/link text-base"
-                                                href="https://github.com/manishrdy/SimCricketX" target="_blank"
-                                                rel="noreferrer">
-                                                <span
-                                                    class="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
-                                                <span class="inline-block font-bold">SimCricketX - IPL Simulation Engine
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                                        fill="currentColor"
-                                                        class="inline-block h-4 w-4 shrink-0 transition-transform group-hover-arrow"
-                                                        aria-hidden="true">
-                                                        <path fill-rule="evenodd"
-                                                            d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z"
-                                                            clip-rule="evenodd"></path>
-                                                    </svg>
-                                                </span>
-                                            </a>
-                                        </h3>
-                                        <p class="mt-2 text-sm leading-normal">A full-stack simulation engine
-                                            architected with multiple backend technologies to explore performance and
-                                            scalability trade-offs. Developed with Python (Flask), Java (Spring Boot),
-                                            and Node.js (TypeScript) backends, and integrated an ML/LLM model to
-                                            increase simulation accuracy by 45%.</p>
-                                        <ul class="mt-2 flex flex-wrap" aria-label="Technologies used">
-                                            <li class="mr-1.5 mt-2">
-                                                <div
-                                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium leading-5 text-green-300">
-                                                    Python (Flask)</div>
-                                            </li>
-                                            <li class="mr-1.5 mt-2">
-                                                <div
-                                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium leading-5 text-green-300">
-                                                    Java (Spring)</div>
-                                            </li>
-                                            <li class="mr-1.5 mt-2">
-                                                <div
-                                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium leading-5 text-green-300">
-                                                    Node.js</div>
-                                            </li>
-                                            <li class="mr-1.5 mt-2">
-                                                <div
-                                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium leading-5 text-green-300">
-                                                    Docker</div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <img alt="SimCricketX placeholder image" loading="lazy" width="200" height="48"
-                                        decoding="async" data-nimg="1"
-                                        class="rounded border-2 border-gray-200/10 transition group-hover:border-gray-200/30 sm:order-1 sm:col-span-2 sm:translate-y-1"
-                                        style="color:transparent"
-                                        src="https://placehold.co/200x112/2D2A2E/C4C1C5?text=SimCricketX">
-                                </div>
-                            </li>
-                            <li class="mb-12">
-                                <div
-                                    class="group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4">
-                                    <div
-                                        class="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-gray-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg">
-                                    </div>
-                                    <div class="z-10 sm:order-2 sm:col-span-6">
-                                        <h3>
-                                            <a class="inline-flex items-baseline font-medium leading-tight text-white hover:text-pink-300 focus-visible:text-pink-300 group/link text-base"
-                                                href="https://github.com/Manishrdy/Emotion-Detector--Text-Based-Emotion-Classification-Using-Machine-Learning"
-                                                target="_blank" rel="noreferrer">
-                                                <span
-                                                    class="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
-                                                <span class="inline-block font-bold">Emotion Detector from Text
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                                        fill="currentColor"
-                                                        class="inline-block h-4 w-4 shrink-0 transition-transform group-hover-arrow"
-                                                        aria-hidden="true">
-                                                        <path fill-rule="evenodd"
-                                                            d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z"
-                                                            clip-rule="evenodd"></path>
-                                                    </svg>
-                                                </span>
-                                            </a>
-                                        </h3>
-                                        <p class="mt-2 text-sm leading-normal">An NLP pipeline that classifies text into
-                                            six emotion categories, achieving a 92% F1-score with an interactive web app
-                                            deployed on Hugging Face Spaces.</p>
-                                        <ul class="mt-2 flex flex-wrap" aria-label="Technologies used">
-                                            <li class="mr-1.5 mt-2">
-                                                <div
-                                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium leading-5 text-green-300">
-                                                    Python</div>
-                                            </li>
-                                            <li class="mr-1.5 mt-2">
-                                                <div
-                                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium leading-5 text-green-300">
-                                                    Scikit-learn</div>
-                                            </li>
-                                            <li class="mr-1.5 mt-2">
-                                                <div
-                                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium leading-5 text-green-300">
-                                                    Flask</div>
-                                            </li>
-                                            <li class="mr-1.5 mt-2">
-                                                <div
-                                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium leading-5 text-green-300">
-                                                    Hugging Face</div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <img alt="Emotion Detector placeholder image" loading="lazy" width="200" height="48"
-                                        decoding="async" data-nimg="1"
-                                        class="rounded border-2 border-gray-200/10 transition group-hover:border-gray-200/30 sm:order-1 sm:col-span-2 sm:translate-y-1"
-                                        style="color:transparent"
-                                        src="https://placehold.co/200x112/2D2A2E/C4C1C5?text=Emotions">
-                                </div>
-                            </li>
-                            <li class="mb-12">
-                                <div
-                                    class="group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4">
-                                    <div
-                                        class="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-gray-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg">
-                                    </div>
-                                    <div class="z-10 sm:order-2 sm:col-span-6">
-                                        <h3>
-                                            <a class="inline-flex items-baseline font-medium leading-tight text-white hover:text-pink-300 focus-visible:text-pink-300 group/link text-base"
-                                                href="https://github.com/Manishrdy/url_shortener" target="_blank"
-                                                rel="noreferrer">
-                                                <span
-                                                    class="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
-                                                <span class="inline-block font-bold">Scalable URL Shortener
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                                        fill="currentColor"
-                                                        class="inline-block h-4 w-4 shrink-0 transition-transform group-hover-arrow"
-                                                        aria-hidden="true">
-                                                        <path fill-rule="evenodd"
-                                                            d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z"
-                                                            clip-rule="evenodd"></path>
-                                                    </svg>
-                                                </span>
-                                            </a>
-                                        </h3>
-                                        <p class="mt-2 text-sm leading-normal">A backend service that generates
-                                            shortened URLs with a robust architecture designed for high availability and
-                                            low latency using Node.js and Redis.</p>
-                                        <ul class="mt-2 flex flex-wrap" aria-label="Technologies used">
-                                            <li class="mr-1.5 mt-2">
-                                                <div
-                                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium leading-5 text-green-300">
-                                                    Node.js</div>
-                                            </li>
-                                            <li class="mr-1.5 mt-2">
-                                                <div
-                                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium leading-5 text-green-300">
-                                                    Express</div>
-                                            </li>
-                                            <li class="mr-1.5 mt-2">
-                                                <div
-                                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium leading-5 text-green-300">
-                                                    Redis</div>
-                                            </li>
-                                            <li class="mr-1.5 mt-2">
-                                                <div
-                                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium leading-5 text-green-300">
-                                                    MongoDB</div>
-                                            </li>
-                                            <li class="mr-1.5 mt-2">
-                                                <div
-                                                    class="flex items-center rounded-full bg-green-500/10 px-3 py-1 text-xs font-medium leading-5 text-green-300">
-                                                    Docker</div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <img alt="URL Shortener placeholder image" loading="lazy" width="200" height="48"
-                                        decoding="async" data-nimg="1"
-                                        class="rounded border-2 border-gray-200/10 transition group-hover:border-gray-200/30 sm:order-1 sm:col-span-2 sm:translate-y-1"
-                                        style="color:transparent"
-                                        src="https://placehold.co/200x112/2D2A2E/C4C1C5?text=URL">
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section id="contact" class="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24 fade-in-section">
-                    <div
-                        class="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-monokai-bg/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0 lg:backdrop-blur-none">
-                        <h2 class="text-sm font-bold uppercase tracking-widest text-white lg:sr-only">Contact</h2>
-                    </div>
-                    <div>
-                        <h2 class="text-2xl font-bold tracking-tight text-glow sm:text-3xl">Get In Touch</h2>
-                        <p class="mt-4 max-w-lg leading-normal">
-                            I'm currently seeking new opportunities and am open to messages. Whether you have a
-                            question, a project proposal, or just want to connect, feel free to reach out. The best way
-                            to get in touch is by sending me an email or connecting on LinkedIn.
-                        </p>
-                        <div class="mt-8">
-                            <a class="inline-flex items-center gap-2 rounded-md bg-pink-500/10 px-4 py-2 text-sm font-medium text-pink-300 transition-colors hover:bg-pink-500/20 focus:outline-none focus:ring-2 focus:ring-pink-500/50"
-                                href="mailto:manish.botta@protonmail.com">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                    class="h-5 w-5">
-                                    <path
-                                        d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z">
-                                    </path>
-                                    <path
-                                        d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z">
+                <!-- Emotion Detector -->
+                <div class="project-card flex flex-col">
+                    <div class="flex-grow">
+                        <div class="mb-6">
+                            <div
+                                class="w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-600 rounded-lg flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
                                     </path>
                                 </svg>
-                                manish.botta@protonmail.com
-                            </a>
+                            </div>
+                            <h3 class="text-xl font-semibold ai-text-primary mb-3">Emotion Detector from Text</h3>
+                            <p class="ai-text-secondary text-sm leading-relaxed">
+                                An NLP pipeline that classifies text into six emotion categories, achieving a 92%
+                                F1-score
+                                with an interactive web app deployed on Hugging Face Spaces.
+                            </p>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-2 py-1 bg-blue-500/20 text-blue-300 rounded text-xs">Python</span>
+                            <span class="px-2 py-1 bg-green-500/20 text-green-300 rounded text-xs">Scikit-learn</span>
+                            <span class="px-2 py-1 bg-red-500/20 text-red-300 rounded text-xs">Flask</span>
+                            <span class="px-2 py-1 bg-orange-500/20 text-orange-300 rounded text-xs">Hugging Face</span>
                         </div>
                     </div>
-                </section>
 
-                <footer class="max-w-md pb-16 text-sm text-gray-500 sm:pb-0">
-                    <p>Coded in <a href="https://code.visualstudio.com/"
-                            class="font-medium text-gray-400 hover:text-pink-300 focus-visible:text-pink-300"
-                            target="_blank" rel="noreferrer">Visual Studio Code</a>. Built with <a
-                            href="https://tailwindcss.com/"
-                            class="font-medium text-gray-400 hover:text-pink-300 focus-visible:text-pink-300"
-                            target="_blank" rel="noreferrer">Tailwind CSS</a> and deployed with <a
-                            href="https://pages.github.com/"
-                            class="font-medium text-gray-400 hover:text-pink-300 focus-visible:text-pink-300"
-                            target="_blank" rel="noreferrer">GitHub Pages</a>.</p>
-                </footer>
-            </main>
+                    <div class="flex justify-between items-center text-sm mt-auto">
+                        <span class="ai-text-accent font-semibold">92% F1-Score</span>
+                        <a href="https://github.com/Manishrdy/Emotion-Detector--Text-Based-Emotion-Classification-Using-Machine-Learning"
+                            target="_blank" rel="noopener noreferrer"
+                            class="relative z-10 text-white hover:ai-text-accent transition-colors">
+                            View Project →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- URL Shortener -->
+                <div class="project-card flex flex-col">
+                    <div class="flex-grow">
+                        <div class="mb-6">
+                            <div
+                                class="w-12 h-12 bg-gradient-to-br from-teal-500 to-blue-600 rounded-lg flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1">
+                                    </path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-semibold ai-text-primary mb-3">Scalable URL Shortener</h3>
+                            <p class="ai-text-secondary text-sm leading-relaxed">
+                                A backend service that generates shortened URLs with a robust architecture designed for
+                                high availability and low latency using Node.js and Redis.
+                            </p>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-2 py-1 bg-green-500/20 text-green-300 rounded text-xs">Node.js</span>
+                            <span class="px-2 py-1 bg-blue-500/20 text-blue-300 rounded text-xs">Express</span>
+                            <span class="px-2 py-1 bg-red-500/20 text-red-300 rounded text-xs">Redis</span>
+                            <span class="px-2 py-1 bg-purple-500/20 text-purple-300 rounded text-xs">MongoDB</span>
+                            <span class="px-2 py-1 bg-orange-500/20 text-orange-300 rounded text-xs">Docker</span>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-center text-sm mt-auto">
+                        <span class="ai-text-accent font-semibold">High Availability</span>
+                        <a href="https://github.com/Manishrdy/url_shortener" target="_blank" rel="noopener noreferrer"
+                            class="relative z-10 text-white hover:ai-text-accent transition-colors">
+                            View Project →
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8 bg-black/20">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 ai-text-primary">
+                Technical <span class="ai-text-accent">Skills</span>
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
+                <!-- Languages -->
+                <div class="ai-card p-6 rounded-xl">
+                    <div class="mb-6">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-br from-red-500 to-pink-600 rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold ai-text-primary mb-4">Languages</h3>
+                    </div>
+
+                    <div class="space-y-3">
+                        <span
+                            class="block px-3 py-2 bg-blue-500/20 text-blue-300 rounded-lg text-sm font-medium">Python</span>
+                        <span
+                            class="block px-3 py-2 bg-red-500/20 text-red-300 rounded-lg text-sm font-medium">Java</span>
+                        <span
+                            class="block px-3 py-2 bg-yellow-500/20 text-yellow-300 rounded-lg text-sm font-medium">JavaScript</span>
+                        <span
+                            class="block px-3 py-2 bg-blue-600/20 text-blue-300 rounded-lg text-sm font-medium">Node.Js</span>
+                    </div>
+                </div>
+
+                <!-- Backend & APIs -->
+                <div class="ai-card p-6 rounded-xl">
+                    <div class="mb-6">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-br from-blue-500 to-teal-600 rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold ai-text-primary mb-4">Backend & APIs</h3>
+                    </div>
+
+                    <div class="space-y-3">
+                        <span
+                            class="block px-3 py-2 bg-green-500/20 text-green-300 rounded-lg text-sm font-medium">Express.js</span>
+                        <span
+                            class="block px-3 py-2 bg-blue-500/20 text-blue-300 rounded-lg text-sm font-medium">Flask/FastAPI</span>
+                        <span
+                            class="block px-3 py-2 bg-green-700/20 text-green-300 rounded-lg text-sm font-medium">Microservices</span>
+                        <span
+                            class="block px-3 py-2 bg-purple-500/20 text-purple-300 rounded-lg text-sm font-medium">REST/gRPC/GraphQL</span>
+                    </div>
+                </div>
+
+                <!-- AI & Machine Learning -->
+                <div class="ai-card p-6 rounded-xl">
+                    <div class="mb-6">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold ai-text-primary mb-4">AI & ML</h3>
+                    </div>
+
+                    <div class="space-y-3">
+                        <span
+                            class="block px-3 py-2 bg-purple-500/20 text-purple-300 rounded-lg text-sm font-medium">LLMs</span>
+                        <span
+                            class="block px-3 py-2 bg-blue-500/20 text-blue-300 rounded-lg text-sm font-medium">RAG</span>
+                        <span
+                            class="block px-3 py-2 bg-orange-500/20 text-orange-300 rounded-lg text-sm font-medium">NLP</span>
+                        <span
+                            class="block px-3 py-2 bg-orange-600/20 text-orange-300 rounded-lg text-sm font-medium">Prompt
+                            Engineering</span>
+                    </div>
+                </div>
+
+                <!-- Databases & Messaging -->
+                <div class="ai-card p-6 rounded-xl">
+                    <div class="mb-6">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-br from-green-500 to-blue-600 rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold ai-text-primary mb-4">Databases</h3>
+                    </div>
+
+                    <div class="space-y-3">
+                        <span
+                            class="block px-3 py-2 bg-blue-500/20 text-blue-300 rounded-lg text-sm font-medium">MySQL/PostgreSQL</span>
+                        <span
+                            class="block px-3 py-2 bg-green-500/20 text-green-300 rounded-lg text-sm font-medium">MongoDB</span>
+                        <span
+                            class="block px-3 py-2 bg-red-500/20 text-red-300 rounded-lg text-sm font-medium">Redis</span>
+                        <span
+                            class="block px-3 py-2 bg-orange-500/20 text-orange-300 rounded-lg text-sm font-medium">Kafka</span>
+                    </div>
+                </div>
+
+                <!-- Cloud & DevOps -->
+                <div class="ai-card p-6 rounded-xl">
+                    <div class="mb-6">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold ai-text-primary mb-4">Cloud & DevOps</h3>
+                    </div>
+
+                    <div class="space-y-3">
+                        <span
+                            class="block px-3 py-2 bg-orange-500/20 text-orange-300 rounded-lg text-sm font-medium">AWS</span>
+                        <span
+                            class="block px-3 py-2 bg-blue-500/20 text-blue-300 rounded-lg text-sm font-medium">Docker</span>
+                        <span
+                            class="block px-3 py-2 bg-green-500/20 text-green-300 rounded-lg text-sm font-medium">CI/CD</span>
+                        <span
+                            class="block px-3 py-2 bg-red-500/20 text-red-300 rounded-lg text-sm font-medium">Linux</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-8 ai-text-primary">
+                Get In <span class="ai-text-accent">Touch</span>
+            </h2>
+
+            <p class="text-xl ai-text-secondary mb-12 max-w-2xl mx-auto">
+                I'm currently seeking new opportunities and am open to messages. Whether you have a question,
+                a project proposal, or just want to connect, feel free to reach out.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
+                <a href="mailto:manish.botta@protonmail.com"
+                    class="ai-btn text-lg px-8 py-4 rounded-lg flex items-center gap-3">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                        </path>
+                    </svg>
+                    Send Email
+                </a>
+
+                <a href="https://www.linkedin.com/in/manish-reddyb/" target="_blank" rel="noopener noreferrer"
+                    class="ai-btn-secondary text-lg px-8 py-4 rounded-lg flex items-center gap-3">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                    </svg>
+                    LinkedIn
+                </a>
+
+                <a href="#" class="ai-btn-secondary text-lg px-8 py-4 rounded-lg flex items-center gap-3">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M22.79 14.72c.47-.3.89-.67 1.24-1.09.35-.42.53-.94.53-1.47v-.32c0-.53-.18-1.05-.53-1.47-.35-.42-.77-.79-1.24-1.09L12.37 1.58c-.94-.6-2.15-.6-3.09 0L.86 9.28c-.47.3-.89.67-1.24 1.09C-.73 10.79-.91 11.31-.91 11.84v.32c0 .53.18 1.05.53 1.47.35.42.77.79 1.24 1.09l8.42 7.7c.94.6 2.15.6 3.09 0l8.42-7.7zm-10.42 6.15c-.31.2-.71.2-1.02 0l-8.42-7.7c-.15-.1-.29-.22-.4-.36-.11-.14-.16-.3-.16-.47v-.32c0-.17.05-.33.16-.47.11-.14.25-.26.4-.36l8.42-7.7c.31-.2.71-.2 1.02 0l8.42 7.7c.15.1.29.22.4.36.11.14.16.3.16.47v.32c0 .17-.05.33-.16.47-.11.14-.25.26-.4.36l-8.42 7.7zM12 8.5c-1.93 0-3.5 1.57-3.5 3.5s1.57 3.5 3.5 3.5 3.5-1.57 3.5-3.5-1.57-3.5-3.5-3.5zm0 5.5c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" />
+                    </svg>
+                    Behance
+                </a>
+            </div>
+
+            <!-- Additional Contact Info -->
+            <div class="grid md:grid-cols-3 gap-8 max-w-3xl mx-auto">
+                <div class="text-center">
+                    <div
+                        class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                            </path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold ai-text-primary mb-2">Location</h3>
+                    <p class="ai-text-secondary">San Bernardino, CA</p>
+                </div>
+
+                <div class="text-center">
+                    <div
+                        class="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold ai-text-primary mb-2">Response Time</h3>
+                    <p class="ai-text-secondary">Within 24 hours</p>
+                </div>
+
+                <div class="text-center">
+                    <div
+                        class="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m8 6V8a2 2 0 00-2-2H6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold ai-text-primary mb-2">Availability</h3>
+                    <p class="ai-text-secondary">Open to opportunities</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 sm:px-6 lg:px-8 border-t border-white/10">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-center md:text-left mb-6 md:mb-0">
+                    <div class="text-2xl font-bold font-mono ai-text-accent mb-2">
+                        &lt;ManishCrafts/&gt;
+                    </div>
+                    <p class="ai-text-secondary">Architecting the future with AI</p>
+                </div>
+
+                <div class="flex space-x-6">
+                    <a href="https://github.com/manishrdy/" target="_blank" rel="noopener noreferrer"
+                        class="ai-text-secondary hover:ai-text-accent transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/manish-reddyb/" target="_blank" rel="noopener noreferrer"
+                        class="ai-text-secondary hover:ai-text-accent transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="ai-text-secondary hover:ai-text-accent transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M22.79 14.72c.47-.3.89-.67 1.24-1.09.35-.42.53-.94.53-1.47v-.32c0-.53-.18-1.05-.53-1.47-.35-.42-.77-.79-1.24-1.09L12.37 1.58c-.94-.6-2.15-.6-3.09 0L.86 9.28c-.47.3-.89.67-1.24 1.09C-.73 10.79-.91 11.31-.91 11.84v.32c0 .53.18 1.05.53 1.47.35.42.77.79 1.24 1.09l8.42 7.7c.94.6 2.15.6 3.09 0l8.42-7.7zm-10.42 6.15c-.31.2-.71.2-1.02 0l-8.42-7.7c-.15-.1-.29-.22-.4-.36-.11-.14-.16-.3-.16-.47v-.32c0-.17.05-.33.16-.47.11-.14.25-.26.4-.36l8.42-7.7c.31-.2.71-.2 1.02 0l8.42 7.7c.15.1.29.22.4.36.11.14.16.3.16.47v.32c0 .17-.05.33-.16.47-.11.14-.25.26-.4.36l-8.42 7.7zM12 8.5c-1.93 0-3.5 1.57-3.5 3.5s1.57 3.5 3.5 3.5 3.5-1.57 3.5-3.5-1.57-3.5-3.5-3.5zm0 5.5c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="text-center mt-8 pt-8 border-t border-white/10">
+                <p class="ai-text-secondary">
+                    © 2025 Manish Botta. Coffee x Code x AI.
+                </p>
+            </div>
+        </div>
+    </footer>
 
     <script>
+        // Matrix Rain Effect
+        function createMatrixRain() {
+            const matrixContainer = document.getElementById('matrix-rain');
+            const characters = '01';
+            const columns = Math.floor(window.innerWidth / 20);
+
+            for (let i = 0; i < columns; i++) {
+                const span = document.createElement('span');
+                span.textContent = characters[Math.floor(Math.random() * characters.length)];
+                span.style.left = i * 20 + 'px';
+                span.style.animationDuration = Math.random() * 3 + 2 + 's';
+                span.style.animationDelay = Math.random() * 2 + 's';
+                matrixContainer.appendChild(span);
+            }
+        }
+
+        // Scroll Progress Indicator
+        function updateScrollProgress() {
+            const scrollProgress = document.querySelector('.scroll-indicator');
+            const scrollTop = document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const progress = (scrollTop / scrollHeight) * 100;
+            scrollProgress.style.width = progress + '%';
+        }
+
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for Animation Triggers
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Initialize animations
         document.addEventListener('DOMContentLoaded', function () {
-            // Cursor spotlight effect
-            const body = document.body;
-            window.addEventListener('mousemove', (e) => {
-                body.style.setProperty('--x', e.clientX + 'px');
-                body.style.setProperty('--y', e.clientY + 'px');
+            createMatrixRain();
+
+            // Animate elements on scroll
+            document.querySelectorAll('.ai-card, .project-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
             });
+        });
 
+        // Update scroll progress on scroll
+        window.addEventListener('scroll', updateScrollProgress);
 
-            // Intersection Observer for fade-in animations
-            const sections = document.querySelectorAll('.fade-in-section');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                    }
-                });
-            }, { threshold: 0.05 });
+        // Typing animation effect
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
 
-            sections.forEach(section => {
-                observer.observe(section);
-            });
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
 
-            // Active nav link highlighting on scroll
-            const navLinks = document.querySelectorAll('#nav-menu a');
-            const contentSections = document.querySelectorAll('#content section');
+            type();
+        }
 
-            const onScroll = () => {
-                let currentSection = 'about'; // Default to 'about'
-                contentSections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    if (pageYOffset >= sectionTop - 150) {
-                        currentSection = section.getAttribute('id');
-                    }
-                });
-
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href').includes(currentSection)) {
-                        link.classList.add('active');
-                    }
-                });
-            };
-
-            window.addEventListener('scroll', onScroll);
+        // Initialize typing animation on page load
+        window.addEventListener('load', function () {
+            const typingElement = document.querySelector('.typing-animation');
+            if (typingElement) {
+                typeWriter(typingElement, 'Manish', 150);
+            }
         });
     </script>
 </body>
