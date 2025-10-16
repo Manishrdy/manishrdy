@@ -19,7 +19,7 @@
 
 ### 👨‍💻 About Me
 
-> I’m a **Backend Software Engineer** with 3 years of experience designing and scaling **microservices** and **database-driven applications**. My core stack includes **Java (Spring Boot)**, **Python (Flask, FastAPI)**, and **JavaScript/TypeScript (Node.js)**.
+> I’m a **Backend Software Engineer** with 4 years of experience designing and scaling **microservices** and **database-driven applications**. My core stack includes **Java (Spring Boot)**, **Python (Flask, FastAPI)**, and **JavaScript/TypeScript (Node.js)**.
 
 - 🎓 Recently completed my **M.S. in Computer Science** at *California State University, San Bernardino*.
 - ⚡ Passionate about integrating **Generative AI** and **Machine Learning** into production-grade systems.
