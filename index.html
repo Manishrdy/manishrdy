@@ -1,929 +1,907 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth dark">
+<!doctype html>
+<html lang="en" class="scroll-smooth">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manish Botta | Backend Architect</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Tailwind CSS -->
+    <title>Manish Botta — Backend & AI Engineer</title>
+    <meta name="description"
+        content="Manish Botta — Backend & AI Engineer. Distributed systems, AI pipelines, Python, high-scale APIs, and cloud architecture." />
+
+    <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Tailwind Config for Custom Colors/Fonts -->
+    <!-- Tailwind config -->
     <script>
         tailwind.config = {
-            darkMode: 'class',
+            darkMode: "class",
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
+                        sans: ["Inter", "ui-sans-serif", "system-ui"],
+                        mono: ["JetBrains Mono", "ui-monospace", "SFMono-Regular"]
                     },
                     colors: {
-                        // Dark Mode (IDE Theme)
-                        ide: {
-                            bg: '#0d1117', // Github Dark Dimmed style
-                            panel: '#161b22',
-                            border: '#30363d',
-                            text: '#c9d1d9',
-                            keyword: '#ff7b72', // Pink/Red
-                            function: '#d2a8ff', // Purple
-                            string: '#a5d6ff', // Light Blue
-                            class: '#f0883e', // Orange
-                            comment: '#8b949e', // Grey
+                        ink: {
+                            950: "#070A12",
+                            900: "#0B1020",
+                            800: "#101A33",
+                            700: "#16224A"
                         },
-                        // Light Mode (Paper Theme)
                         paper: {
-                            bg: '#ffffff',
-                            panel: '#f6f8fa',
-                            border: '#d0d7de',
-                            text: '#24292f',
-                            keyword: '#d73a49',
-                            function: '#6f42c1',
-                            string: '#032f62',
-                            class: '#e36209',
-                            comment: '#6e7781',
+                            50: "#FAFAFC",
+                            100: "#F4F6FA",
+                            200: "#E8ECF5",
+                            300: "#D8DFEF",
+                            700: "#475569",
+                            800: "#273449",
+                            900: "#111827"
                         },
-                        // Python Specific Brand Colors
-                        python: {
-                            blue: '#4B8BBE',
-                            yellow: '#FFE873'
+                        brand: {
+                            50: "#EEF6FF",
+                            100: "#DCEBFF",
+                            300: "#7DB1FF",
+                            500: "#3B82F6",
+                            600: "#2563EB",
+                            700: "#1D4ED8"
+                        },
+                        accent: {
+                            500: "#A78BFA"
                         }
                     },
-                    animation: {
-                        'cursor-blink': 'blink 1s step-end infinite',
-                        'type-text': 'typing 3.5s steps(40, end)',
-                        'fade-in': 'fadeIn 0.5s ease-in-out forwards',
-                    },
-                    keyframes: {
-                        blink: {
-                            '0%, 100%': { opacity: '1' },
-                            '50%': { opacity: '0' },
-                        },
-                        fadeIn: {
-                            '0%': { opacity: '0', transform: 'translateY(10px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
+                    boxShadow: {
+                        soft: "0 10px 30px rgba(2, 6, 23, 0.10)",
+                        glow: "0 0 0 1px rgba(59, 130, 246, 0.22), 0 18px 50px rgba(59, 130, 246, 0.20)"
                     }
                 }
             }
-        }
+        };
     </script>
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+        rel="stylesheet" />
 
     <!-- Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <style>
-        /* Custom Scrollbar to match IDE look */
+        /* Subtle background */
+        .mesh {
+            background:
+                radial-gradient(600px circle at 10% 10%, rgba(59, 130, 246, 0.18), transparent 55%),
+                radial-gradient(700px circle at 85% 25%, rgba(167, 139, 250, 0.14), transparent 55%),
+                radial-gradient(700px circle at 50% 85%, rgba(59, 130, 246, 0.12), transparent 60%);
+        }
+
+        /* Better focus rings */
+        :focus-visible {
+            outline: none;
+        }
+
+        .focus-ring:focus-visible {
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.25);
+        }
+
+        /* Scrollbar */
         ::-webkit-scrollbar {
             width: 10px;
         }
 
-        /* Dark Mode Scrollbar */
-        .dark ::-webkit-scrollbar-track {
-            background: #0d1117;
-        }
-
-        .dark ::-webkit-scrollbar-thumb {
-            background: #30363d;
-            border-radius: 4px;
-        }
-
-        .dark ::-webkit-scrollbar-thumb:hover {
-            background: #8b949e;
-        }
-
-        /* Light Mode Scrollbar */
         ::-webkit-scrollbar-track {
-            background: #ffffff;
+            background: rgba(148, 163, 184, 0.15);
         }
 
         ::-webkit-scrollbar-thumb {
-            background: #d0d7de;
-            border-radius: 4px;
+            background: rgba(100, 116, 139, 0.5);
+            border-radius: 999px;
         }
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: #959da5;
+        .dark ::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.6);
         }
 
-        /* Grid Background */
-        .bg-grid {
-            background-size: 40px 40px;
-            background-image: linear-gradient(to right, rgba(128, 128, 128, 0.05) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(128, 128, 128, 0.05) 1px, transparent 1px);
+        .dark ::-webkit-scrollbar-thumb {
+            background: rgba(148, 163, 184, 0.35);
         }
 
-        .typing-cursor::after {
-            content: '|';
-            animation: blink 1s step-end infinite;
-        }
-
-        @keyframes blink {
-
-            0%,
-            100% {
-                opacity: 1;
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto !important;
             }
 
-            50% {
-                opacity: 0;
+            * {
+                animation: none !important;
+                transition: none !important;
             }
         }
     </style>
 </head>
 
 <body
-    class="transition-colors duration-300 bg-paper-bg text-paper-text dark:bg-ide-bg dark:text-ide-text font-sans antialiased selection:bg-python-blue selection:text-white relative">
+    class="bg-paper-50 text-paper-900 dark:bg-ink-950 dark:text-white antialiased selection:bg-brand-500/25 selection:text-paper-900 dark:selection:text-white">
 
-    <!-- Background Grid Overlay -->
-    <div class="fixed inset-0 bg-grid pointer-events-none z-0"></div>
+    <!-- Skip link -->
+    <a href="#main"
+        class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-white focus:text-paper-900 focus:shadow-soft">
+        Skip to content
+    </a>
 
-    <!-- Navigation -->
-    <nav
-        class="fixed top-0 w-full z-50 border-b border-paper-border dark:border-ide-border bg-paper-bg/90 dark:bg-ide-bg/90 backdrop-blur-sm transition-colors duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <!-- Logo -->
-                <div class="flex items-center gap-2">
-                    <i class="ph-bold ph-terminal-window text-2xl text-python-blue"></i>
-                    <span class="font-mono font-bold text-lg tracking-tight">
-                        manish<span class="text-paper-keyword dark:text-ide-keyword">.py</span>
+    <!-- Background mesh -->
+    <div class="fixed inset-0 -z-10 mesh"></div>
+
+    <!-- Header -->
+    <header
+        class="sticky top-0 z-50 backdrop-blur border-b border-paper-200/70 dark:border-white/10 bg-paper-50/80 dark:bg-ink-950/70">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="h-16 flex items-center justify-between gap-3">
+                <!-- Brand -->
+                <a href="#top"
+                    class="inline-flex items-center gap-2 font-mono text-sm tracking-tight focus-ring rounded-lg px-2 py-1">
+                    <span
+                        class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-brand-500/10 text-brand-600 dark:text-brand-300">
+                        <i class="ph-bold ph-terminal-window text-lg"></i>
                     </span>
-                </div>
+                    <span class="font-semibold">manish<span
+                            class="text-brand-600 dark:text-brand-300">.dev</span></span>
+                </a>
 
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8 font-mono text-sm">
-                    <a href="#about" class="hover:text-python-blue transition-colors"><span
-                            class="text-paper-function dark:text-ide-function">01.</span> About</a>
-                    <a href="#skills" class="hover:text-python-blue transition-colors"><span
-                            class="text-paper-function dark:text-ide-function">02.</span> Skills</a>
-                    <a href="#experience" class="hover:text-python-blue transition-colors"><span
-                            class="text-paper-function dark:text-ide-function">03.</span> Experience</a>
-                    <a href="#projects" class="hover:text-python-blue transition-colors"><span
-                            class="text-paper-function dark:text-ide-function">04.</span> Projects</a>
+                <!-- Desktop nav -->
+                <nav class="hidden md:flex items-center gap-6 text-sm">
+                    <a class="navlink focus-ring rounded-md px-2 py-1 text-paper-700 dark:text-white/70 hover:text-paper-900 dark:hover:text-white"
+                        href="#about">About</a>
+                    <a class="navlink focus-ring rounded-md px-2 py-1 text-paper-700 dark:text-white/70 hover:text-paper-900 dark:hover:text-white"
+                        href="#skills">Skills</a>
+                    <a class="navlink focus-ring rounded-md px-2 py-1 text-paper-700 dark:text-white/70 hover:text-paper-900 dark:hover:text-white"
+                        href="#experience">Experience</a>
+                    <a class="navlink focus-ring rounded-md px-2 py-1 text-paper-700 dark:text-white/70 hover:text-paper-900 dark:hover:text-white"
+                        href="#projects">Projects</a>
+                    <a class="navlink focus-ring rounded-md px-2 py-1 text-paper-700 dark:text-white/70 hover:text-paper-900 dark:hover:text-white"
+                        href="#contact">Contact</a>
+                </nav>
 
-                    <!-- Theme Toggle -->
-                    <button id="theme-toggle"
-                        class="p-2 rounded-lg hover:bg-paper-panel dark:hover:bg-ide-panel border border-paper-border dark:border-ide-border transition-all">
-                        <i class="ph-fill ph-moon hidden dark:block text-python-yellow"></i>
-                        <i class="ph-fill ph-sun block dark:hidden text-orange-500"></i>
+                <div class="flex items-center gap-2">
+                    <!-- Theme toggle -->
+                    <button id="themeToggle"
+                        class="focus-ring inline-flex items-center gap-2 rounded-xl border border-paper-200 dark:border-white/10 px-3 py-2 text-sm bg-white/60 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10"
+                        aria-label="Toggle theme">
+                        <i id="themeIcon" class="ph-bold ph-moon text-base"></i>
+                        <span class="hidden sm:inline text-paper-700 dark:text-white/70">Theme</span>
+                    </button>
+
+                    <!-- Resume CTA -->
+                    <a class="hidden sm:inline-flex focus-ring items-center gap-2 rounded-xl bg-brand-600 hover:bg-brand-700 text-white px-4 py-2 text-sm shadow-soft"
+                        target="_blank" rel="noreferrer"
+                        href="https://drive.google.com/file/d/1jVz9CInjIkqY4NoRgfU-Qic47QpdWGQ/view?usp=sharing">
+                        <i class="ph-bold ph-file-pdf"></i>
+                        Resume
+                    </a>
+
+                    <!-- Mobile menu -->
+                    <button id="menuBtn"
+                        class="md:hidden focus-ring inline-flex items-center justify-center rounded-xl border border-paper-200 dark:border-white/10 px-3 py-2 bg-white/60 dark:bg-white/5"
+                        aria-label="Open menu" aria-expanded="false">
+                        <i class="ph-bold ph-list text-xl"></i>
                     </button>
                 </div>
+            </div>
 
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden flex items-center gap-4">
-                    <button id="theme-toggle-mobile"
-                        class="p-2 rounded-lg border border-paper-border dark:border-ide-border">
-                        <i class="ph-fill ph-moon hidden dark:block text-python-yellow"></i>
-                        <i class="ph-fill ph-sun block dark:hidden text-orange-500"></i>
-                    </button>
-                    <button id="mobile-menu-btn" class="p-2">
-                        <i class="ph-bold ph-list text-2xl"></i>
-                    </button>
+            <!-- Mobile drawer -->
+            <div id="mobileMenu" class="md:hidden hidden pb-4">
+                <div class="grid gap-2 pt-2">
+                    <a class="focus-ring rounded-xl px-3 py-2 bg-white/60 dark:bg-white/5 border border-paper-200 dark:border-white/10"
+                        href="#about">About</a>
+                    <a class="focus-ring rounded-xl px-3 py-2 bg-white/60 dark:bg-white/5 border border-paper-200 dark:border-white/10"
+                        href="#skills">Skills</a>
+                    <a class="focus-ring rounded-xl px-3 py-2 bg-white/60 dark:bg-white/5 border border-paper-200 dark:border-white/10"
+                        href="#experience">Experience</a>
+                    <a class="focus-ring rounded-xl px-3 py-2 bg-white/60 dark:bg-white/5 border border-paper-200 dark:border-white/10"
+                        href="#projects">Projects</a>
+                    <a class="focus-ring rounded-xl px-3 py-2 bg-white/60 dark:bg-white/5 border border-paper-200 dark:border-white/10"
+                        href="#contact">Contact</a>
+                    <a class="focus-ring inline-flex items-center justify-center gap-2 rounded-xl bg-brand-600 hover:bg-brand-700 text-white px-4 py-2 text-sm shadow-soft"
+                        target="_blank" rel="noreferrer"
+                        href="https://drive.google.com/file/d/1jVz9CInjIkqY4NoRgfU-Qic47QpdWGQ/view?usp=sharing">
+                        <i class="ph-bold ph-file-pdf"></i>
+                        Resume
+                    </a>
                 </div>
             </div>
         </div>
+    </header>
 
-        <!-- Mobile Menu -->
-        <div id="mobile-menu"
-            class="hidden md:hidden border-t border-paper-border dark:border-ide-border bg-paper-bg dark:bg-ide-bg absolute w-full">
-            <div class="px-4 pt-2 pb-6 space-y-1 font-mono text-sm">
-                <a href="#about" class="block px-3 py-2 hover:bg-paper-panel dark:hover:bg-ide-panel rounded-md">01.
-                    About</a>
-                <a href="#skills" class="block px-3 py-2 hover:bg-paper-panel dark:hover:bg-ide-panel rounded-md">02.
-                    Skills</a>
-                <a href="#experience"
-                    class="block px-3 py-2 hover:bg-paper-panel dark:hover:bg-ide-panel rounded-md">03. Experience</a>
-                <a href="#projects" class="block px-3 py-2 hover:bg-paper-panel dark:hover:bg-ide-panel rounded-md">04.
-                    Projects</a>
-            </div>
-        </div>
-    </nav>
-
-    <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
-
-        <!-- Hero Section -->
-        <section class="min-h-[90vh] flex flex-col justify-center items-start relative">
-            <div class="font-mono text-python-blue mb-4">import <span
-                    class="text-paper-text dark:text-ide-text">innovation</span></div>
-
-            <h1 class="text-5xl md:text-7xl font-bold mb-4 tracking-tight">
-                Manish Botta
-            </h1>
-
-            <h2 class="text-3xl md:text-5xl font-bold text-paper-comment dark:text-ide-comment mb-8">
-                Architecting <span class="text-paper-keyword dark:text-ide-keyword">&lt;Scalable&gt;</span> Backends.
-            </h2>
-
-            <p class="max-w-2xl text-lg md:text-xl text-paper-comment dark:text-ide-comment leading-relaxed mb-10">
-                I build resilient distributed systems and power AI pipelines.
-                Specializing in <span class="text-python-blue font-mono">Python</span>,
-                <span class="text-python-blue font-mono">High-Scale APIs</span>, and
-                <span class="text-python-blue font-mono">Cloud Architecture</span>.
-                Previously handling 100M+ daily transactions.
-            </p>
-
-            <div class="flex flex-wrap gap-4 font-mono text-sm">
-                <a href="#contact"
-                    class="px-6 py-3 bg-python-blue hover:bg-blue-600 text-white rounded-md transition-colors flex items-center gap-2">
-                    <i class="ph-bold ph-paper-plane-right"></i> execute_contact()
-                </a>
-                <a href="https://drive.google.com/file/d/1jVz9CInjIkqY4N_oRgfU-Qic47QpdWGQ/view?usp=sharing"
-                    target="_blank"
-                    class="px-6 py-3 border border-paper-border dark:border-ide-border hover:border-python-blue rounded-md transition-colors flex items-center gap-2">
-                    <i class="ph-bold ph-file-pdf"></i> view_resume
-                </a>
-                <a href="https://github.com/manishrdy/" target="_blank"
-                    class="px-6 py-3 border border-paper-border dark:border-ide-border hover:border-python-blue rounded-md transition-colors flex items-center gap-2">
-                    <i class="ph-bold ph-github-logo"></i> git_checkout
-                </a>
-            </div>
-
-            <!-- Decorative Abstract Python Snake -->
-            <div class="absolute right-0 top-1/2 -translate-y-1/2 opacity-10 pointer-events-none hidden lg:block">
-                <svg width="400" height="400" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M50 20C30 20 20 30 20 50C20 70 30 80 50 80H70C85 80 90 75 90 60V50" stroke="currentColor"
-                        stroke-width="4" stroke-linecap="round" />
-                    <path d="M50 80C70 80 80 70 80 50C80 30 70 20 50 20H30C15 20 10 25 10 40V50" stroke="currentColor"
-                        stroke-width="4" stroke-linecap="round" />
-                    <circle cx="35" cy="35" r="3" fill="currentColor" />
-                    <circle cx="65" cy="65" r="3" fill="currentColor" />
-                </svg>
-            </div>
-        </section>
-
-        <!-- About / Terminal Section -->
-        <section id="about" class="py-24">
-            <div class="flex items-center gap-4 mb-12">
-                <span class="text-python-blue font-mono text-xl">01.</span>
-                <h2 class="text-3xl font-bold">System Information</h2>
-                <div class="h-px bg-paper-border dark:bg-ide-border flex-grow ml-4"></div>
-            </div>
-
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <!-- The Interactive Terminal -->
-                <div class="rounded-lg overflow-hidden border border-paper-border dark:border-ide-border bg-paper-panel dark:bg-ide-panel shadow-2xl font-mono text-sm order-2 lg:order-1 h-[450px] flex flex-col"
-                    id="terminal-wrapper">
-                    <!-- Terminal Header -->
+    <main id="main" class="max-w-6xl mx-auto px-4 sm:px-6">
+        <!-- HERO -->
+        <section id="top" class="pt-12 sm:pt-16 pb-12 sm:pb-16">
+            <div class="grid lg:grid-cols-12 gap-10 items-start">
+                <div class="lg:col-span-7">
                     <div
-                        class="bg-gray-200 dark:bg-[#21262d] px-4 py-2 flex items-center gap-2 border-b border-paper-border dark:border-ide-border shrink-0">
-                        <div class="flex gap-2">
-                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                        </div>
-                        <div class="ml-4 text-xs text-gray-500">manish@server: ~/interactive-shell</div>
+                        class="inline-flex items-center gap-2 rounded-full border border-paper-200 dark:border-white/10 bg-white/70 dark:bg-white/5 px-4 py-2 text-sm">
+                        <span class="inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
+                        <span class="text-paper-700 dark:text-white/70">Open to backend/AI opportunities</span>
                     </div>
 
-                    <!-- Terminal Body -->
-                    <div class="p-6 overflow-y-auto flex-grow cursor-text" id="terminal-container">
+                    <h1 class="mt-6 text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight">
+                        Manish Botta
+                    </h1>
 
-                        <!-- 1. Static Python Execution Output -->
-                        <div class="mb-2">
-                            <span class="text-green-600 dark:text-green-400">manish@server</span>:<span
-                                class="text-blue-600 dark:text-blue-400">~</span>$ python3 <span
-                                class="text-paper-string dark:text-ide-string">display_info.py</span>
-                        </div>
-                        <div class="mb-2 text-paper-comment dark:text-ide-comment pl-4" id="terminal-loading-msg">
-                            Loading modules...
+                    <p class="mt-4 text-lg sm:text-xl text-paper-700 dark:text-white/70 leading-relaxed">
+                        Backend & AI Engineer building resilient distributed systems and production AI pipelines.
+                        Specialized in <span class="text-brand-700 dark:text-brand-300 font-medium">Python</span>,
+                        high-scale APIs, and cloud architecture.
+                    </p>
+
+                    <div class="mt-6 flex flex-wrap gap-2">
+                        <span
+                            class="inline-flex items-center gap-2 rounded-full bg-brand-500/10 text-brand-700 dark:text-brand-300 px-4 py-2 text-sm font-mono">
+                            <i class="ph-bold ph-cpu"></i> Distributed systems
+                        </span>
+                        <span
+                            class="inline-flex items-center gap-2 rounded-full bg-brand-500/10 text-brand-700 dark:text-brand-300 px-4 py-2 text-sm font-mono">
+                            <i class="ph-bold ph-robot"></i> LLMs / RAG
+                        </span>
+                        <span
+                            class="inline-flex items-center gap-2 rounded-full bg-brand-500/10 text-brand-700 dark:text-brand-300 px-4 py-2 text-sm font-mono">
+                            <i class="ph-bold ph-cloud"></i> REST
+                        </span>
+                    </div>
+
+                    <div class="mt-8 flex flex-wrap gap-3">
+                        <a href="#contact"
+                            class="focus-ring inline-flex items-center gap-2 rounded-xl bg-brand-600 hover:bg-brand-700 text-white px-5 py-3 text-sm shadow-soft">
+                            <i class="ph-bold ph-paper-plane-right"></i>
+                            Contact
+                        </a>
+                        <a href="#projects"
+                            class="focus-ring inline-flex items-center gap-2 rounded-xl border border-paper-200 dark:border-white/10 bg-white/70 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 px-5 py-3 text-sm">
+                            <i class="ph-bold ph-folder-notch-open"></i>
+                            View projects
+                        </a>
+                        <a href="https://github.com/manishrdy" target="_blank" rel="noreferrer"
+                            class="focus-ring inline-flex items-center gap-2 rounded-xl border border-paper-200 dark:border-white/10 bg-white/70 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 px-5 py-3 text-sm">
+                            <i class="ph-bold ph-github-logo"></i>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <aside class="lg:col-span-5">
+                    <div
+                        class="rounded-2xl border border-paper-200 dark:border-white/10 bg-white/70 dark:bg-white/5 shadow-soft p-6">
+                        <div class="flex items-start justify-between gap-4">
+                            <div>
+                                <p class="text-xs uppercase tracking-wider text-paper-700 dark:text-white/60">Quick
+                                    stats</p>
+                                <h2 class="mt-1 text-lg font-semibold">Impact snapshot</h2>
+                            </div>
+                            <span
+                                class="inline-flex items-center gap-2 text-xs font-mono text-paper-700 dark:text-white/60">
+                                <i class="ph-bold ph-shield-check"></i> Production-first
+                            </span>
                         </div>
 
-                        <!-- 2. The Personal Details JSON -->
-                        <div class="hidden pl-4 border-l-2 border-paper-border dark:border-ide-border ml-1 mb-6"
-                            id="terminal-json-content">
-                            <span class="text-paper-keyword dark:text-ide-keyword">class</span> <span
-                                class="text-paper-class dark:text-ide-class">Developer</span>:<br>
-                            &nbsp;&nbsp;name = <span class="text-paper-string dark:text-ide-string">"Manish
-                                Botta"</span><br>
-                            &nbsp;&nbsp;role = <span class="text-paper-string dark:text-ide-string">"Backend & AI
-                                Engineer"</span><br>
-                            &nbsp;&nbsp;location = <span class="text-paper-string dark:text-ide-string">"San Bernardino,
-                                CA"</span><br>
-                            &nbsp;&nbsp;origin = <span class="text-paper-string dark:text-ide-string">"Vijayawada,
-                                India"</span><br>
-                            &nbsp;&nbsp;experience_years = <span
-                                class="text-paper-function dark:text-ide-function">4</span><br>
-                            <br>
-                            &nbsp;&nbsp;<span class="text-paper-keyword dark:text-ide-keyword">def</span> <span
-                                class="text-paper-function dark:text-ide-function">get_hobbies</span>(self):<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-paper-keyword dark:text-ide-keyword">return</span>
-                            [<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-                                class="text-paper-string dark:text-ide-string">"Cricket"</span>,<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-                                class="text-paper-string dark:text-ide-string">"Game Simulators"</span>,<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-                                class="text-paper-string dark:text-ide-string">"LeetCode Grinding"</span>,<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-                                class="text-paper-string dark:text-ide-string">"Cooking"</span><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;]<br>
-                        </div>
-
-                        <!-- 3. Interactive Shell Prompt (Hidden Initially) -->
-                        <div id="interactive-shell" class="hidden opacity-0">
+                        <div class="mt-5 grid grid-cols-2 gap-3">
                             <div
-                                class="mb-4 mt-6 pt-4 border-t border-paper-border dark:border-ide-border border-dashed text-paper-comment dark:text-ide-comment">
-                                --- Interactive Mode Enabled ---<br>
-                                Type <span class="text-paper-keyword dark:text-ide-keyword">'help'</span> to see
-                                available commands.
+                                class="rounded-xl border border-paper-200 dark:border-white/10 bg-white/60 dark:bg-white/5 p-4">
+                                <p class="text-2xl font-semibold">3+</p>
+                                <p class="text-sm text-paper-700 dark:text-white/70">Years experience</p>
                             </div>
-                            <div id="command-history"></div>
-                            <div class="flex items-center">
-                                <span class="text-green-600 dark:text-green-400 mr-2 shrink-0">manish@server:~$</span>
-                                <input type="text" id="terminal-input"
-                                    class="bg-transparent border-none outline-none flex-grow text-paper-text dark:text-ide-text font-mono w-full"
-                                    autocomplete="off" spellcheck="false">
+                            <div
+                                class="rounded-xl border border-paper-200 dark:border-white/10 bg-white/60 dark:bg-white/5 p-4">
+                                <p class="text-2xl font-semibold">100K+</p>
+                                <p class="text-sm text-paper-700 dark:text-white/70">Daily conversations</p>
+                            </div>
+                            <div
+                                class="rounded-xl border border-paper-200 dark:border-white/10 bg-white/60 dark:bg-white/5 p-4">
+                                <p class="text-2xl font-semibold">40%</p>
+                                <p class="text-sm text-paper-700 dark:text-white/70">Latency reduction</p>
+                            </div>
+                            <div
+                                class="rounded-xl border border-paper-200 dark:border-white/10 bg-white/60 dark:bg-white/5 p-4">
+                                <p class="text-2xl font-semibold">60%</p>
+                                <p class="text-sm text-paper-700 dark:text-white/70">Accuracy lift</p>
                             </div>
                         </div>
 
-                    </div>
-                </div>
-
-                <!-- Profile Card & Text -->
-                <div class="order-1 lg:order-2 flex flex-col items-center lg:items-start">
-
-                    <h3 class="text-2xl font-bold mb-4 text-center lg:text-left">Hello, I'm <span
-                            class="text-python-blue">Manish</span></h3>
-                    <p
-                        class="text-lg text-paper-comment dark:text-ide-comment mb-6 leading-relaxed text-center lg:text-left">
-                        Software engineer who thinks in objects and dreams in distributed systems. My journey started in
-                        <span class="text-paper-text dark:text-ide-text font-medium">Vijayawada</span> and has led me to
-                        architecting solutions in <span class="text-paper-text dark:text-ide-text font-medium">San
-                            Bernardino</span>.
-                    </p>
-                    <p
-                        class="text-lg text-paper-comment dark:text-ide-comment mb-6 leading-relaxed text-center lg:text-left">
-                        I don't just write code; I solve problems. At <span
-                            class="text-paper-keyword dark:text-ide-keyword">Yellow.ai</span>, I architected platforms
-                        handling <span class="text-paper-function dark:text-ide-function">100,000+</span> daily
-                        conversations. I believe in clean code, robust tests, and absolute efficiency.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Technical Skills Section -->
-        <section id="skills" class="py-24">
-            <div class="flex items-center gap-4 mb-12">
-                <span class="text-python-blue font-mono text-xl">02.</span>
-                <h2 class="text-3xl font-bold">Technical Dependencies</h2>
-                <div class="h-px bg-paper-border dark:bg-ide-border flex-grow ml-4"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Languages -->
-                <div
-                    class="bg-paper-panel dark:bg-ide-panel border border-paper-border dark:border-ide-border rounded-lg p-6 hover:border-python-blue transition-colors group">
-                    <div class="flex items-center gap-3 mb-4">
-                        <i
-                            class="ph-bold ph-code text-2xl text-python-blue group-hover:scale-110 transition-transform"></i>
-                        <h3 class="font-mono font-bold text-lg">Languages</h3>
-                    </div>
-                    <ul class="space-y-2 font-mono text-sm text-paper-comment dark:text-ide-comment">
-                        <li class="flex items-center gap-2"><span
-                                class="w-1.5 h-1.5 bg-python-blue rounded-full"></span> Python</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-red-500 rounded-full"></span>
-                            Java</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-yellow-400 rounded-full"></span>
-                            JavaScript</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
-                            Node.js</li>
-                    </ul>
-                </div>
-
-                <!-- Backend & APIs -->
-                <div
-                    class="bg-paper-panel dark:bg-ide-panel border border-paper-border dark:border-ide-border rounded-lg p-6 hover:border-python-blue transition-colors group">
-                    <div class="flex items-center gap-3 mb-4">
-                        <i
-                            class="ph-bold ph-hard-drives text-2xl text-python-blue group-hover:scale-110 transition-transform"></i>
-                        <h3 class="font-mono font-bold text-lg">Backend & APIs</h3>
-                    </div>
-                    <ul class="space-y-2 font-mono text-sm text-paper-comment dark:text-ide-comment">
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-gray-400 rounded-full"></span>
-                            Express.js</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-gray-400 rounded-full"></span>
-                            Flask / FastAPI</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-gray-400 rounded-full"></span>
-                            Microservices</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-gray-400 rounded-full"></span>
-                            REST / gRPC / GraphQL</li>
-                    </ul>
-                </div>
-
-                <!-- AI & ML -->
-                <div
-                    class="bg-paper-panel dark:bg-ide-panel border border-paper-border dark:border-ide-border rounded-lg p-6 hover:border-python-blue transition-colors group">
-                    <div class="flex items-center gap-3 mb-4">
-                        <i
-                            class="ph-bold ph-brain text-2xl text-python-blue group-hover:scale-110 transition-transform"></i>
-                        <h3 class="font-mono font-bold text-lg">AI & ML</h3>
-                    </div>
-                    <ul class="space-y-2 font-mono text-sm text-paper-comment dark:text-ide-comment">
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
-                            LLMs & RAG</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
-                            NLP</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
-                            Prompt Engineering</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
-                            Scikit-learn</li>
-                    </ul>
-                </div>
-
-                <!-- Databases -->
-                <div
-                    class="bg-paper-panel dark:bg-ide-panel border border-paper-border dark:border-ide-border rounded-lg p-6 hover:border-python-blue transition-colors group">
-                    <div class="flex items-center gap-3 mb-4">
-                        <i
-                            class="ph-bold ph-database text-2xl text-python-blue group-hover:scale-110 transition-transform"></i>
-                        <h3 class="font-mono font-bold text-lg">Databases & Messaging</h3>
-                    </div>
-                    <ul class="space-y-2 font-mono text-sm text-paper-comment dark:text-ide-comment">
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
-                            MySQL / PostgreSQL</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-green-400 rounded-full"></span>
-                            MongoDB</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-red-500 rounded-full"></span>
-                            Redis</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-orange-500 rounded-full"></span>
-                            Kafka</li>
-                    </ul>
-                </div>
-
-                <!-- Cloud & DevOps -->
-                <div
-                    class="bg-paper-panel dark:bg-ide-panel border border-paper-border dark:border-ide-border rounded-lg p-6 hover:border-python-blue transition-colors group">
-                    <div class="flex items-center gap-3 mb-4">
-                        <i
-                            class="ph-bold ph-cloud text-2xl text-python-blue group-hover:scale-110 transition-transform"></i>
-                        <h3 class="font-mono font-bold text-lg">Cloud & DevOps</h3>
-                    </div>
-                    <ul class="space-y-2 font-mono text-sm text-paper-comment dark:text-ide-comment">
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-orange-400 rounded-full"></span>
-                            AWS</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
-                            Docker</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-blue-300 rounded-full"></span>
-                            CI/CD</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-yellow-600 rounded-full"></span>
-                            Linux</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Experience Section (Git Log Style) -->
-        <section id="experience" class="py-24">
-            <div class="flex items-center gap-4 mb-12">
-                <span class="text-python-blue font-mono text-xl">03.</span>
-                <h2 class="text-3xl font-bold">Commit History</h2>
-                <div class="h-px bg-paper-border dark:bg-ide-border flex-grow ml-4"></div>
-            </div>
-
-            <div class="relative border-l border-paper-border dark:border-ide-border ml-3 md:ml-6 space-y-12">
-
-                <!-- Job 1 -->
-                <div class="relative pl-8 md:pl-12 group">
-                    <div
-                        class="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-python-blue ring-4 ring-paper-bg dark:ring-ide-bg">
-                    </div>
-
-                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                        <h3 class="text-xl font-bold group-hover:text-python-blue transition-colors">Software Engineer @
-                            Navi Technologies</h3>
-                        <span class="font-mono text-sm text-paper-comment dark:text-ide-comment">Jan 2024 — Apr
-                            2025</span>
-                    </div>
-                    <p class="text-paper-comment dark:text-ide-comment mb-4 max-w-3xl">
-                        Engineered secure HubSpot API integrations using OAuth 2.0. Designed data ingestion modules for
-                        real-time CRM processing, directly enhancing product value.
-                    </p>
-                    <div class="flex flex-wrap gap-2 font-mono text-xs">
-                        <span
-                            class="px-2 py-1 rounded bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">Node.js</span>
-                        <span
-                            class="px-2 py-1 rounded bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">TypeScript</span>
-                        <span
-                            class="px-2 py-1 rounded bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300">Redis</span>
-                        <span
-                            class="px-2 py-1 rounded bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300">OAuth
-                            2.0</span>
-                        <span
-                            class="px-2 py-1 rounded bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300">JWT</span>
-                        <span
-                            class="px-2 py-1 rounded bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300">HubSpot
-                            API</span>
-                    </div>
-                </div>
-
-                <!-- Job 2 -->
-                <div class="relative pl-8 md:pl-12 group">
-                    <div
-                        class="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-paper-border dark:bg-ide-border group-hover:bg-python-blue transition-colors ring-4 ring-paper-bg dark:ring-ide-bg">
-                    </div>
-
-                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                        <h3 class="text-xl font-bold group-hover:text-python-blue transition-colors">Software Engineer @
-                            Yellow.ai</h3>
-                        <span class="font-mono text-sm text-paper-comment dark:text-ide-comment">Sep 2021 — Jul
-                            2023</span>
-                    </div>
-                    <p class="text-paper-comment dark:text-ide-comment mb-4 max-w-3xl">
-                        Scaled chatbot platform to 100K+ daily conversations. Integrated NLP/LLM pipelines boosting
-                        accuracy by 60%. Reduced API latency by 40% via caching strategies.
-                    </p>
-                    <div class="flex flex-wrap gap-2 font-mono text-xs">
-                        <span
-                            class="px-2 py-1 rounded bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">Python</span>
-                        <span
-                            class="px-2 py-1 rounded bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300">Node.js</span>
-                        <span
-                            class="px-2 py-1 rounded bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300">NLP</span>
-                        <span
-                            class="px-2 py-1 rounded bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300">AWS</span>
-                        <span
-                            class="px-2 py-1 rounded bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">Docker</span>
-                        <span
-                            class="px-2 py-1 rounded bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300">Kafka</span>
-                    </div>
-                </div>
-
-                <!-- Job 3 -->
-                <div class="relative pl-8 md:pl-12 group">
-                    <div
-                        class="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-paper-border dark:bg-ide-border group-hover:bg-python-blue transition-colors ring-4 ring-paper-bg dark:ring-ide-bg">
-                    </div>
-
-                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                        <h3 class="text-xl font-bold group-hover:text-python-blue transition-colors">Trainee Analyst @
-                            Cognizant</h3>
-                        <span class="font-mono text-sm text-paper-comment dark:text-ide-comment">Mar 2021 — Aug
-                            2021</span>
-                    </div>
-                    <p class="text-paper-comment dark:text-ide-comment mb-4 max-w-3xl">
-                        Developed RESTful APIs for banking platforms using Java Spring Boot. Migrated monoliths to
-                        microservices, improving deployment speed by 30%.
-                    </p>
-                    <div class="flex flex-wrap gap-2 font-mono text-xs">
-                        <span
-                            class="px-2 py-1 rounded bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300">Java</span>
-                        <span
-                            class="px-2 py-1 rounded bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300">Spring
-                            Boot</span>
-                        <span
-                            class="px-2 py-1 rounded bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">Microservices</span>
-                        <span
-                            class="px-2 py-1 rounded bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300">JPA/Hibernate</span>
-                    </div>
-                </div>
-
-                <!-- Job 4 -->
-                <div class="relative pl-8 md:pl-12 group">
-                    <div
-                        class="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-paper-border dark:bg-ide-border group-hover:bg-python-blue transition-colors ring-4 ring-paper-bg dark:ring-ide-bg">
-                    </div>
-
-                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                        <h3 class="text-xl font-bold group-hover:text-python-blue transition-colors">Software Engineer @
-                            Achiwer</h3>
-                        <span class="font-mono text-sm text-paper-comment dark:text-ide-comment">Apr 2019 — Oct
-                            2019</span>
-                    </div>
-                    <p class="text-paper-comment dark:text-ide-comment mb-4 max-w-3xl">
-                        Built learning platform APIs serving 1,000+ users. Integrated MySQL/MongoDB and secure payment
-                        gateways.
-                    </p>
-                    <div class="flex flex-wrap gap-2 font-mono text-xs">
-                        <span
-                            class="px-2 py-1 rounded bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300">Java</span>
-                        <span
-                            class="px-2 py-1 rounded bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300">Node.js</span>
-                        <span
-                            class="px-2 py-1 rounded bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">MySQL</span>
-                        <span
-                            class="px-2 py-1 rounded bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300">MongoDB</span>
-                        <span
-                            class="px-2 py-1 rounded bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300">AWS</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section (Package Grid) -->
-        <section id="projects" class="py-24">
-            <div class="flex items-center gap-4 mb-12">
-                <span class="text-python-blue font-mono text-xl">04.</span>
-                <h2 class="text-3xl font-bold">Shipped Packages</h2>
-                <div class="h-px bg-paper-border dark:bg-ide-border flex-grow ml-4"></div>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-                <!-- Project 1 -->
-                <div
-                    class="group bg-paper-panel dark:bg-ide-panel border border-paper-border dark:border-ide-border rounded-lg p-6 hover:-translate-y-2 transition-transform duration-300 flex flex-col h-full">
-                    <div class="flex justify-between items-start mb-4">
-                        <i class="ph-bold ph-folder-notch text-4xl text-python-blue"></i>
-                        <div class="flex gap-4 text-paper-text dark:text-ide-text">
-                            <a href="https://github.com/Manishrdy/AI-Driven-Resume-Builder" target="_blank"
-                                class="hover:text-python-blue"><i class="ph-bold ph-github-logo text-xl"></i></a>
+                        <div
+                            class="mt-5 rounded-xl border border-paper-200 dark:border-white/10 bg-ink-950 text-white p-4 font-mono text-sm overflow-hidden">
+                            <div class="flex items-center justify-between">
+                                <span class="text-white/70 text-xs">manish.py</span>
+                                <button id="copyBio"
+                                    class="focus-ring rounded-lg px-3 py-1 text-xs bg-white/10 hover:bg-white/15"
+                                    aria-label="Copy bio snippet">
+                                    Copy
+                                </button>
+                            </div>
+                            <pre id="bioSnippet" class="mt-3 leading-relaxed whitespace-pre-wrap"><code>role = "Backend & AI Engineer"
+location = "San Bernardino, CA"
+focus = ["High-scale APIs", "AI pipelines", "Cloud architecture"]</code></pre>
+                            <p id="copyToast" class="mt-2 text-xs text-emerald-300 hidden">Copied to clipboard.</p>
                         </div>
                     </div>
-                    <h3 class="text-xl font-bold mb-2 group-hover:text-python-blue transition-colors">AI Resume Builder
-                    </h3>
-                    <p class="text-sm text-paper-comment dark:text-ide-comment mb-4 flex-grow">
-                        RAG pipeline using LLMs to tailor resumes. Improved accuracy by 45% and cut costs to $0.0003 per
-                        resume.
-                    </p>
+                </aside>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" class="py-12 sm:py-16">
+            <div class="flex items-end justify-between gap-6">
+                <div>
+                    <p class="font-mono text-xs uppercase tracking-wider text-brand-700 dark:text-brand-300">About</p>
+                    <h2 class="mt-2 text-2xl sm:text-3xl font-semibold tracking-tight">Systems-minded engineer</h2>
+                </div>
+                <div class="hidden sm:flex items-center gap-2 text-sm text-paper-700 dark:text-white/60">
+                    <i class="ph-bold ph-map-pin"></i> San Bernardino, CA
+                </div>
+            </div>
+
+            <div class="mt-8 grid lg:grid-cols-12 gap-8 items-start">
+                <div class="lg:col-span-7">
                     <div
-                        class="font-mono text-xs flex flex-wrap gap-3 text-paper-comment dark:text-ide-comment mt-auto">
-                        <span>Python</span>
-                        <span>RAG</span>
-                        <span>FastAPI</span>
+                        class="rounded-2xl border border-paper-200 dark:border-white/10 bg-white/70 dark:bg-white/5 shadow-soft p-6">
+                        <h3 class="text-lg font-semibold">Hello, I’m Manish</h3>
+                        <p class="mt-3 text-paper-700 dark:text-white/70 leading-relaxed">
+                            Software engineer who thinks in objects and dreams in distributed systems. Started in
+                            Vijayawada, India and now architecting solutions in California.
+                        </p>
+                        <p class="mt-4 text-paper-700 dark:text-white/70 leading-relaxed">
+                            Focus stays on shipping reliable systems: clean code, solid tests, observability, and
+                            pragmatic performance improvements.
+                        </p>
+
+                        <div class="mt-6 flex flex-wrap gap-2">
+                            <span
+                                class="inline-flex items-center gap-2 rounded-full border border-paper-200 dark:border-white/10 bg-white/60 dark:bg-white/5 px-4 py-2 text-sm">
+                                <i class="ph-bold ph-basketball"></i> Cricket
+                            </span>
+                            <span
+                                class="inline-flex items-center gap-2 rounded-full border border-paper-200 dark:border-white/10 bg-white/60 dark:bg-white/5 px-4 py-2 text-sm">
+                                <i class="ph-bold ph-game-controller"></i> Simulators
+                            </span>
+                            <span
+                                class="inline-flex items-center gap-2 rounded-full border border-paper-200 dark:border-white/10 bg-white/60 dark:bg-white/5 px-4 py-2 text-sm">
+                                <i class="ph-bold ph-code"></i> LeetCode
+                            </span>
+                            <span
+                                class="inline-flex items-center gap-2 rounded-full border border-paper-200 dark:border-white/10 bg-white/60 dark:bg-white/5 px-4 py-2 text-sm">
+                                <i class="ph-bold ph-cooking-pot"></i> Cooking
+                            </span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Project 2 -->
-                <div
-                    class="group bg-paper-panel dark:bg-ide-panel border border-paper-border dark:border-ide-border rounded-lg p-6 hover:-translate-y-2 transition-transform duration-300 flex flex-col h-full">
-                    <div class="flex justify-between items-start mb-4">
-                        <i class="ph-bold ph-robot text-4xl text-python-blue"></i>
-                        <div class="flex gap-4 text-paper-text dark:text-ide-text">
-                            <a href="https://github.com/Manishrdy/CodeMate--A-Fine-Tuned-LLM---RAG-Powered-Coding-Assistant"
-                                target="_blank" class="hover:text-python-blue"><i
-                                    class="ph-bold ph-github-logo text-xl"></i></a>
+                <div class="lg:col-span-5">
+                    <div
+                        class="rounded-2xl border border-paper-200 dark:border-white/10 bg-white/70 dark:bg-white/5 shadow-soft overflow-hidden">
+                        <div
+                            class="px-5 py-4 border-b border-paper-200 dark:border-white/10 flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <span class="h-2.5 w-2.5 rounded-full bg-red-400"></span>
+                                <span class="h-2.5 w-2.5 rounded-full bg-yellow-400"></span>
+                                <span class="h-2.5 w-2.5 rounded-full bg-green-400"></span>
+                                <span class="ml-2 text-xs font-mono text-paper-700 dark:text-white/60">terminal —
+                                    read-only</span>
+                            </div>
+                            <span class="text-xs font-mono text-paper-700 dark:text-white/60">whoami</span>
+                        </div>
+                        <div class="p-5 font-mono text-sm">
+                            <p class="text-emerald-600 dark:text-emerald-300">manish@server:~$ <span
+                                    class="text-paper-900 dark:text-white">whoami</span></p>
+                            <div class="mt-3 rounded-xl bg-ink-950 text-white p-4 overflow-auto border border-white/10">
+                                <pre class="leading-relaxed whitespace-pre-wrap"><code>{
+  "name": "Manish Botta",
+  "role": "Backend & AI Engineer",
+  "origin": "Vijayawada, India",
+  "location": "San Bernardino, CA"
+}</code></pre>
+                            </div>
+                            <p class="mt-3 text-paper-700 dark:text-white/60 text-xs">
+                                Tip: This keeps your terminal vibe but stays lightweight and accessible.
+                            </p>
                         </div>
                     </div>
-                    <h3 class="text-xl font-bold mb-2 group-hover:text-python-blue transition-colors">CodeMate Assistant
-                    </h3>
-                    <p class="text-sm text-paper-comment dark:text-ide-comment mb-4 flex-grow">
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills" class="py-12 sm:py-16">
+            <p class="font-mono text-xs uppercase tracking-wider text-brand-700 dark:text-brand-300">Skills</p>
+            <h2 class="mt-2 text-2xl sm:text-3xl font-semibold tracking-tight">Technical toolkit</h2>
+
+            <div class="mt-8 grid md:grid-cols-2 xl:grid-cols-3 gap-5">
+                <!-- Card template -->
+                <div
+                    class="rounded-2xl border border-paper-200 dark:border-white/10 bg-white/70 dark:bg-white/5 shadow-soft p-6">
+                    <div class="flex items-center gap-3">
+                        <span
+                            class="h-10 w-10 rounded-xl bg-brand-500/10 text-brand-700 dark:text-brand-300 inline-flex items-center justify-center">
+                            <i class="ph-bold ph-code text-xl"></i>
+                        </span>
+                        <h3 class="font-semibold">Languages</h3>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10 text-sm">Python</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10 text-sm">Java</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10 text-sm">JavaScript</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10 text-sm">Node.js</span>
+                    </div>
+                </div>
+
+                <div
+                    class="rounded-2xl border border-paper-200 dark:border-white/10 bg-white/70 dark:bg-white/5 shadow-soft p-6">
+                    <div class="flex items-center gap-3">
+                        <span
+                            class="h-10 w-10 rounded-xl bg-brand-500/10 text-brand-700 dark:text-brand-300 inline-flex items-center justify-center">
+                            <i class="ph-bold ph-hard-drives text-xl"></i>
+                        </span>
+                        <h3 class="font-semibold">Backend & APIs</h3>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10 text-sm">FastAPI</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10 text-sm">Flask</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10 text-sm">Express</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10 text-sm">Microservices</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10 text-sm">REST</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10 text-sm">gRPC</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10 text-sm">GraphQL</span>
+                    </div>
+                </div>
+
+                <div
+                    class="rounded-2xl border border-paper-200 dark:border-white/10 bg-white/70 dark:bg-white/5 shadow-soft p-6">
+                    <div class="flex items-center gap-3">
+                        <span
+                            class="h-10 w-10 rounded-xl bg-brand-500/10 text-brand-700 dark:text-brand-300 inline-flex items-center justify-center">
+                            <i class="ph-bold ph-brain text-xl"></i>
+                        </span>
+                        <h3 class="font-semibold">AI & ML</h3>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10 text-sm">LLMs</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10 text-sm">RAG</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10 text-sm">NLP</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10 text-sm">Prompt
+                            engineering</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10 text-sm">Scikit-learn</span>
+                    </div>
+                </div>
+
+                <div
+                    class="rounded-2xl border border-paper-200 dark:border-white/10 bg-white/70 dark:bg-white/5 shadow-soft p-6">
+                    <div class="flex items-center gap-3">
+                        <span
+                            class="h-10 w-10 rounded-xl bg-brand-500/10 text-brand-700 dark:text-brand-300 inline-flex items-center justify-center">
+                            <i class="ph-bold ph-database text-xl"></i>
+                        </span>
+                        <h3 class="font-semibold">Data & Messaging</h3>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10 text-sm">PostgreSQL</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10 text-sm">MySQL</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10 text-sm">MongoDB</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10 text-sm">Redis</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10 text-sm">Kafka</span>
+                    </div>
+                </div>
+
+                <div
+                    class="rounded-2xl border border-paper-200 dark:border-white/10 bg-white/70 dark:bg-white/5 shadow-soft p-6">
+                    <div class="flex items-center gap-3">
+                        <span
+                            class="h-10 w-10 rounded-xl bg-brand-500/10 text-brand-700 dark:text-brand-300 inline-flex items-center justify-center">
+                            <i class="ph-bold ph-cloud text-xl"></i>
+                        </span>
+                        <h3 class="font-semibold">Cloud & DevOps</h3>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10 text-sm">AWS</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10 text-sm">Docker</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10 text-sm">CI/CD</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10 text-sm">Linux</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section id="experience" class="py-12 sm:py-16">
+            <p class="font-mono text-xs uppercase tracking-wider text-brand-700 dark:text-brand-300">Experience</p>
+            <h2 class="mt-2 text-2xl sm:text-3xl font-semibold tracking-tight">What shipped in production</h2>
+
+            <div class="mt-8 space-y-4">
+                <article
+                    class="rounded-2xl border border-paper-200 dark:border-white/10 bg-white/70 dark:bg-white/5 shadow-soft p-6">
+                    <div class="flex flex-wrap items-start justify-between gap-3">
+                        <div>
+                            <h3 class="text-lg font-semibold">Software Engineer — Navi Technologies</h3>
+                            <p class="mt-1 text-sm text-paper-700 dark:text-white/70">Aug 2025 — Present</p>
+                        </div>
+                        <span
+                            class="inline-flex items-center gap-2 text-xs font-mono px-3 py-1 rounded-full bg-brand-500/10 text-brand-700 dark:text-brand-300">
+                            <i class="ph-bold ph-lock-key"></i> OAuth / Integrations
+                        </span>
+                    </div>
+                    <ul class="mt-4 text-paper-700 dark:text-white/70 list-disc pl-5 space-y-2">
+                        <li>Engineered secure HubSpot API integrations using OAuth 2.0.</li>
+                        <li>Designed data ingestion modules for real-time CRM processing.</li>
+                    </ul>
+                    <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10">Node.js</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10">TypeScript</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10">Redis</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10">JWT</span>
+                    </div>
+                </article>
+
+                <article
+                    class="rounded-2xl border border-paper-200 dark:border-white/10 bg-white/70 dark:bg-white/5 shadow-soft p-6">
+                    <div class="flex flex-wrap items-start justify-between gap-3">
+                        <div>
+                            <h3 class="text-lg font-semibold">Software Engineer — Yellow.ai</h3>
+                            <p class="mt-1 text-sm text-paper-700 dark:text-white/70">Sep 2021 — Jul 2023</p>
+                        </div>
+                        <span
+                            class="inline-flex items-center gap-2 text-xs font-mono px-3 py-1 rounded-full bg-brand-500/10 text-brand-700 dark:text-brand-300">
+                            <i class="ph-bold ph-chat-circle-dots"></i> Conversational AI
+                        </span>
+                    </div>
+                    <ul class="mt-4 text-paper-700 dark:text-white/70 list-disc pl-5 space-y-2">
+                        <li>Scaled chatbot platform to 100K+ daily conversations.</li>
+                        <li>Integrated NLP/LLM pipelines boosting accuracy by ~60%.</li>
+                        <li>Reduced API latency by ~40% via caching strategies.</li>
+                    </ul>
+                    <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10">Python</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10">AWS</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10">Docker</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10">Kafka</span>
+                    </div>
+                </article>
+
+                <article
+                    class="rounded-2xl border border-paper-200 dark:border-white/10 bg-white/70 dark:bg-white/5 shadow-soft p-6">
+                    <div class="flex flex-wrap items-start justify-between gap-3">
+                        <div>
+                            <h3 class="text-lg font-semibold">Trainee Analyst — Cognizant</h3>
+                            <p class="mt-1 text-sm text-paper-700 dark:text-white/70">Mar 2021 — Aug 2021</p>
+                        </div>
+                        <span
+                            class="inline-flex items-center gap-2 text-xs font-mono px-3 py-1 rounded-full bg-brand-500/10 text-brand-700 dark:text-brand-300">
+                            <i class="ph-bold ph-bank"></i> Banking APIs
+                        </span>
+                    </div>
+                    <ul class="mt-4 text-paper-700 dark:text-white/70 list-disc pl-5 space-y-2">
+                        <li>Developed RESTful APIs for banking platforms using Java Spring Boot.</li>
+                        <li>Migrated monoliths to microservices, improving deployment speed by ~30%.</li>
+                    </ul>
+                    <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10">Java</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10">Spring Boot</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10">Microservices</span>
+                    </div>
+                </article>
+
+                <article
+                    class="rounded-2xl border border-paper-200 dark:border-white/10 bg-white/70 dark:bg-white/5 shadow-soft p-6">
+                    <div class="flex flex-wrap items-start justify-between gap-3">
+                        <div>
+                            <h3 class="text-lg font-semibold">Software Engineer — Achiwer</h3>
+                            <p class="mt-1 text-sm text-paper-700 dark:text-white/70">Apr 2019 — Oct 2019</p>
+                        </div>
+                        <span
+                            class="inline-flex items-center gap-2 text-xs font-mono px-3 py-1 rounded-full bg-brand-500/10 text-brand-700 dark:text-brand-300">
+                            <i class="ph-bold ph-graduation-cap"></i> Learning platform
+                        </span>
+                    </div>
+                    <ul class="mt-4 text-paper-700 dark:text-white/70 list-disc pl-5 space-y-2">
+                        <li>Built learning platform APIs serving 1,000+ users.</li>
+                        <li>Integrated MySQL/MongoDB and secure payment gateways.</li>
+                    </ul>
+                    <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10">Java</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10">Node.js</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10">MongoDB</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10">AWS</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects" class="py-12 sm:py-16">
+            <p class="font-mono text-xs uppercase tracking-wider text-brand-700 dark:text-brand-300">Projects</p>
+            <h2 class="mt-2 text-2xl sm:text-3xl font-semibold tracking-tight">Shipped packages</h2>
+
+            <div class="mt-8 grid md:grid-cols-2 xl:grid-cols-3 gap-5">
+                <article
+                    class="group rounded-2xl border border-paper-200 dark:border-white/10 bg-white/70 dark:bg-white/5 shadow-soft p-6 hover:shadow-glow transition">
+                    <div class="flex items-start justify-between">
+                        <span
+                            class="h-12 w-12 rounded-2xl bg-brand-500/10 text-brand-700 dark:text-brand-300 inline-flex items-center justify-center">
+                            <i class="ph-bold ph-folder-notch text-2xl"></i>
+                        </span>
+                        <a class="focus-ring rounded-lg p-2 text-paper-700 dark:text-white/70 hover:text-paper-900 dark:hover:text-white"
+                            href="https://github.com/Manishrdy/AI-Driven-Resume-Builder" target="_blank"
+                            rel="noreferrer" aria-label="Open GitHub repo">
+                            <i class="ph-bold ph-github-logo text-xl"></i>
+                        </a>
+                    </div>
+                    <h3 class="mt-4 text-lg font-semibold group-hover:text-brand-700 dark:group-hover:text-brand-300">AI
+                        Resume Builder</h3>
+                    <p class="mt-2 text-sm text-paper-700 dark:text-white/70 leading-relaxed">
+                        RAG pipeline using LLMs to tailor resumes, improving accuracy and reducing per-resume cost.
+                    </p>
+                    <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10">Python</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10">RAG</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10">FastAPI</span>
+                    </div>
+                </article>
+
+                <article
+                    class="group rounded-2xl border border-paper-200 dark:border-white/10 bg-white/70 dark:bg-white/5 shadow-soft p-6 hover:shadow-glow transition">
+                    <div class="flex items-start justify-between">
+                        <span
+                            class="h-12 w-12 rounded-2xl bg-brand-500/10 text-brand-700 dark:text-brand-300 inline-flex items-center justify-center">
+                            <i class="ph-bold ph-robot text-2xl"></i>
+                        </span>
+                        <a class="focus-ring rounded-lg p-2 text-paper-700 dark:text-white/70 hover:text-paper-900 dark:hover:text-white"
+                            href="https://github.com/Manishrdy/CodeMate---A-Fine-Tuned-LLM---RAG-Powered-Coding-Assistant"
+                            target="_blank" rel="noreferrer" aria-label="Open GitHub repo">
+                            <i class="ph-bold ph-github-logo text-xl"></i>
+                        </a>
+                    </div>
+                    <h3 class="mt-4 text-lg font-semibold group-hover:text-brand-700 dark:group-hover:text-brand-300">
+                        CodeMate Assistant</h3>
+                    <p class="mt-2 text-sm text-paper-700 dark:text-white/70 leading-relaxed">
                         Fine-tuned LLM coding assistant providing context-aware code suggestions.
                     </p>
-                    <div
-                        class="font-mono text-xs flex flex-wrap gap-3 text-paper-comment dark:text-ide-comment mt-auto">
-                        <span>LLM</span>
-                        <span>Fine-Tuning</span>
-                        <span>Python</span>
+                    <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10">LLM</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10">Fine-tuning</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10">Python</span>
                     </div>
+                </article>
+
+                <article
+                    class="group rounded-2xl border border-paper-200 dark:border-white/10 bg-white/70 dark:bg-white/5 shadow-soft p-6 hover:shadow-glow transition">
+                    <div class="flex items-start justify-between">
+                        <span
+                            class="h-12 w-12 rounded-2xl bg-brand-500/10 text-brand-700 dark:text-brand-300 inline-flex items-center justify-center">
+                            <i class="ph-bold ph-game-controller text-2xl"></i>
+                        </span>
+                        <a class="focus-ring rounded-lg p-2 text-paper-700 dark:text-white/70 hover:text-paper-900 dark:hover:text-white"
+                            href="https://github.com/manishrdy/SimCricketX" target="_blank" rel="noreferrer"
+                            aria-label="Open GitHub repo">
+                            <i class="ph-bold ph-github-logo text-xl"></i>
+                        </a>
+                    </div>
+                    <h3 class="mt-4 text-lg font-semibold group-hover:text-brand-700 dark:group-hover:text-brand-300">
+                        SimCricketX</h3>
+                    <p class="mt-2 text-sm text-paper-700 dark:text-white/70 leading-relaxed">
+                        Full-stack simulation engine; integrated ML models to increase simulation accuracy.
+                    </p>
+                    <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10">Flask</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10">Java</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10">Docker</span>
+                    </div>
+                </article>
+
+                <article
+                    class="group rounded-2xl border border-paper-200 dark:border-white/10 bg-white/70 dark:bg-white/5 shadow-soft p-6 hover:shadow-glow transition">
+                    <div class="flex items-start justify-between">
+                        <span
+                            class="h-12 w-12 rounded-2xl bg-brand-500/10 text-brand-700 dark:text-brand-300 inline-flex items-center justify-center">
+                            <i class="ph-bold ph-smiley text-2xl"></i>
+                        </span>
+                        <a class="focus-ring rounded-lg p-2 text-paper-700 dark:text-white/70 hover:text-paper-900 dark:hover:text-white"
+                            href="https://github.com/Manishrdy/Emotion-Detector--Text-Based-Emotion-Classification-Using-Machine-Learning"
+                            target="_blank" rel="noreferrer" aria-label="Open GitHub repo">
+                            <i class="ph-bold ph-github-logo text-xl"></i>
+                        </a>
+                    </div>
+                    <h3 class="mt-4 text-lg font-semibold group-hover:text-brand-700 dark:group-hover:text-brand-300">
+                        Emotion Detector</h3>
+                    <p class="mt-2 text-sm text-paper-700 dark:text-white/70 leading-relaxed">
+                        NLP pipeline classifying text into emotion categories with strong F1 performance.
+                    </p>
+                    <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10">Scikit-learn</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10">Flask</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10">NLP</span>
+                    </div>
+                </article>
+
+                <article
+                    class="group rounded-2xl border border-paper-200 dark:border-white/10 bg-white/70 dark:bg-white/5 shadow-soft p-6 hover:shadow-glow transition">
+                    <div class="flex items-start justify-between">
+                        <span
+                            class="h-12 w-12 rounded-2xl bg-brand-500/10 text-brand-700 dark:text-brand-300 inline-flex items-center justify-center">
+                            <i class="ph-bold ph-link text-2xl"></i>
+                        </span>
+                        <a class="focus-ring rounded-lg p-2 text-paper-700 dark:text-white/70 hover:text-paper-900 dark:hover:text-white"
+                            href="https://github.com/Manishrdy/urlshortener" target="_blank" rel="noreferrer"
+                            aria-label="Open GitHub repo">
+                            <i class="ph-bold ph-github-logo text-xl"></i>
+                        </a>
+                    </div>
+                    <h3 class="mt-4 text-lg font-semibold group-hover:text-brand-700 dark:group-hover:text-brand-300">
+                        Scalable URL Shortener</h3>
+                    <p class="mt-2 text-sm text-paper-700 dark:text-white/70 leading-relaxed">
+                        High availability backend generating short URLs with Redis for low latency.
+                    </p>
+                    <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10">Redis</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10">Node.js</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10">MongoDB</span>
+                    </div>
+                </article>
+
+                <article
+                    class="group rounded-2xl border border-paper-200 dark:border-white/10 bg-white/70 dark:bg-white/5 shadow-soft p-6 hover:shadow-glow transition">
+                    <div class="flex items-start justify-between">
+                        <span
+                            class="h-12 w-12 rounded-2xl bg-brand-500/10 text-brand-700 dark:text-brand-300 inline-flex items-center justify-center">
+                            <i class="ph-bold ph-microphone text-2xl"></i>
+                        </span>
+                        <a class="focus-ring rounded-lg p-2 text-paper-700 dark:text-white/70 hover:text-paper-900 dark:hover:text-white"
+                            href="https://github.com/Manishrdy/polygraf-meeting-summarizer" target="_blank"
+                            rel="noreferrer" aria-label="Open GitHub repo">
+                            <i class="ph-bold ph-github-logo text-xl"></i>
+                        </a>
+                    </div>
+                    <h3 class="mt-4 text-lg font-semibold group-hover:text-brand-700 dark:group-hover:text-brand-300">
+                        Meeting Intelligence Platform</h3>
+                    <p class="mt-2 text-sm text-paper-700 dark:text-white/70 leading-relaxed">
+                        Backend application that turns long meeting recordings into accurate transcripts.
+                    </p>
+                    <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10">Redis</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10">Python</span>
+                        <span class="px-3 py-1 rounded-full bg-paper-100 dark:bg-white/10">Docker</span>
+                    </div>
+                </article>
+
+
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="py-12 sm:py-16">
+            <div
+                class="rounded-3xl border border-paper-200 dark:border-white/10 bg-white/70 dark:bg-white/5 shadow-soft p-8 sm:p-10 text-center">
+                <p class="font-mono text-xs uppercase tracking-wider text-brand-700 dark:text-brand-300">Contact</p>
+                <h2 class="mt-2 text-2xl sm:text-3xl font-semibold tracking-tight">Get in touch</h2>
+                <p class="mt-3 text-paper-700 dark:text-white/70 max-w-2xl mx-auto leading-relaxed">
+                    The inbox is always open—questions, opportunities, or a quick chat about backend systems and LLMs.
+                </p>
+
+                <div class="mt-7 flex flex-col sm:flex-row items-center justify-center gap-3">
+                    <a class="focus-ring inline-flex items-center justify-center gap-2 rounded-xl bg-brand-600 hover:bg-brand-700 text-white px-6 py-3 text-sm shadow-soft"
+                        href="mailto:mabotta12@gmail.com">
+                        <i class="ph-bold ph-envelope"></i>
+                        Email
+                    </a>
+
+                    <button id="copyEmail"
+                        class="focus-ring inline-flex items-center justify-center gap-2 rounded-xl border border-paper-200 dark:border-white/10 bg-white/70 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 px-6 py-3 text-sm">
+                        <i class="ph-bold ph-copy"></i>
+                        Copy email
+                    </button>
+
+                    <a class="focus-ring inline-flex items-center justify-center gap-2 rounded-xl border border-paper-200 dark:border-white/10 bg-white/70 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 px-6 py-3 text-sm"
+                        target="_blank" rel="noreferrer"
+                        href="https://drive.google.com/file/d/1UxepmlVm52OveO4wy9RpNM5Q2ckedBdH/view?usp=drive_link">
+                        <i class="ph-bold ph-file-pdf"></i>
+                        Resume
+                    </a>
                 </div>
 
-                <!-- Project 3 -->
-                <div
-                    class="group bg-paper-panel dark:bg-ide-panel border border-paper-border dark:border-ide-border rounded-lg p-6 hover:-translate-y-2 transition-transform duration-300 flex flex-col h-full">
-                    <div class="flex justify-between items-start mb-4">
-                        <i class="ph-bold ph-game-controller text-4xl text-python-blue"></i>
-                        <div class="flex gap-4 text-paper-text dark:text-ide-text">
-                            <a href="https://github.com/manishrdy/SimCricketX" target="_blank"
-                                class="hover:text-python-blue"><i class="ph-bold ph-github-logo text-xl"></i></a>
-                        </div>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2 group-hover:text-python-blue transition-colors">SimCricketX</h3>
-                    <p class="text-sm text-paper-comment dark:text-ide-comment mb-4 flex-grow">
-                        Full-stack simulation engine. Integrated ML models increasing simulation accuracy by 45%.
-                    </p>
-                    <div
-                        class="font-mono text-xs flex flex-wrap gap-3 text-paper-comment dark:text-ide-comment mt-auto">
-                        <span>Flask</span>
-                        <span>Java</span>
-                        <span>Docker</span>
-                    </div>
-                </div>
+                <p id="emailToast" class="mt-3 text-sm text-emerald-600 dark:text-emerald-300 hidden">Email copied.</p>
 
-                <!-- Project 4 -->
-                <div
-                    class="group bg-paper-panel dark:bg-ide-panel border border-paper-border dark:border-ide-border rounded-lg p-6 hover:-translate-y-2 transition-transform duration-300 flex flex-col h-full">
-                    <div class="flex justify-between items-start mb-4">
-                        <i class="ph-bold ph-smiley text-4xl text-python-blue"></i>
-                        <div class="flex gap-4 text-paper-text dark:text-ide-text">
-                            <a href="https://github.com/Manishrdy/Emotion-Detector--Text-Based-Emotion-Classification-Using-Machine-Learning"
-                                target="_blank" class="hover:text-python-blue"><i
-                                    class="ph-bold ph-github-logo text-xl"></i></a>
-                        </div>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2 group-hover:text-python-blue transition-colors">Emotion Detector
-                    </h3>
-                    <p class="text-sm text-paper-comment dark:text-ide-comment mb-4 flex-grow">
-                        NLP pipeline classifying text into 6 emotion categories with 92% F1-score.
-                    </p>
-                    <div
-                        class="font-mono text-xs flex flex-wrap gap-3 text-paper-comment dark:text-ide-comment mt-auto">
-                        <span>Scikit-learn</span>
-                        <span>Flask</span>
-                        <span>Hugging Face</span>
-                    </div>
-                </div>
-
-                <!-- Project 5 -->
-                <div
-                    class="group bg-paper-panel dark:bg-ide-panel border border-paper-border dark:border-ide-border rounded-lg p-6 hover:-translate-y-2 transition-transform duration-300 flex flex-col h-full">
-                    <div class="flex justify-between items-start mb-4">
-                        <i class="ph-bold ph-link text-4xl text-python-blue"></i>
-                        <div class="flex gap-4 text-paper-text dark:text-ide-text">
-                            <a href="https://github.com/Manishrdy/url_shortener" target="_blank"
-                                class="hover:text-python-blue"><i class="ph-bold ph-github-logo text-xl"></i></a>
-                        </div>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2 group-hover:text-python-blue transition-colors">Scalable URL
-                        Shortener</h3>
-                    <p class="text-sm text-paper-comment dark:text-ide-comment mb-4 flex-grow">
-                        High availability backend generating short URLs using Redis for low latency.
-                    </p>
-                    <div
-                        class="font-mono text-xs flex flex-wrap gap-3 text-paper-comment dark:text-ide-comment mt-auto">
-                        <span>Redis</span>
-                        <span>Node.js</span>
-                        <span>MongoDB</span>
-                    </div>
+                <div class="mt-8 flex items-center justify-center gap-4 text-xl">
+                    <a class="focus-ring rounded-xl p-3 border border-paper-200 dark:border-white/10 bg-white/70 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10"
+                        href="https://github.com/manishrdy" target="_blank" rel="noreferrer" aria-label="GitHub">
+                        <i class="ph-bold ph-github-logo"></i>
+                    </a>
+                    <a class="focus-ring rounded-xl p-3 border border-paper-200 dark:border-white/10 bg-white/70 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10"
+                        href="https://www.linkedin.com/in/manish-reddyb" target="_blank" rel="noreferrer"
+                        aria-label="LinkedIn">
+                        <i class="ph-bold ph-linkedin-logo"></i>
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="py-24 text-center max-w-2xl mx-auto">
-            <div class="font-mono text-python-blue mb-4">05. What's Next?</div>
-            <h2 class="text-4xl md:text-5xl font-bold mb-6">Get In Touch</h2>
-            <p class="text-lg text-paper-comment dark:text-ide-comment mb-10">
-                My inbox is always open. Whether you have a question, a potential opportunity, or just want to discuss
-                the latest in LLMs.
-            </p>
-
-            <div class="flex justify-center gap-6 mb-12">
-                <a href="mailto:manish.botta@protonmail.com"
-                    class="px-8 py-4 bg-transparent border-2 border-python-blue text-python-blue hover:bg-python-blue/10 rounded-md font-mono transition-all">
-                    Say Hello
-                </a>
-                <a href="https://drive.google.com/file/d/1jVz9CInjIkqY4N_oRgfU-Qic47QpdWGQ/view?usp=sharing"
-                    target="_blank"
-                    class="px-8 py-4 bg-paper-panel dark:bg-ide-panel border border-paper-border dark:border-ide-border hover:border-python-blue rounded-md font-mono transition-all">
-                    Resume.pdf
-                </a>
-            </div>
-
-            <div class="flex justify-center gap-8 text-2xl text-paper-comment dark:text-ide-comment">
-                <a href="https://github.com/manishrdy/" target="_blank"
-                    class="hover:text-python-blue hover:-translate-y-1 transition-all"><i
-                        class="ph-bold ph-github-logo"></i></a>
-                <a href="https://www.linkedin.com/in/manish-reddyb/" target="_blank"
-                    class="hover:text-python-blue hover:-translate-y-1 transition-all"><i
-                        class="ph-bold ph-linkedin-logo"></i></a>
-                <a href="#" class="hover:text-python-blue hover:-translate-y-1 transition-all"><i
-                        class="ph-bold ph-twitter-logo"></i></a>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer
-            class="py-8 text-center text-sm font-mono text-paper-comment dark:text-ide-comment border-t border-paper-border dark:border-ide-border">
-            <p>Designed & Built by Manish Botta</p>
-            <div class="mt-2 text-xs opacity-50">
-                v2.1.0 | System.out.println("Thanks for visiting");
-            </div>
+        <!-- FOOTER -->
+        <footer class="py-10 text-center text-sm text-paper-700 dark:text-white/60">
+            <p class="font-mono">Designed & built by Manish Botta</p>
+            <p class="mt-2 text-xs font-mono opacity-70">v3.0 • Keep building.</p>
         </footer>
     </main>
 
-    <!-- Scripts -->
     <script>
-        // Theme Toggle Logic
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
-        const html = document.documentElement;
+        // Theme init (default: dark)
+        const root = document.documentElement;
+        const themeToggle = document.getElementById("themeToggle");
+        const themeIcon = document.getElementById("themeIcon");
 
-        function toggleTheme() {
-            if (html.classList.contains('dark')) {
-                html.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-            } else {
-                html.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-            }
+        function setTheme(mode) {
+            if (mode === "dark") root.classList.add("dark");
+            else root.classList.remove("dark");
+            localStorage.setItem("theme", mode);
+            themeIcon.className = "ph-bold " + (mode === "dark" ? "ph-moon" : "ph-sun") + " text-base";
         }
 
-        // Check saved theme
-        if (localStorage.getItem('theme') === 'light') {
-            html.classList.remove('dark');
-        } else {
-            html.classList.add('dark'); // Default to dark
-        }
+        const saved = localStorage.getItem("theme");
+        if (saved) setTheme(saved);
+        else setTheme("dark");
 
-        themeToggleBtn.addEventListener('click', toggleTheme);
-        themeToggleMobile.addEventListener('click', toggleTheme);
-
-        // Mobile Menu Logic
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+        themeToggle.addEventListener("click", () => {
+            const next = root.classList.contains("dark") ? "light" : "dark";
+            setTheme(next);
         });
 
-        // Interactive Terminal Logic
-        const terminalInput = document.getElementById('terminal-input');
-        const terminalContainer = document.getElementById('terminal-container');
-        const terminalWrapper = document.getElementById('terminal-wrapper');
-        const commandHistory = document.getElementById('command-history');
+        // Mobile menu
+        const menuBtn = document.getElementById("menuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+        menuBtn.addEventListener("click", () => {
+            const open = mobileMenu.classList.toggle("hidden") === false;
+            menuBtn.setAttribute("aria-expanded", String(open));
+        });
+        mobileMenu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+            mobileMenu.classList.add("hidden");
+            menuBtn.setAttribute("aria-expanded", "false");
+        }));
 
-        const commands = {
-            help: "Available commands: <span class='text-python-blue'>about</span>, <span class='text-python-blue'>skills</span>, <span class='text-python-blue'>experience</span>, <span class='text-python-blue'>projects</span>, <span class='text-python-blue'>contact</span>, <span class='text-python-blue'>clear</span>, <span class='text-python-blue'>whoami</span>",
-
-            whoami: "User: Manish Botta<br>Role: Backend Architect<br>Location: San Bernardino, CA",
-
-            about: "I'm a software engineer from Vijayawada, currently in California.<br>I specialize in building resilient distributed systems and AI pipelines.<br>Hobbies: Cricket, Simulators, LeetCode, Cooking.",
-
-            skills: "LANGUAGES: Python, Java, JavaScript, Node.js<br>BACKEND: FastAPI, Flask, Express, Microservices<br>AI/ML: LLMs, RAG, NLP, Scikit-learn<br>INFRA: AWS, Docker, Redis, Kafka, MongoDB",
-
-            experience: "1. Navi Technologies (2024-2025) - HubSpot Integration, OAuth 2.0<br>2. Yellow.ai (2021-2023) - Scaled to 100K+ daily convos<br>3. Cognizant (2021) - Banking APIs, Spring Boot<br>4. Achiwer (2019) - Learning Platform APIs",
-
-            projects: "1. AI Resume Builder (RAG/LLM)<br>2. CodeMate Assistant (Fine-Tuned LLM)<br>3. SimCricketX (Simulation Engine)<br>4. Emotion Detector (NLP)",
-
-            contact: "Email: <a href='mailto:manish.botta@protonmail.com' class='underline hover:text-python-blue'>manish.botta@protonmail.com</a><br>LinkedIn: <a href='https://www.linkedin.com/in/manish-reddyb/' target='_blank' class='underline hover:text-python-blue'>/in/manish-reddyb</a>",
-
-            sudo: "<span class='text-red-500'>Permission denied: You are not Manish.</span>",
-
-            ls: "resume.pdf  projects/  secret_plans.txt",
-
-            clear: "CLEAR"
-        };
-
-        terminalInput.addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') {
-                const input = this.value;
-                const command = input.trim().toLowerCase();
-
-                // Add command line to history
-                commandHistory.innerHTML += `<div class="mb-1"><span class="text-green-600 dark:text-green-400">manish@server:~$</span> ${input}</div>`;
-
-                // Process command
-                if (command) {
-                    if (commands[command]) {
-                        if (commands[command] === "CLEAR") {
-                            commandHistory.innerHTML = '';
-                        } else {
-                            commandHistory.innerHTML += `<div class="mb-4 text-paper-comment dark:text-ide-comment leading-relaxed">${commands[command]}</div>`;
-                        }
-                    } else {
-                        commandHistory.innerHTML += `<div class="mb-4 text-red-500">Command not found: ${command}. Type 'help' for list.</div>`;
-                    }
-                }
-
-                // Reset input and scroll
-                this.value = '';
-                terminalContainer.scrollTop = terminalContainer.scrollHeight;
-            }
+        // Copy helpers
+        const copyBioBtn = document.getElementById("copyBio");
+        const bioSnippet = document.getElementById("bioSnippet");
+        const copyToast = document.getElementById("copyToast");
+        copyBioBtn?.addEventListener("click", async () => {
+            try {
+                await navigator.clipboard.writeText(bioSnippet.innerText.trim());
+                copyToast.classList.remove("hidden");
+                setTimeout(() => copyToast.classList.add("hidden"), 1400);
+            } catch { }
         });
 
-        // Focus input when clicking anywhere in the terminal
-        terminalWrapper.addEventListener('click', () => {
-            terminalInput.focus();
+        const copyEmailBtn = document.getElementById("copyEmail");
+        const emailToast = document.getElementById("emailToast");
+        copyEmailBtn?.addEventListener("click", async () => {
+            try {
+                await navigator.clipboard.writeText("mabotta12@gmail.com");
+                emailToast.classList.remove("hidden");
+                setTimeout(() => emailToast.classList.add("hidden"), 1400);
+            } catch { }
         });
 
-        // Terminal Animation Sequence
-        function runTerminalAnimation() {
-            const loadingMsg = document.getElementById('terminal-loading-msg');
-            const jsonContent = document.getElementById('terminal-json-content');
-            const interactiveShell = document.getElementById('interactive-shell');
+        // Scroll-spy
+        const sections = ["about", "skills", "experience", "projects", "contact"].map(id => document.getElementById(id)).filter(Boolean);
+        const links = Array.from(document.querySelectorAll(".navlink"));
+        const byHash = (id) => links.find(a => a.getAttribute("href") === "#" + id);
 
-            // 1. Initial Loading
-            setTimeout(() => {
-                if (loadingMsg) loadingMsg.style.display = 'none';
-                if (jsonContent) {
-                    jsonContent.classList.remove('hidden');
-                    jsonContent.classList.add('animate-fade-in');
-                }
-            }, 800);
-
-            // 2. Show Interactive Prompt after JSON
-            setTimeout(() => {
-                if (interactiveShell) {
-                    interactiveShell.classList.remove('hidden');
-                    interactiveShell.classList.add('animate-fade-in');
-                    terminalContainer.scrollTop = terminalContainer.scrollHeight; // Auto-scroll to bottom
-                }
-            }, 2000);
-        }
-
-        // Intersection Observer for Animations
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    runTerminalAnimation();
-                    observer.unobserve(entry.target);
+            entries.forEach(e => {
+                if (!e.isIntersecting) return;
+                links.forEach(a => a.classList.remove("text-paper-900", "dark:text-white"));
+                links.forEach(a => a.classList.add("text-paper-700", "dark:text-white/70"));
+                const a = byHash(e.target.id);
+                if (a) {
+                    a.classList.add("text-paper-900", "dark:text-white");
+                    a.classList.remove("text-paper-700", "dark:text-white/70");
                 }
             });
-        }, { threshold: 0.5 });
+        }, { rootMargin: "-35% 0px -55% 0px", threshold: 0.01 });
 
-        const terminalBody = document.getElementById('terminal-container');
-        if (terminalBody) {
-            observer.observe(terminalBody);
-        }
+        sections.forEach(s => observer.observe(s));
     </script>
 </body>
 
