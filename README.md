@@ -356,6 +356,43 @@ flowchart LR
   </picture>
 </div>
 
+<br/>
+
+<!-- Contribution Graph -->
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=manishrdy&theme=github-dark&hide_border=true&area=true&custom_title=Contribution%20Graph" />
+    <source media="(prefers-color-scheme: light)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=manishrdy&theme=github-light&hide_border=true&area=true&custom_title=Contribution%20Graph" />
+    <img src="https://github-readme-activity-graph.vercel.app/graph?username=manishrdy&theme=github-light&hide_border=true&area=true&custom_title=Contribution%20Graph" alt="Contribution Graph" width="100%"/>
+  </picture>
+</div>
+
+<br/>
+
+<!-- GitHub Trophies -->
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-profile-trophy.vercel.app/?username=manishrdy&theme=darkhub&no-frame=true&no-bg=true&column=7&margin-w=10" />
+    <source media="(prefers-color-scheme: light)" srcset="https://github-profile-trophy.vercel.app/?username=manishrdy&theme=flat&no-frame=true&no-bg=true&column=7&margin-w=10" />
+    <img src="https://github-profile-trophy.vercel.app/?username=manishrdy&theme=flat&no-frame=true&no-bg=true&column=7&margin-w=10" alt="GitHub Trophies" />
+  </picture>
+</div>
+
+<br/>
+
+<!-- Additional Metrics -->
+<div align="center">
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=manishrdy&theme=github" alt="Profile Details" />
+</div>
+
+<br/>
+
+<div align="center">
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=manishrdy&theme=github" alt="Repos per Language" />
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=manishrdy&theme=github" alt="Most Commit Language" />
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=manishrdy&theme=github&utcOffset=8" alt="Productive Time" />
+</div>
+
 ---
 
 ## 🎓 Education
