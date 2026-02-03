@@ -1,7 +1,7 @@
 
 <!-- Gradient Header -->
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:667eea,100:764ba2&height=200&section=header&text=Manish%20Reddy&fontSize=50&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=Backend%20Engineer%20•%20Distributed%20Systems%20•%20AI%20Pipelines&descAlignY=55&descSize=16"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:667eea,100:764ba2&height=200&section=header&text=Manish%20Botta&fontSize=50&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=Backend%20Engineer%20•%20Distributed%20Systems%20•%20AI%20Pipelines&descAlignY=55&descSize=16"/>
 </div>
 
 <!-- Animated Tagline -->
@@ -34,7 +34,7 @@
 Backend Engineer with **3+ years** of experience designing scalable distributed systems. I specialize in building high-throughput microservices, event-driven architectures, and AI-integrated backend pipelines. Currently exploring the intersection of traditional backend engineering and Generative AI.
 
 ```python
-class ManishReddy:
+class ManishBotta:
     def __init__(self):
         self.location = "Los Angeles, CA"
         self.education = "M.S. Computer Science @ CSUSB (3.8 GPA)"
@@ -222,7 +222,7 @@ timeline
                : 100M+ Events/Day
                : Kafka • Redis • LLM Migration
     
-    2025-Present : Kore.ai
+    2025-Present : Navi Technologies
                  : Contract Software Engineer
                  : OAuth 2.0 • CI/CD
                  : Zero-Downtime Deployments
@@ -230,7 +230,7 @@ timeline
 
 | Company | Role | Highlights |
 |---------|------|------------|
-| **Kore.ai** | Software Engineer | OAuth 2.0 integrations, 70% reduction in manual data handling, zero-downtime CI/CD |
+| **Navi Technologies** | Software Engineer | OAuth 2.0 integrations, 70% reduction in manual data handling, zero-downtime CI/CD |
 | **Yellow.ai** | Software Engineer | Scaled to 100M+ events/day, 40% latency reduction, LLM pipeline migration |
 | **Cognizant** | Program Trainee | Spring Boot APIs, 80%+ test coverage, microservices migration |
 | **Achiwer** | Intern | Learning platform backend, 1000+ users, AWS deployment |
