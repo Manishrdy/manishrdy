@@ -168,15 +168,15 @@ timeline
                : 100M+ Events/Day
                : Kafka • Redis • LLM Migration
     
-    2025-Present : Navi Technologies
-                 : Contract Software Engineer
-                 : OAuth 2.0 • CI/CD
-                 : Zero-Downtime Deployments
+    2025-Present : Microsoft
+                 : Contract Software Engineer (Employer: Navi Technologies)
+                 : Python ETL • SQL • Azure
+                 : 70% Reduced Processing Time
 ```
 
 | Company | Role | Highlights |
 |---------|------|------------|
-| **Navi Technologies** | Software Engineer | OAuth 2.0 integrations, 70% reduction in manual data handling, zero-downtime CI/CD |
+| **Microsoft** (via Navi Technologies) | Contract Software Engineer | Python ETL pipelines, 60% improved data availability, 70% reduced processing time, Azure CI/CD |
 | **Yellow.ai** | Software Engineer | Scaled to 100M+ events/day, 40% latency reduction, LLM pipeline migration |
 | **Cognizant** | Program Trainee | Spring Boot APIs, 80%+ test coverage, microservices migration |
 | **Achiwer** | Intern | Learning platform backend, 1000+ users, AWS deployment |
