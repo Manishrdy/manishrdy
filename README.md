@@ -1,13 +1,13 @@
 
 <!-- Gradient Header -->
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:667eea,100:764ba2&height=200&section=header&text=Manish%20Botta&fontSize=50&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=Backend%20Engineer%20•%20Distributed%20Systems%20•%20AI%20Pipelines&descAlignY=55&descSize=16"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0969da,100:0550ae&height=200&section=header&text=Manish%20Botta&fontSize=50&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=Backend+%26+AI+Engineer%20•%20Distributed+Systems%20•%20Agentic+Pipelines&descAlignY=55&descSize=16"/>
 </div>
 
 <!-- Animated Tagline -->
 <p align="center">
   <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=500&size=20&duration=3000&pause=1000&color=667EEA&center=true&vCenter=true&width=550&lines=Building+robust+APIs;Bridging+Backend+%2B+AI+Engineering" alt="Typing SVG" />
+    <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=500&size=20&duration=3000&pause=1000&color=0969DA&center=true&vCenter=true&width=550&lines=Building+scalable+backends+%26+AI+systems;Distributed+pipelines+%2B+LLM+agents+at+scale" alt="Typing SVG" />
   </a>
 </p>
 
@@ -17,7 +17,7 @@
     <img src="https://img.shields.io/badge/-LinkedIn-0077B5?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"/>
   </a>
   <a href="https://manishbotta.me">
-    <img src="https://img.shields.io/badge/-Portfolio-667eea?style=flat-square&logo=googlechrome&logoColor=white" alt="Portfolio"/>
+    <img src="https://img.shields.io/badge/-Portfolio-0969da?style=flat-square&logo=googlechrome&logoColor=white" alt="Portfolio"/>
   </a>
   <a href="mailto:mabotta12@gmail.com">
     <img src="https://img.shields.io/badge/-Email-EA4335?style=flat-square&logo=gmail&logoColor=white" alt="Email"/>
@@ -31,21 +31,20 @@
 
 ## 👨‍💻 About
 
-Backend Engineer with **3+ years** of experience building reliable backend systems. I specialize in building RESTful APIs, event-driven architectures, and AI-integrated backend pipelines. Currently exploring the intersection of traditional backend engineering and Generative AI.
+Backend + AI Engineer with **4+ years** building distributed systems, event-driven pipelines, and LLM-powered agents at production scale. I specialize in high-throughput API design, agentic architectures, and RAG pipelines — owning problems end-to-end from schema design to cloud deployment.
 
 ```python
 class ManishBotta:
     def __init__(self):
         self.location = "Los Angeles, CA"
-        self.education = "M.S. Computer Science @ CSUSB (3.8 GPA)"
-        self.languages = ["Python", "Node.js", "Java", "JavaScript"]
-        self.interests = ["System Design", "Backend Architecture", "LLM Pipelines"]
-        
+        self.languages = ["Python", "Node.js", "Java", "TypeScript"]
+        self.interests = ["Distributed Systems", "Agentic AI", "LLM Pipelines", "API Design"]
+
     def current_focus(self):
         return [
-            "Scalable Backend Development",
-            "RAG pipelines & LLM integrations",
-            "High-performance caching strategies"
+            "LLM-powered autonomous agents (LangChain, LangGraph)",
+            "RAG pipelines & RLHF-aligned systems",
+            "High-throughput event-driven backends (Kafka, Redis)"
         ]
 ```
 
@@ -140,46 +139,7 @@ class ManishBotta:
   </tr>
 </table>
 
-**AI/ML Stack:** LangChain • RAG Pipelines • Fine-Tuning (QLoRA/LoRA) • Vector DBs (FAISS, Chroma) • OpenAI • HuggingFace
-
----
-
-
-
----
-
-## 💼 Experience
-
-```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#667eea', 'primaryTextColor': '#1a1a2e', 'primaryBorderColor': '#764ba2', 'lineColor': '#667eea', 'secondaryColor': '#f8fafc', 'tertiaryColor': '#ffffff'}}}%%
-timeline
-    title Career Journey
-    
-    2019 : Achiwer
-         : Software Engineer Intern
-         : Node.js • Python • AWS
-    
-    2021 : Cognizant
-         : Program Trainee Analyst
-         : Spring Boot • TDD • 80%+ Coverage
-    
-    2021-2023 : Yellow.ai
-               : Software Engineer
-               : 100M+ Events/Day
-               : Kafka • Redis • LLM Migration
-    
-    2025-Present : Microsoft
-                 : Contract Software Engineer (Employer: Navi Technologies)
-                 : Python ETL • SQL • Azure
-                 : 70% Reduced Processing Time
-```
-
-| Company | Role | Highlights |
-|---------|------|------------|
-| **Microsoft** (via Navi Technologies) | Contract Software Engineer | Python ETL pipelines, 60% improved data availability, 70% reduced processing time, Azure CI/CD |
-| **Yellow.ai** | Software Engineer | Scaled to 100M+ events/day, 40% latency reduction, LLM pipeline migration |
-| **Cognizant** | Program Trainee | Spring Boot APIs, 80%+ test coverage, microservices migration |
-| **Achiwer** | Intern | Learning platform backend, 1000+ users, AWS deployment |
+**AI/ML Stack:** LangChain • LangGraph • Multi-Agent Orchestration • RAG Pipelines • RLHF/RLAIF • Fine-Tuning (QLoRA/LoRA) • Vector DBs (FAISS, Chroma) • OpenAI • HuggingFace • Transformers/BERT
 
 ---
 
@@ -189,30 +149,30 @@ timeline
 <tr>
 <td width="50%">
 
-### 🎙️ Async Audio Pipeline
-**Multi-stage NLP processing system**
+### 🎙️ Async Audio Intelligence Pipeline
+**Asynchronous NLP agent pipeline**
 
-- ⚡ **3× throughput** improvement
-- 📉 **80% reduction** in review time  
-- 🔄 Queue-driven fault-tolerant processing
+- ⚡ **3× throughput** vs. synchronous baseline
+- 📉 **80% reduction** in post-meeting review time
+- 🔄 3-worker pipeline (Splitter→Transcriber→Summarizer) over Redis queues — 1-hour meetings in 7–11 min vs. 45–75 min baseline
 
-`FastAPI` `Redis` `LLMs` `Docker`
+`FastAPI` `OpenAI Whisper` `GPT-4` `Redis` `Docker`
 
-[![Repo](https://img.shields.io/badge/View_Repo-667eea?style=flat-square&logo=github)](https://github.com/Manishrdy/async-audio-pipeline)
+[![Repo](https://img.shields.io/badge/View_Repo-0969da?style=flat-square&logo=github)](https://github.com/Manishrdy/async-audio-pipeline)
 
 </td>
 <td width="50%">
 
 ### 📄 AI Resume Tailoring
-**RAG-powered resume optimization**
+**RAG + RLHF-powered resume optimization**
 
-- 🎯 **45% better** retrieval accuracy
-- 💾 **60% less** GPU memory usage
-- 🤖 Fine-tuned with QLoRA
+- 🎯 **45% better** job-match scores via FAISS hybrid dense retrieval + cross-encoder re-ranking
+- 🤖 RLHF-style preference ranking with Constitutional AI self-critique loops
+- 💾 **60% less** GPU memory via 4-bit quantization; FastAPI microservices with Langsmith tracing
 
-`FastAPI` `FAISS` `LangChain` `Chroma`
+`FastAPI` `FAISS` `LangChain` `QLoRA` `Langsmith`
 
-[![Repo](https://img.shields.io/badge/View_Repo-667eea?style=flat-square&logo=github)](https://github.com/Manishrdy/AI-Driven-Resume-Builder)
+[![Repo](https://img.shields.io/badge/View_Repo-0969da?style=flat-square&logo=github)](https://github.com/Manishrdy/AI-Driven-Resume-Builder)
 
 </td>
 </tr>
@@ -220,15 +180,15 @@ timeline
 <td width="50%">
 
 ### 🏏 SimCricketX
-**Real-time multi-user simulation engine**
+**Real-time probabilistic simulation engine**
 
-- 🎮 Concurrent state management
-- 📊 **50% fewer** hard-coded rules
-- ☁️ Deployed on Oracle Cloud
+- 🎮 11 probabilistic layers + WebSocket serving 256+ users, 444+ matches on OCI
+- 📊 7-layer Game State Momentum Engine (λ=0.88 decay, 13-dim state vector) — 120 deliveries/match in <5s
+- ☁️ Production stack: Gunicorn + Nginx + Docker + OCI, zero-downtime deploys
 
-`Flask` `Python` `Redis` `CI/CD`
+`Flask` `Python` `Redis` `WebSocket` `Docker`
 
-[![Repo](https://img.shields.io/badge/View_Repo-667eea?style=flat-square&logo=github)](https://github.com/Manishrdy/SimCricketX)
+[![Repo](https://img.shields.io/badge/View_Repo-0969da?style=flat-square&logo=github)](https://github.com/Manishrdy/SimCricketX)
 
 </td>
 <td width="50%">
@@ -236,13 +196,28 @@ timeline
 ### 🔗 URL Shortener
 **High-performance link service**
 
-- 💾 **70% reduction** in DB reads
+- 💾 **70% reduction** in DB reads via TTL-based Redis cache invalidation
 - ⚡ **60% faster** redirects
-- 🔄 Smart cache invalidation
+- 🔒 JWT auth with zero-downtime rolling deploys on AWS EC2
 
-`Node.js` `MongoDB` `Redis` `Docker`
+`Node.js` `MongoDB` `Redis` `Docker` `AWS`
 
-[![Repo](https://img.shields.io/badge/View_Repo-667eea?style=flat-square&logo=github)](https://github.com/Manishrdy/url_shortener)
+[![Repo](https://img.shields.io/badge/View_Repo-0969da?style=flat-square&logo=github)](https://github.com/Manishrdy/url_shortener)
+
+</td>
+</tr>
+<tr>
+<td colspan="2">
+
+### 🛠️ OpenResume — Open Source Contribution
+**AI-driven resume normalization pipeline**
+
+- 📄 Built live PDF rendering and an AI-driven normalization pipeline converting any resume format to ATS-optimized output via structured JSON schema import
+- 🧩 Contributed to Next.js 13 + TypeScript + Redux Toolkit codebase
+
+`Next.js 13` `TypeScript` `Redux Toolkit` `AI`
+
+[![Repo](https://img.shields.io/badge/View_Repo-0969da?style=flat-square&logo=github)](https://github.com/Manishrdy/open-resume)
 
 </td>
 </tr>
@@ -303,17 +278,6 @@ timeline
 
 ---
 
-## 🎓 Education
-
-| Degree | University | GPA | Timeline |
-|--------|-----------|-----|----------|
-| **M.S. Computer Science** | California State University, San Bernardino | 3.8/4.0 | 2023 - 2025 |
-| **B.Tech Computer Science** | Amrita Vishwa Vidyapeetham, India | 3.1/4.0 | 2017 - 2021 |
-
-**Relevant Coursework:** Algorithms • AI/ML • Software Engineering • Operating Systems
-
----
-
 ## 📬 Let's Connect
 
 <p align="center">
@@ -324,20 +288,19 @@ timeline
     <img src="https://img.shields.io/badge/Send_Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" />
   </a>
   <a href="https://manishbotta.me">
-    <img src="https://img.shields.io/badge/View_Portfolio-667eea?style=for-the-badge&logo=googlechrome&logoColor=white" />
+    <img src="https://img.shields.io/badge/View_Portfolio-0969da?style=for-the-badge&logo=googlechrome&logoColor=white" />
   </a>
 </p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=500&size=16&duration=3000&pause=1000&color=667EEA&center=true&vCenter=true&width=450&lines=Open+to+Backend+%26+AI+Engineering+roles;Let's+build+something+scalable+together!" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=500&size=16&duration=3000&pause=1000&color=0969DA&center=true&vCenter=true&width=450&lines=Open+to+Backend+%26+AI+Engineering+roles;Let's+build+something+scalable+together!" alt="Typing SVG" />
 </p>
 
 ---
 
 <p align="center">
-  <img src="https://komarev.com/ghpvc/?username=manishrdy&style=flat-square&color=667eea" alt="Profile views"/>
+  <img src="https://komarev.com/ghpvc/?username=manishrdy&style=flat-square&color=0969da" alt="Profile views"/>
 </p>
 
 <!-- Footer -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:667eea,100:764ba2&height=100&section=footer"/>
-```
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0969da,100:0550ae&height=100&section=footer"/>
