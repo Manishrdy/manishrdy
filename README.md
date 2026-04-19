@@ -43,7 +43,7 @@ class ManishBotta:
     def current_focus(self):
         return [
             "LLM-powered autonomous agents (LangChain, LangGraph)",
-            "RAG pipelines & RLHF-aligned systems",
+            "RAG pipelines + RLHF-aligned systems",
             "High-throughput event-driven backends (Kafka, Redis)"
         ]
 ```
