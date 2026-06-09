@@ -1113,7 +1113,7 @@
                         <div class="hero-meta reveal">
                             <dl>
                                 <dt>Roles</dt>
-                                <dd>Software / AI Engineer</dd>
+                                <dd>SWE · AI · GenAI · Forward Deployed</dd>
                             </dl>
                             <dl>
                                 <dt>Based</dt>
@@ -1161,7 +1161,12 @@
                                 spec to exist before I start working.
                             </p>
                             <p class="reveal">
-                                Looking to join a <strong>Series A/B company</strong> and build the backend — from
+                                I'm also forward-deployed at heart — I shipped GenAI systems to <strong>24+
+                                enterprise clients</strong> (IHCL, Dr. Reddy's, Bajaj Finserv, Spotify), owning
+                                on-site integration, dual-sided InfoSec approvals, demos, and onboarding.
+                            </p>
+                            <p class="reveal">
+                                Looking to join a <strong>Series A/B/C company</strong> and build the backend — from
                                 model training to cloud deployment — from the ground up.
                             </p>
                         </div>
@@ -1176,8 +1181,8 @@
                                 <div class="l">Events / day</div>
                             </div>
                             <div class="stat">
-                                <div class="v">40%</div>
-                                <div class="l">Latency cut</div>
+                                <div class="v">24+</div>
+                                <div class="l">Enterprise clients</div>
                             </div>
                             <div class="stat">
                                 <div class="v">99.9%</div>
@@ -1225,8 +1230,8 @@
 
                             <article class="role reveal">
                                 <div class="role-head">
-                                    <div class="role-co">Navi Technologies</div>
-                                    <div class="role-ti">Software Engineer — Generative AI</div>
+                                    <div class="role-co">Microsoft</div>
+                                    <div class="role-ti">Software Engineer</div>
                                 </div>
                                 <div class="role-dates">Aug 2025 — Mar 2026</div>
                                 <ul class="role-bullets">
@@ -1249,10 +1254,16 @@
                             <article class="role reveal">
                                 <div class="role-head">
                                     <div class="role-co">Yellow.AI</div>
-                                    <div class="role-ti">Software Engineer — NLP &amp; AI</div>
+                                    <div class="role-ti">Software Engineer — Forward Deployed / Studio Solutions</div>
                                 </div>
                                 <div class="role-dates">Sep 2021 — Jul 2023</div>
                                 <ul class="role-bullets">
+                                    <li>Delivered GenAI chatbot systems for <strong>24+ enterprise clients</strong> —
+                                        IHCL, Dr. Reddy's, Bajaj Finserv, Spotify — embedding with each to scope use
+                                        cases, check feasibility, and ship production agents.</li>
+                                    <li>Led on-site integration of client CRM, ticketing, and data systems into
+                                        deployed agents; drove <strong>InfoSec approvals on both sides</strong> to
+                                        unblock launches stuck for weeks.</li>
                                     <li>Fine-tuned <strong>BERT and open-source LLMs (LoRA / QLoRA)</strong>; RLHF
                                         reward checkpoints cut harmful responses <strong>28%</strong> and lifted
                                         chatbot accuracy <strong>60%</strong> across
@@ -1285,20 +1296,8 @@
                                         query response time <strong>40%</strong>, and maintaining
                                         <strong>80%+ test coverage</strong> throughout.
                                     </li>
-                                </ul>
-                            </article>
-
-                            <article class="role reveal">
-                                <div class="role-head">
-                                    <div class="role-co">Achiwer</div>
-                                    <div class="role-ti">Software Engineer Intern</div>
-                                </div>
-                                <div class="role-dates">Apr 2019 — Mar 2020</div>
-                                <ul class="role-bullets">
-                                    <li>Built the learning-platform backend (Node.js + Python) serving
-                                        <strong>1,000+ users</strong> — REST APIs, MySQL / MongoDB schemas, AWS EC2 /
-                                        S3 deployment with right-sized hosting costs.
-                                    </li>
+                                    <li>Lowered <strong>p95 latency</strong> on core endpoints by building RESTful
+                                        APIs in Spring Boot and tuning the underlying MySQL queries.</li>
                                 </ul>
                             </article>
 
@@ -1335,18 +1334,16 @@
                                     </div>
                                 </div>
                                 <div class="project-right">
-                                    <p>Architected a <strong>LangGraph agent</strong> (13 nodes, 4 discovery channels)
-                                        querying Ashby / Lever / Greenhouse APIs and persisting ranked jobs to SQLite
-                                        with Langfuse tracing.</p>
-                                    <p>Bypassed Google's <strong>CDP-layer bot detection</strong> — which blocked
-                                        every Playwright / Selenium stealth variant — using nodriver's WebSocket
-                                        protocol; live runs return real ATS URLs.</p>
-                                    <p>Two-stage extraction: JSON-LD first, <strong>Qwen3 8B (Ollama)</strong> as LLM
-                                        fallback; outputs Pydantic-validated <code>ExtractedJob</code> records with
-                                        confidence scores.</p>
-                                    <p>Scored and deduplicated jobs via rapidfuzz + sentence-transformers cosine
-                                        similarity (<strong>0.92 / 0.80</strong> thresholds); Streamlit dashboard for
-                                        ranked review with duplicate flags.</p>
+                                    <p>Built a local-first sourcing agent on a <strong>13-node LangGraph
+                                        workflow</strong> with a local Ollama LLM (<code>qwen3:8b</code>) and Langfuse
+                                        tracing with PII redaction — full observability on every run.</p>
+                                    <p>Enforced a hard-coded <strong>URL-allowlist guardrail</strong> in code, before
+                                        any browser tool runs — the agent can never touch login, apply, shortener, or
+                                        non-allowlisted URLs.</p>
+                                    <p>Beat Google's <strong>CDP-layer bot detection</strong> — which defeated every
+                                        Playwright / Puppeteer stealth variant — with a nodriver WebSocket-debug
+                                        approach, backed by <strong>55 passing tests</strong> and a deterministic
+                                        query generator.</p>
                                 </div>
                             </article>
 
@@ -1371,9 +1368,12 @@
                                         on OCI — resolves <strong>120 deliveries per match in under 5
                                         seconds</strong>.
                                     </p>
-                                    <p>Engineered a <strong>7-layer Game State Momentum Engine</strong> with
-                                        exponential decay and a <strong>13-dimensional state vector</strong>.</p>
-                                    <p>Shipped solo with session auth, Nginx, and zero-downtime deploys.</p>
+                                    <p><strong>~21K lines of Python</strong>: a 126-endpoint REST API, a 13-model
+                                        SQLAlchemy schema, and a <strong>7-layer Game State Momentum Engine</strong>
+                                        with exponential decay over a 13-dimensional state vector.</p>
+                                    <p>Kept concurrent match state correct under load with per-match threading locks;
+                                        <strong>80%+ test coverage</strong> across a 6-config CI matrix. Shipped solo
+                                        with session auth, Nginx, and zero-downtime deploys.</p>
                                 </div>
                             </article>
 
@@ -1433,6 +1433,34 @@
                                 </div>
                             </article>
 
+                            <article class="project reveal">
+                                <div class="project-left">
+                                    <div class="project-meta">
+                                        <span class="project-num">/ 05 — Backend</span>
+                                        <a href="https://github.com/Manishrdy/applyd" target="_blank" rel="noopener"
+                                            class="project-link">
+                                            GitHub <span class="project-arrow">↗</span>
+                                        </a>
+                                    </div>
+                                    <h3>Applyd — Job Aggregation Platform</h3>
+                                    <div class="project-sub">Multi-service backend</div>
+                                    <div class="project-stack">
+                                        <span>FastAPI</span><span>SQLite</span><span>FTS5</span><span>Argon2id</span>
+                                    </div>
+                                </div>
+                                <div class="project-right">
+                                    <p>Built a two-service backend (<strong>FastAPI identity service +
+                                        dashboard</strong>) with cookie-based Argon2id authentication, role-gated
+                                        admin APIs, and runtime-tunable per-IP and per-email rate limiting.</p>
+                                    <p>Designed a three-signal expired-job lifecycle across <strong>10+ ATS
+                                        providers</strong> — a state machine gated by two kill switches and per-ATS
+                                        <strong>circuit breakers that fail closed</strong>.</p>
+                                    <p>Engineered safe data operations: idempotent URL-keyed UPSERTs, partial
+                                        indexes, FTS5 search, atomic SQLite backups behind a multi-gate restore, and
+                                        a tamper-evident admin audit log.</p>
+                                </div>
+                            </article>
+
                         </div>
                     </div>
                 </div>
@@ -1458,7 +1486,7 @@
                             <div class="skill-row reveal">
                                 <div class="skill-cat">Agentic &amp; NLP</div>
                                 <div class="skill-items">
-                                    <span>LangChain</span><span>LangGraph</span><span>ReAct</span><span>Tool-Use Agents</span><span>Multi-Agent Orchestration</span><span>Memory &amp; Planning</span><span>PyTorch</span><span>Transformers</span><span>BERT</span><span>Sentence Embeddings</span><span>Whisper</span><span>Gemini</span><span>OpenAI</span><span>HuggingFace</span>
+                                    <span>LangChain</span><span>LangGraph</span><span>ReAct</span><span>Tool-Use Agents</span><span>Multi-Agent Orchestration</span><span>Memory &amp; Planning</span><span>Langfuse</span><span>Transformers</span><span>BERT</span><span>Sentence Embeddings</span><span>Whisper</span><span>Gemini</span><span>OpenAI</span><span>Claude</span><span>Ollama</span><span>HuggingFace</span>
                                 </div>
                             </div>
                             <div class="skill-row reveal">
@@ -1503,6 +1531,12 @@
                                     <span>REST</span><span>JWT</span><span>OAuth 2.0</span>
                                 </div>
                             </div>
+                            <div class="skill-row reveal">
+                                <div class="skill-cat">Customer &amp; Delivery</div>
+                                <div class="skill-items">
+                                    <span>Client Onboarding</span><span>On-Site Integration</span><span>InfoSec / Security Reviews</span><span>Stakeholder Demos</span><span>Agile / Standups</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1524,7 +1558,8 @@
                                     <div class="school">California State University, San Bernardino</div>
                                     <div class="degree">M.S. Computer Science</div>
                                     <div class="course">
-                                        Artificial Intelligence · Algorithms · Software Engineering · Operating Systems
+                                        Distributed Systems · Advanced Algorithms · Machine Learning · Database
+                                        Systems · Cloud Computing
                                     </div>
                                 </div>
                                 <div class="edu-dates">Aug 2023 — May 2025</div>
@@ -1533,6 +1568,9 @@
                                 <div class="edu-head">
                                     <div class="school">Amrita Vishwa Vidyapeetham</div>
                                     <div class="degree">B.S. Computer Science · Coimbatore, India</div>
+                                    <div class="course">
+                                        Data Structures · Operating Systems · Computer Networks · Software Engineering
+                                    </div>
                                 </div>
                                 <div class="edu-dates">Jul 2017 — May 2021</div>
                             </article>
@@ -1555,8 +1593,9 @@
                             Let's build <span class="light">the next one.</span>
                         </h2>
                         <p class="reveal">
-                            Open to <strong>Software / Backend / SDE</strong> and <strong>AI Engineer</strong> roles.
-                            Series A/B preferred — but I'll talk to anyone building something interesting.
+                            Open to <strong>Software Engineer, AI Engineer, GenAI Developer</strong> and
+                            <strong>Forward Deployed Engineer</strong> roles — and I'll talk to anyone building
+                            something interesting.
                         </p>
                         <a href="mailto:mabotta12@gmail.com" class="end-email reveal">
                             mabotta12@gmail.com <span>→</span>
