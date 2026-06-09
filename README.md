@@ -6,7 +6,7 @@
 
 <a href="https://manishbotta.me"><img src="https://img.shields.io/badge/portfolio-manishbotta.me-58A6FF?style=for-the-badge&logo=googlechrome&logoColor=0d1117&labelColor=0d1117" alt="Portfolio"/></a>
 <a href="https://linkedin.com/in/manish-reddyb"><img src="https://img.shields.io/badge/linkedin-manish--reddyb-58A6FF?style=for-the-badge&logo=linkedin&logoColor=0d1117&labelColor=0d1117" alt="LinkedIn"/></a>
-<a href="mailto:mabotta12@gmail.com"><img src="https://img.shields.io/badge/email-mabotta12@gmail.com-58A6FF?style=for-the-badge&logo=gmail&logoColor=0d1117&labelColor=0d1117" alt="Email"/></a>
+<a href="https://simcricketx.app"><img src="https://img.shields.io/badge/live-simcricketx.app-58A6FF?style=for-the-badge&logo=googlechrome&logoColor=0d1117&labelColor=0d1117" alt="SimCricketX"/></a>
 
 </div>
 
