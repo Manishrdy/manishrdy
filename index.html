@@ -7,12 +7,12 @@
     <title>Manish Botta — Software & AI Engineer</title>
     <meta name="description"
         content="Manish Botta — Engineer building production AI and backend systems. 3+ years shipping LLM pipelines, agentic systems, and high-scale APIs." />
-    <meta name="theme-color" content="#fafaf8" />
+    <meta name="theme-color" content="#f7f6f2" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=JetBrains+Mono:wght@400&display=swap" />
 
     <style>
         *,
@@ -24,58 +24,55 @@
         }
 
         :root {
-            --bg: #ece7dc;
-            --ink: #14110c;
-            --secondary: #4a463d;
-            --muted: #807a6d;
-            --border: #d2ccbd;
-            --border-strong: #b1ab9c;
-            --hover: rgba(20, 17, 12, 0.04);
+            --bg: #f7f6f2;
+            --ink: #1a1815;
+            --secondary: #55514a;
+            --muted: #8f897d;
+            --border: #e4e0d6;
+            --hover: rgba(26, 24, 21, 0.035);
 
             --sans: 'Inter', system-ui, -apple-system, sans-serif;
+            --serif: 'Newsreader', Georgia, 'Times New Roman', serif;
             --mono: 'JetBrains Mono', ui-monospace, monospace;
             --ease: cubic-bezier(0.22, 1, 0.36, 1);
 
-            --col-gap: 32px;
-            --section-pad: 96px;
+            --section-gap: 120px;
         }
 
         [data-theme="dark"] {
-            --bg: #0d0d0d;
-            --ink: #f4f3ef;
-            --secondary: #b5b3ad;
-            --muted: #6d6c68;
-            --border: #1f1f1d;
-            --border-strong: #2e2e2c;
-            --hover: rgba(244, 243, 239, 0.05);
+            --bg: #100f0d;
+            --ink: #f2f0ea;
+            --secondary: #b0aca3;
+            --muted: #6f6a60;
+            --border: #26241f;
+            --hover: rgba(242, 240, 234, 0.045);
         }
 
         html {
             scroll-behavior: smooth;
             scrollbar-width: thin;
-            scrollbar-color: var(--border-strong) transparent;
+            scrollbar-color: var(--border) transparent;
         }
 
         ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
+            width: 7px;
+            height: 7px;
         }
 
         ::-webkit-scrollbar-thumb {
-            background: var(--border-strong);
+            background: var(--border);
         }
 
         body {
             font-family: var(--sans);
             background: var(--bg);
             color: var(--ink);
-            font-size: 15px;
-            line-height: 1.6;
+            font-size: 16px;
+            line-height: 1.65;
             font-weight: 400;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            font-feature-settings: 'ss01', 'cv11';
-            transition: background 0.25s var(--ease), color 0.25s var(--ease);
+            transition: background 0.4s var(--ease), color 0.4s var(--ease);
         }
 
         ::selection {
@@ -94,40 +91,25 @@
             max-width: 100%;
         }
 
-        /* ── 12-col grid container ── */
         .wrap {
-            max-width: 1240px;
+            max-width: 940px;
             margin: 0 auto;
             padding: 0 40px;
         }
 
-        @media (max-width: 720px) {
+        @media (max-width: 640px) {
             .wrap {
-                padding: 0 20px;
+                padding: 0 24px;
             }
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            column-gap: var(--col-gap);
-            row-gap: 0;
-        }
-
-        @media (max-width: 720px) {
-            .grid {
-                grid-template-columns: 1fr;
-                column-gap: 0;
-            }
-        }
-
-        /* ── Mono caps utility ── */
-        .mono {
+        /* ── Small label ── */
+        .label {
             font-family: var(--mono);
             font-size: 11px;
-            font-weight: 500;
+            font-weight: 400;
             text-transform: uppercase;
-            letter-spacing: 0.14em;
+            letter-spacing: 0.18em;
             color: var(--muted);
         }
 
@@ -136,9 +118,10 @@
             position: sticky;
             top: 0;
             z-index: 50;
-            background: var(--bg);
+            background: color-mix(in srgb, var(--bg) 88%, transparent);
+            backdrop-filter: saturate(180%) blur(12px);
             border-bottom: 1px solid transparent;
-            transition: border-color 0.25s var(--ease);
+            transition: border-color 0.35s var(--ease), background 0.4s var(--ease);
         }
 
         nav.scrolled {
@@ -146,38 +129,24 @@
         }
 
         .nav-inner {
-            max-width: 1240px;
+            max-width: 940px;
             margin: 0 auto;
-            padding: 18px 40px;
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            column-gap: var(--col-gap);
+            padding: 20px 40px;
+            display: flex;
             align-items: center;
+            justify-content: space-between;
         }
 
-        @media (max-width: 720px) {
+        @media (max-width: 640px) {
             .nav-inner {
-                padding: 16px 20px;
-                display: flex;
-                justify-content: space-between;
+                padding: 16px 24px;
             }
         }
 
         .nav-brand {
-            grid-column: span 3;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 500;
-            letter-spacing: -0.005em;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .nav-brand .dot {
-            width: 6px;
-            height: 6px;
-            background: var(--ink);
-            border-radius: 50%;
+            letter-spacing: -0.01em;
         }
 
         .nav-brand .sub {
@@ -186,20 +155,14 @@
         }
 
         .nav-links {
-            grid-column: 4 / span 6;
             display: flex;
-            gap: 28px;
-            font-family: var(--mono);
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.14em;
+            gap: 30px;
+            font-size: 13.5px;
+            color: var(--muted);
         }
 
         .nav-links a {
-            color: var(--muted);
             transition: color 0.2s var(--ease);
-            position: relative;
-            padding-bottom: 2px;
         }
 
         .nav-links a:hover,
@@ -207,211 +170,121 @@
             color: var(--ink);
         }
 
-        .nav-links a.active::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: -3px;
-            height: 1px;
-            background: var(--ink);
-        }
-
-        .nav-actions {
-            grid-column: 10 / span 3;
+        .nav-right {
             display: flex;
-            justify-content: flex-end;
             align-items: center;
-            gap: 12px;
-        }
-
-        .nav-cta {
-            font-family: var(--mono);
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.14em;
-            color: var(--muted);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: color 0.2s var(--ease);
-        }
-
-        .nav-cta:hover {
-            color: var(--ink);
-        }
-
-        .nav-cta .pulse {
-            width: 6px;
-            height: 6px;
-            background: var(--ink);
-            border-radius: 50%;
-            position: relative;
-        }
-
-        .nav-cta .pulse::after {
-            content: '';
-            position: absolute;
-            inset: -3px;
-            border-radius: 50%;
-            background: var(--ink);
-            opacity: 0.3;
-            animation: pulse 2.4s ease-out infinite;
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(0.6);
-                opacity: 0.35;
-            }
-            100% {
-                transform: scale(2.4);
-                opacity: 0;
-            }
+            gap: 20px;
         }
 
         .theme-btn {
-            width: 28px;
-            height: 28px;
-            border: 1px solid var(--border);
+            width: 30px;
+            height: 30px;
+            border: none;
             background: transparent;
             color: var(--muted);
             cursor: pointer;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+            border-radius: 50%;
+            transition: color 0.2s var(--ease), background 0.2s var(--ease);
         }
 
         .theme-btn:hover {
             color: var(--ink);
-            border-color: var(--ink);
+            background: var(--hover);
         }
 
         .theme-btn svg {
-            width: 13px;
-            height: 13px;
+            width: 15px;
+            height: 15px;
         }
 
         @media (max-width: 720px) {
             .nav-links {
                 display: none;
             }
-
-            .nav-actions {
-                gap: 14px;
-            }
         }
 
-        /* ── Section frame ── */
+        /* ── Section rhythm ── */
         section {
-            border-top: 1px solid var(--border);
+            padding: var(--section-gap) 0;
         }
 
-        section:first-of-type {
-            border-top: none;
-        }
-
-        .section-pad {
-            padding: var(--section-pad) 0;
-        }
-
-        @media (max-width: 720px) {
-            .section-pad {
-                padding: 56px 0;
+        @media (max-width: 640px) {
+            section {
+                padding: 72px 0;
             }
         }
 
-        .section-label {
-            grid-column: span 3;
+        .section-head {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+            margin-bottom: 52px;
         }
 
-        .section-label .num {
-            display: block;
-            color: var(--ink);
+        .section-head .num {
             font-family: var(--mono);
-            font-size: 11px;
-            letter-spacing: 0.14em;
-            margin-bottom: 4px;
-        }
-
-        .section-label .name {
-            display: block;
-            font-family: var(--mono);
-            font-size: 11px;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
+            font-size: 12px;
             color: var(--muted);
         }
 
-        .section-body {
-            grid-column: 4 / span 9;
+        .section-head h2 {
+            font-family: var(--serif);
+            font-size: 30px;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            line-height: 1;
         }
 
-        @media (max-width: 900px) {
-            .section-label {
-                grid-column: span 12;
-                margin-bottom: 28px;
+        @media (max-width: 640px) {
+            .section-head {
+                margin-bottom: 40px;
             }
 
-            .section-body {
-                grid-column: span 12;
+            .section-head h2 {
+                font-size: 26px;
             }
         }
 
         /* ── Hero ── */
         .hero {
-            padding: 140px 0 120px;
-            border-top: none;
+            padding: 150px 0 130px;
         }
 
-        @media (max-width: 720px) {
+        @media (max-width: 640px) {
             .hero {
-                padding: 80px 0 56px;
+                padding: 96px 0 80px;
             }
         }
 
-        .hero-mono {
-            grid-column: span 3;
-            color: var(--muted);
-        }
-
-        .hero-main {
-            grid-column: 4 / span 9;
-        }
-
-        @media (max-width: 900px) {
-            .hero-mono {
-                grid-column: span 12;
-                margin-bottom: 28px;
-            }
-
-            .hero-main {
-                grid-column: span 12;
-            }
+        .hero .label {
+            display: block;
+            margin-bottom: 30px;
         }
 
         .hero h1 {
-            font-size: clamp(40px, 6.8vw, 84px);
-            line-height: 1.02;
-            letter-spacing: -0.035em;
-            font-weight: 450;
-            margin-bottom: 32px;
-            max-width: 14ch;
+            font-family: var(--serif);
+            font-size: clamp(40px, 7vw, 74px);
+            line-height: 1.06;
+            letter-spacing: -0.02em;
+            font-weight: 400;
+            margin-bottom: 34px;
+            max-width: 16ch;
         }
 
         .hero h1 .light {
             color: var(--muted);
-            font-weight: 400;
         }
 
         .hero-lede {
-            font-size: 18px;
-            line-height: 1.55;
+            font-size: 19px;
+            line-height: 1.6;
             color: var(--secondary);
-            max-width: 56ch;
-            margin-bottom: 40px;
-            font-weight: 400;
+            max-width: 60ch;
+            margin-bottom: 44px;
+            font-weight: 300;
         }
 
         .hero-lede strong {
@@ -422,69 +295,42 @@
         .hero-meta {
             display: flex;
             flex-wrap: wrap;
-            gap: 0;
+            gap: 40px 64px;
+            padding-top: 34px;
             border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            margin-top: 16px;
         }
 
-        .hero-meta dl {
-            flex: 1 1 200px;
-            display: grid;
-            grid-template-columns: 90px 1fr;
-            align-items: baseline;
-            padding: 14px 0;
-            border-right: 1px solid var(--border);
-            padding-right: 24px;
-            margin-right: 24px;
-        }
-
-        .hero-meta dl:last-child {
-            border-right: none;
-            margin-right: 0;
-            padding-right: 0;
-        }
-
-        .hero-meta dt {
+        .hero-meta .item .k {
             font-family: var(--mono);
-            font-size: 10.5px;
+            font-size: 11px;
             letter-spacing: 0.14em;
             text-transform: uppercase;
             color: var(--muted);
+            margin-bottom: 7px;
         }
 
-        .hero-meta dd {
-            font-size: 14px;
+        .hero-meta .item .val {
+            font-size: 14.5px;
             color: var(--ink);
         }
 
-        .hero-meta dd a:hover {
-            text-decoration: underline;
-            text-underline-offset: 3px;
-            text-decoration-thickness: 1px;
+        .hero-meta .item .val a {
+            border-bottom: 1px solid var(--border);
+            transition: border-color 0.2s var(--ease);
         }
 
-        @media (max-width: 720px) {
-            .hero-meta dl {
-                flex: 1 1 100%;
-                border-right: none;
-                border-bottom: 1px solid var(--border);
-                margin-right: 0;
-                padding-right: 0;
-            }
-
-            .hero-meta dl:last-child {
-                border-bottom: none;
-            }
+        .hero-meta .item .val a:hover {
+            border-color: var(--ink);
         }
 
         /* ── About ── */
         .about-prose p {
-            font-size: 17px;
-            line-height: 1.65;
+            font-size: 18px;
+            line-height: 1.7;
             color: var(--secondary);
-            margin-bottom: 22px;
-            max-width: 62ch;
+            margin-bottom: 24px;
+            max-width: 64ch;
+            font-weight: 300;
         }
 
         .about-prose p:last-child {
@@ -497,138 +343,104 @@
         }
 
         .stats {
-            margin-top: 56px;
-            border-top: 1px solid var(--border);
+            margin-top: 64px;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-        }
-
-        .stats .stat {
-            padding: 24px 24px 24px 0;
-            border-right: 1px solid var(--border);
-        }
-
-        .stats .stat:last-child {
-            border-right: none;
-            padding-right: 0;
+            gap: 32px;
         }
 
         .stats .v {
-            font-size: 32px;
-            font-weight: 500;
-            letter-spacing: -0.025em;
+            font-family: var(--serif);
+            font-size: 40px;
+            font-weight: 400;
+            letter-spacing: -0.02em;
             line-height: 1;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             font-variant-numeric: tabular-nums;
         }
 
         .stats .l {
-            font-family: var(--mono);
-            font-size: 10.5px;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
+            font-size: 13px;
             color: var(--muted);
         }
 
-        @media (max-width: 720px) {
+        @media (max-width: 640px) {
             .stats {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 36px 24px;
             }
 
-            .stats .stat {
-                padding: 20px 16px 20px 0;
-                border-bottom: 1px solid var(--border);
-            }
-
-            .stats .stat:nth-child(2n) {
-                border-right: none;
-                padding-right: 0;
-            }
-
-            .stats .stat:nth-last-child(-n+2) {
-                border-bottom: none;
+            .stats .v {
+                font-size: 34px;
             }
         }
 
         /* ── Experience ── */
-        .roles {
-            display: flex;
-            flex-direction: column;
-        }
-
         .role {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            column-gap: 24px;
-            padding: 32px 0;
-            border-bottom: 1px solid var(--border);
-            transition: background 0.2s var(--ease);
-        }
-
-        .role:last-child {
-            border-bottom: none;
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
         }
 
         .role:first-child {
             padding-top: 0;
+            border-top: none;
         }
 
-        .role-head {
+        .role-top {
             display: flex;
-            flex-direction: column;
-            gap: 4px;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 24px;
+            margin-bottom: 4px;
         }
 
         .role-co {
-            font-size: 18px;
+            font-size: 19px;
             font-weight: 500;
             letter-spacing: -0.01em;
             color: var(--ink);
         }
 
-        .role-ti {
-            font-size: 14.5px;
-            color: var(--secondary);
-        }
-
         .role-dates {
             font-family: var(--mono);
-            font-size: 11px;
-            letter-spacing: 0.12em;
+            font-size: 11.5px;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
             color: var(--muted);
             white-space: nowrap;
-            padding-top: 4px;
+        }
+
+        .role-ti {
+            font-size: 15px;
+            color: var(--secondary);
+            margin-bottom: 20px;
         }
 
         .role-bullets {
-            grid-column: 1 / -1;
-            margin-top: 18px;
             list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
 
         .role-bullets li {
-            font-size: 15px;
+            font-size: 15.5px;
             color: var(--secondary);
-            line-height: 1.62;
-            padding-left: 22px;
+            line-height: 1.68;
+            padding-left: 24px;
             position: relative;
-            margin-bottom: 10px;
-            max-width: 78ch;
-        }
-
-        .role-bullets li:last-child {
-            margin-bottom: 0;
+            max-width: 80ch;
+            font-weight: 300;
         }
 
         .role-bullets li::before {
             content: '';
             position: absolute;
             left: 0;
-            top: 12px;
-            width: 12px;
+            top: 13px;
+            width: 13px;
             height: 1px;
-            background: var(--border-strong);
+            background: var(--muted);
         }
 
         .role-bullets li strong {
@@ -637,382 +449,338 @@
             font-variant-numeric: tabular-nums;
         }
 
-        .role-bullets li code {
+        .role-bullets li code,
+        .project-right li code {
             font-family: var(--mono);
-            font-size: 0.86em;
+            font-size: 0.85em;
             color: var(--ink);
             padding: 1px 5px;
             background: var(--hover);
-            border: 1px solid var(--border);
+            border-radius: 3px;
         }
 
-        @media (max-width: 720px) {
-            .role {
-                grid-template-columns: 1fr;
-                row-gap: 6px;
-                padding: 24px 0;
+        @media (max-width: 640px) {
+            .role-top {
+                flex-direction: column;
+                gap: 4px;
             }
 
             .role-dates {
-                padding-top: 0;
                 order: -1;
             }
         }
 
         /* ── Projects ── */
-        .projects {
-            display: grid;
-            grid-template-columns: 1fr;
-            border-top: 1px solid var(--border);
-        }
-
         .project {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            column-gap: 32px;
-            padding: 40px 0;
-            border-bottom: 1px solid var(--border);
+            grid-template-columns: 5fr 7fr;
+            column-gap: 48px;
+            padding: 44px 0;
+            border-top: 1px solid var(--border);
             align-items: start;
         }
 
-        .project:hover .project-arrow {
-            transform: translate(2px, -2px);
-            color: var(--ink);
-        }
-
-        .project-left {
-            display: flex;
-            flex-direction: column;
+        .project:first-child {
+            padding-top: 0;
+            border-top: none;
         }
 
         .project-meta {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 18px;
+            margin-bottom: 20px;
         }
 
         .project-num {
             font-family: var(--mono);
-            font-size: 10.5px;
+            font-size: 11px;
             letter-spacing: 0.14em;
             text-transform: uppercase;
             color: var(--muted);
         }
 
         .project-link {
-            font-family: var(--mono);
-            font-size: 11px;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
+            font-size: 13px;
             color: var(--muted);
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             transition: color 0.2s var(--ease);
         }
 
-        .project-link:hover {
+        .project:hover .project-link {
             color: var(--ink);
         }
 
         .project-arrow {
             display: inline-block;
-            transition: transform 0.25s var(--ease), color 0.25s var(--ease);
+            transition: transform 0.25s var(--ease);
+        }
+
+        .project:hover .project-arrow {
+            transform: translate(2px, -2px);
         }
 
         .project h3 {
-            font-size: 26px;
-            font-weight: 500;
-            letter-spacing: -0.02em;
-            line-height: 1.1;
+            font-family: var(--serif);
+            font-size: 25px;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            line-height: 1.15;
             margin-bottom: 10px;
             color: var(--ink);
         }
 
         .project-sub {
-            font-family: var(--mono);
-            font-size: 11px;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
+            font-size: 13.5px;
             color: var(--muted);
-            margin-bottom: 22px;
+            margin-bottom: 24px;
         }
 
         .project-stack {
             display: flex;
             flex-wrap: wrap;
-            gap: 4px 0;
-            font-family: var(--mono);
-            font-size: 11px;
-            letter-spacing: 0.06em;
-            color: var(--secondary);
+            gap: 6px;
         }
 
-        .project-stack span:not(:last-child)::after {
-            content: '·';
-            margin: 0 8px;
-            color: var(--muted);
+        .project-stack span {
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.04em;
+            color: var(--secondary);
+            padding: 3px 9px;
+            border: 1px solid var(--border);
+            border-radius: 100px;
         }
 
         .project-right {
+            list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
         }
 
-        .project-right p {
-            font-size: 14.5px;
-            line-height: 1.62;
+        .project-right li {
+            font-size: 15px;
+            line-height: 1.68;
             color: var(--secondary);
-            padding-left: 22px;
+            padding-left: 24px;
             position: relative;
+            font-weight: 300;
         }
 
-        .project-right p::before {
+        .project-right li::before {
             content: '';
             position: absolute;
             left: 0;
-            top: 12px;
-            width: 12px;
+            top: 13px;
+            width: 13px;
             height: 1px;
-            background: var(--border-strong);
+            background: var(--muted);
         }
 
-        .project-right p strong {
+        .project-right li strong {
             color: var(--ink);
             font-weight: 500;
             font-variant-numeric: tabular-nums;
         }
 
-        .project-right p code {
-            font-family: var(--mono);
-            font-size: 0.86em;
-            color: var(--ink);
-            padding: 1px 5px;
-            background: var(--hover);
-            border: 1px solid var(--border);
-        }
-
-        @media (max-width: 820px) {
+        @media (max-width: 720px) {
             .project {
                 grid-template-columns: 1fr;
-                row-gap: 18px;
-                padding: 32px 0;
+                row-gap: 24px;
+                padding: 36px 0;
             }
         }
 
         /* ── Skills ── */
-        .skills {
-            display: grid;
-            grid-template-columns: 1fr;
-            border-top: 1px solid var(--border);
-        }
-
         .skill-row {
             display: grid;
             grid-template-columns: 200px 1fr;
-            column-gap: 32px;
-            padding: 22px 0;
-            border-bottom: 1px solid var(--border);
+            column-gap: 40px;
+            padding: 24px 0;
+            border-top: 1px solid var(--border);
             align-items: baseline;
+        }
+
+        .skill-row:first-child {
+            padding-top: 0;
+            border-top: none;
         }
 
         .skill-cat {
             font-family: var(--mono);
-            font-size: 11px;
-            letter-spacing: 0.14em;
+            font-size: 12px;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
             color: var(--muted);
+            min-width: 0;
         }
 
         .skill-items {
-            font-size: 15.5px;
+            font-size: 16px;
             color: var(--ink);
-            line-height: 1.6;
-            font-weight: 400;
+            line-height: 1.7;
+            font-weight: 300;
+            min-width: 0;
+            overflow-wrap: anywhere;
         }
 
         .skill-items span:not(:last-child)::after {
-            content: ', ';
+            content: ',\00a0 ';
             color: var(--muted);
         }
 
-        @media (max-width: 720px) {
+        @media (max-width: 640px) {
             .skill-row {
                 grid-template-columns: 1fr;
-                row-gap: 6px;
+                row-gap: 10px;
             }
         }
 
         /* ── Education ── */
-        .edus {
+        .edu {
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
+            gap: 24px;
+            padding: 30px 0;
             border-top: 1px solid var(--border);
         }
 
-        .edu {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            column-gap: 24px;
-            padding: 28px 0;
-            border-bottom: 1px solid var(--border);
-            align-items: baseline;
+        .edu:first-child {
+            padding-top: 0;
+            border-top: none;
         }
 
-        .edu-head .school {
-            font-size: 17px;
+        .edu .school {
+            font-size: 18px;
             font-weight: 500;
             letter-spacing: -0.01em;
             color: var(--ink);
-            margin-bottom: 4px;
+            margin-bottom: 5px;
         }
 
-        .edu-head .degree {
-            font-size: 14.5px;
+        .edu .degree {
+            font-size: 15px;
             color: var(--secondary);
         }
 
-        .edu-head .course {
-            margin-top: 10px;
-            font-family: var(--mono);
-            font-size: 11px;
-            letter-spacing: 0.06em;
+        .edu .course {
+            margin-top: 12px;
+            font-size: 13.5px;
             color: var(--muted);
-            line-height: 1.5;
+            line-height: 1.6;
+            max-width: 60ch;
+            font-weight: 300;
         }
 
         .edu-dates {
             font-family: var(--mono);
-            font-size: 11px;
-            letter-spacing: 0.12em;
+            font-size: 11.5px;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
             color: var(--muted);
             white-space: nowrap;
+            padding-top: 3px;
         }
 
-        @media (max-width: 720px) {
+        @media (max-width: 640px) {
             .edu {
-                grid-template-columns: 1fr;
-                row-gap: 8px;
+                flex-direction: column;
+                gap: 8px;
             }
 
             .edu-dates {
                 order: -1;
+                padding-top: 0;
             }
         }
 
-        /* ── Contact / footer ── */
-        .end {
-            padding: 120px 0;
-            border-top: 1px solid var(--border);
-        }
-
-        @media (max-width: 720px) {
-            .end {
-                padding: 64px 0;
-            }
-        }
-
+        /* ── Contact ── */
         .end h2 {
-            font-size: clamp(40px, 6vw, 72px);
-            line-height: 1.02;
-            letter-spacing: -0.035em;
-            font-weight: 450;
-            margin-bottom: 32px;
+            font-family: var(--serif);
+            font-size: clamp(38px, 6vw, 64px);
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            font-weight: 400;
+            margin-bottom: 28px;
             max-width: 14ch;
         }
 
         .end h2 .light {
             color: var(--muted);
-            font-weight: 400;
         }
 
         .end p {
-            font-size: 17px;
+            font-size: 18px;
             color: var(--secondary);
             max-width: 56ch;
-            margin-bottom: 36px;
-            line-height: 1.55;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .end p strong {
+            color: var(--ink);
+            font-weight: 500;
         }
 
         .end-email {
             display: inline-flex;
             align-items: center;
-            gap: 14px;
-            font-size: 22px;
-            font-weight: 450;
-            letter-spacing: -0.015em;
-            padding-bottom: 4px;
+            gap: 12px;
+            font-family: var(--serif);
+            font-size: 26px;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            padding-bottom: 6px;
             border-bottom: 1px solid var(--ink);
             color: var(--ink);
             transition: gap 0.25s var(--ease);
         }
 
         .end-email:hover {
-            gap: 20px;
+            gap: 18px;
         }
 
         .end-links {
-            margin-top: 56px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            margin-top: 64px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 48px;
+            padding-top: 30px;
             border-top: 1px solid var(--border);
-        }
-
-        .end-link {
-            padding: 22px 24px 22px 0;
-            border-right: 1px solid var(--border);
-        }
-
-        .end-link:last-child {
-            border-right: none;
         }
 
         .end-link .l {
             font-family: var(--mono);
-            font-size: 10.5px;
+            font-size: 11px;
             letter-spacing: 0.14em;
             text-transform: uppercase;
             color: var(--muted);
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 7px;
         }
 
         .end-link .v {
-            font-size: 14.5px;
+            font-size: 15px;
             color: var(--ink);
         }
 
+        .end-link .v a {
+            border-bottom: 1px solid var(--border);
+            transition: border-color 0.2s var(--ease);
+        }
+
         .end-link .v a:hover {
-            text-decoration: underline;
-            text-underline-offset: 3px;
+            border-color: var(--ink);
         }
 
-        @media (max-width: 820px) {
-            .end-links {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .end-link {
-                padding: 18px 16px 18px 0;
-                border-bottom: 1px solid var(--border);
-            }
-
-            .end-link:nth-child(2n) {
-                border-right: none;
-                padding-right: 0;
-            }
-
-            .end-link:nth-last-child(-n+2) {
-                border-bottom: none;
-            }
-        }
-
+        /* ── Footer ── */
         footer {
             border-top: 1px solid var(--border);
-            padding: 24px 0 28px;
+            padding: 28px 0 32px;
         }
 
         .foot-inner {
@@ -1022,8 +790,8 @@
             flex-wrap: wrap;
             gap: 12px;
             font-family: var(--mono);
-            font-size: 10.5px;
-            letter-spacing: 0.14em;
+            font-size: 11px;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
             color: var(--muted);
         }
@@ -1031,8 +799,8 @@
         /* ── Reveal ── */
         .reveal {
             opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+            transform: translateY(12px);
+            transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
         }
 
         .reveal.in {
@@ -1061,7 +829,6 @@
     <nav id="nav">
         <div class="nav-inner">
             <a href="#top" class="nav-brand">
-                <span class="dot"></span>
                 Manish Botta <span class="sub">/ Engineer</span>
             </a>
             <div class="nav-links" id="navLinks">
@@ -1071,11 +838,8 @@
                 <a href="#skills">Skills</a>
                 <a href="#education">Education</a>
             </div>
-            <div class="nav-actions">
-                <a href="#contact" class="nav-cta">
-                    <span class="pulse"></span>
-                    Available
-                </a>
+            <div class="nav-right">
+                <a href="#contact" class="nav-links" style="display:inline-flex">Contact</a>
                 <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">
                     <svg id="iconLight" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
                         stroke-linecap="round" stroke-linejoin="round">
@@ -1097,40 +861,35 @@
         <!-- ─── Hero ─── -->
         <section class="hero">
             <div class="wrap">
-                <div class="grid">
-                    <div class="hero-mono reveal mono">[ Index — 2026 ]</div>
-                    <div class="hero-main">
-                        <h1 class="reveal">
-                            Manish Botta — <span class="light">building production AI &amp; backend systems.</span>
-                        </h1>
-                        <p class="hero-lede reveal">
-                            Engineer with <strong>3+ years</strong> shipping LLM fine-tuning, agentic pipelines,
-                            RLHF alignment, RAG architectures, and the high-scale APIs and event-driven services
-                            that hold them up. Comfortable owning the full stack from model training to cloud
-                            deployment.
-                        </p>
+                <span class="label reveal">Index — 2026</span>
+                <h1 class="reveal">
+                    Manish Botta — <span class="light">building production AI &amp; backend systems.</span>
+                </h1>
+                <p class="hero-lede reveal">
+                    Engineer with <strong>3+ years</strong> shipping LLM fine-tuning, agentic pipelines,
+                    RLHF alignment, RAG architectures, and the high-scale APIs and event-driven services
+                    that hold them up. Comfortable owning the full stack from model training to cloud
+                    deployment.
+                </p>
 
-                        <div class="hero-meta reveal">
-                            <dl>
-                                <dt>Roles</dt>
-                                <dd>SWE · AI · GenAI · Forward Deployed</dd>
-                            </dl>
-                            <dl>
-                                <dt>Based</dt>
-                                <dd>Los Angeles, CA</dd>
-                            </dl>
-                            <dl>
-                                <dt>Email</dt>
-                                <dd><a href="mailto:mabotta12@gmail.com">mabotta12@gmail.com</a></dd>
-                            </dl>
-                            <dl>
-                                <dt>Links</dt>
-                                <dd>
-                                    <a href="https://github.com/manishrdy" target="_blank" rel="noopener">GitHub</a> ·
-                                    <a href="https://linkedin.com/in/manish-reddyb" target="_blank"
-                                        rel="noopener">LinkedIn</a>
-                                </dd>
-                            </dl>
+                <div class="hero-meta reveal">
+                    <div class="item">
+                        <div class="k">Roles</div>
+                        <div class="val">SWE · AI · GenAI · Forward Deployed</div>
+                    </div>
+                    <div class="item">
+                        <div class="k">Based</div>
+                        <div class="val">San Francisco, CA</div>
+                    </div>
+                    <div class="item">
+                        <div class="k">Email</div>
+                        <div class="val"><a href="mailto:mabotta12@gmail.com">mabotta12@gmail.com</a></div>
+                    </div>
+                    <div class="item">
+                        <div class="k">Links</div>
+                        <div class="val">
+                            <a href="https://github.com/manishrdy" target="_blank" rel="noopener">GitHub</a> ·
+                            <a href="https://linkedin.com/in/manish-reddyb" target="_blank" rel="noopener">LinkedIn</a>
                         </div>
                     </div>
                 </div>
@@ -1138,485 +897,440 @@
         </section>
 
         <!-- ─── About ─── -->
-        <section id="about" class="section-pad">
+        <section id="about">
             <div class="wrap">
-                <div class="grid">
-                    <div class="section-label reveal">
-                        <span class="num">01</span>
-                        <span class="name">About</span>
-                    </div>
-                    <div class="section-body">
-                        <div class="about-prose">
-                            <p class="reveal">
-                                I build production AI-focused backend systems — REST APIs serving enterprise clients,
-                                async AI pipelines, and a real-time simulation engine with live users. I've shipped
-                                models serving <strong>100M+ daily conversations</strong>, cut inference latency by
-                                <strong>40%</strong>, and reduced harmful outputs <strong>28%</strong> in live
-                                deployments.
-                            </p>
-                            <p class="reveal">
-                                My experience spans <strong>LLM fine-tuning (LoRA / QLoRA), RLHF / RLAIF, agentic
-                                pipelines, and RAG architectures</strong> on one side; high-scale event-driven
-                                microservices, REST APIs, and real-time engines on the other. I don't wait for a
-                                spec to exist before I start working.
-                            </p>
-                            <p class="reveal">
-                                I'm also forward-deployed at heart — I shipped GenAI systems to <strong>24+
-                                enterprise clients</strong> (IHCL, Dr. Reddy's, Bajaj Finserv, Spotify), owning
-                                on-site integration, dual-sided InfoSec approvals, demos, and onboarding.
-                            </p>
-                            <p class="reveal">
-                                Looking to join a <strong>Series A/B/C company</strong> and build the backend — from
-                                model training to cloud deployment — from the ground up.
-                            </p>
-                        </div>
+                <div class="section-head reveal">
+                    <span class="num">01</span>
+                    <h2>About</h2>
+                </div>
+                <div class="about-prose">
+                    <p class="reveal">
+                        I build production AI-focused backend systems — REST APIs serving enterprise clients,
+                        async AI pipelines, and a real-time simulation engine with live users. I've shipped
+                        models serving <strong>100M+ daily conversations</strong>, cut inference latency by
+                        <strong>40%</strong>, and reduced harmful outputs <strong>28%</strong> in live deployments.
+                    </p>
+                    <p class="reveal">
+                        My experience spans <strong>LLM fine-tuning (LoRA / QLoRA), RLHF / RLAIF, agentic
+                        pipelines, and RAG architectures</strong> on one side; high-scale event-driven
+                        microservices, REST APIs, and real-time engines on the other. I don't wait for a
+                        spec to exist before I start working.
+                    </p>
+                    <p class="reveal">
+                        I'm also forward-deployed at heart — I shipped GenAI systems to <strong>24+
+                        enterprise clients</strong> (IHCL, Dr. Reddy's, Bajaj Finserv, Spotify), owning
+                        on-site integration, dual-sided InfoSec approvals, demos, and onboarding.
+                    </p>
+                    <p class="reveal">
+                        Looking to join a <strong>Series A/B/C company</strong> and build the backend — from
+                        model training to cloud deployment — from the ground up.
+                    </p>
+                </div>
 
-                        <div class="stats reveal">
-                            <div class="stat">
-                                <div class="v">3+</div>
-                                <div class="l">Years in prod</div>
-                            </div>
-                            <div class="stat">
-                                <div class="v">100M+</div>
-                                <div class="l">Events / day</div>
-                            </div>
-                            <div class="stat">
-                                <div class="v">24+</div>
-                                <div class="l">Enterprise clients</div>
-                            </div>
-                            <div class="stat">
-                                <div class="v">99.9%</div>
-                                <div class="l">Uptime SLA</div>
-                            </div>
-                        </div>
+                <div class="stats reveal">
+                    <div class="stat">
+                        <div class="v">3+</div>
+                        <div class="l">Years in prod</div>
+                    </div>
+                    <div class="stat">
+                        <div class="v">100M+</div>
+                        <div class="l">Events / day</div>
+                    </div>
+                    <div class="stat">
+                        <div class="v">24+</div>
+                        <div class="l">Enterprise clients</div>
+                    </div>
+                    <div class="stat">
+                        <div class="v">99.9%</div>
+                        <div class="l">Uptime SLA</div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- ─── Experience ─── -->
-        <section id="experience" class="section-pad">
+        <section id="experience">
             <div class="wrap">
-                <div class="grid">
-                    <div class="section-label reveal">
-                        <span class="num">02</span>
-                        <span class="name">Experience</span>
-                    </div>
-                    <div class="section-body">
-                        <div class="roles">
-
-                            <article class="role reveal">
-                                <div class="role-head">
-                                    <div class="role-co">TradeLiv</div>
-                                    <div class="role-ti">Founding Software Engineer</div>
-                                </div>
-                                <div class="role-dates">Apr 2026 — Present</div>
-                                <ul class="role-bullets">
-                                    <li>Sole engineer building a B2B SaaS platform from zero —
-                                        <strong>40+ REST endpoints</strong>, PostgreSQL, Stripe payments, real-time
-                                        SSE client portals, and role-based access across designer / admin / client
-                                        tiers, live at <code>tradeliv.design</code>.
-                                    </li>
-                                    <li>Built an AI extraction pipeline using <strong>Claude + Puppeteer /
-                                        Browserless Chrome</strong> that parses any e-commerce product URL into
-                                        structured data — a single universal extractor replacing brittle per-site
-                                        scrapers.</li>
-                                    <li>Designed a 3-stage CI/CD pipeline that offloads Next.js and TypeScript builds
-                                        to GitHub Actions runners, deploying compiled artifacts to a
-                                        <strong>1GB OCI VM</strong> — no OOM kills, zero-downtime deploys.
-                                    </li>
-                                </ul>
-                            </article>
-
-                            <article class="role reveal">
-                                <div class="role-head">
-                                    <div class="role-co">Microsoft</div>
-                                    <div class="role-ti">Software Engineer</div>
-                                </div>
-                                <div class="role-dates">Aug 2025 — Mar 2026</div>
-                                <ul class="role-bullets">
-                                    <li>Built <strong>LLM-powered autonomous agents</strong> with tool-use, memory,
-                                        and planning loops (FastAPI + LangChain + HubSpot OAuth 2.0); eliminated
-                                        <strong>70%</strong> of manual data-handling overhead.
-                                    </li>
-                                    <li>Designed real-time ingestion pipelines for continuous <strong>RLHF / RLAIF
-                                        feedback loops</strong>, improving model data freshness and inference
-                                        availability by <strong>60%</strong>.</li>
-                                    <li>Shipped Python ETL pipelines and REST API integrations replacing manual
-                                        analyst workflows — cutting processing time <strong>70%</strong>, reporting
-                                        from weekly to same-day.</li>
-                                    <li>Containerized AI microservices via Docker + GitHub Actions on Azure;
-                                        prompt-level regression testing cut integration defects <strong>40%</strong>
-                                        with near zero-downtime releases.</li>
-                                </ul>
-                            </article>
-
-                            <article class="role reveal">
-                                <div class="role-head">
-                                    <div class="role-co">Yellow.AI</div>
-                                    <div class="role-ti">Software Engineer — Forward Deployed / Studio Solutions</div>
-                                </div>
-                                <div class="role-dates">Sep 2021 — Jul 2023</div>
-                                <ul class="role-bullets">
-                                    <li>Delivered GenAI chatbot systems for <strong>24+ enterprise clients</strong> —
-                                        IHCL, Dr. Reddy's, Bajaj Finserv, Spotify — embedding with each to scope use
-                                        cases, check feasibility, and ship production agents.</li>
-                                    <li>Led on-site integration of client CRM, ticketing, and data systems into
-                                        deployed agents; drove <strong>InfoSec approvals on both sides</strong> to
-                                        unblock launches stuck for weeks.</li>
-                                    <li>Fine-tuned <strong>BERT and open-source LLMs (LoRA / QLoRA)</strong>; RLHF
-                                        reward checkpoints cut harmful responses <strong>28%</strong> and lifted
-                                        chatbot accuracy <strong>60%</strong> across
-                                        <strong>100M+ daily conversations</strong>.
-                                    </li>
-                                    <li>Designed and operated event-driven microservices (Node.js, Python) processing
-                                        <strong>100M+ events / day at 99.9% uptime</strong> — the core messaging
-                                        backbone for enterprise bot workflows.
-                                    </li>
-                                    <li>Cut API response time <strong>40%</strong> by overhauling MySQL / MongoDB
-                                        query plans, adding indexes, and introducing Redis caching — then used that
-                                        headroom to onboard <strong>50+ enterprise CRM integrations</strong> without
-                                        touching latency.</li>
-                                    <li>Migrated legacy rule-based pipelines to LLM-powered systems
-                                        (<strong>−50%</strong> maintenance overhead); automated end-to-end ML
-                                        deployment on AWS (EC2, Lambda, S3) with Docker + Jenkins CI/CD — release
-                                        cycles down <strong>3×</strong> across 13 production chatbots.</li>
-                                </ul>
-                            </article>
-
-                            <article class="role reveal">
-                                <div class="role-head">
-                                    <div class="role-co">Cognizant</div>
-                                    <div class="role-ti">Program Trainee Analyst — Full-Stack</div>
-                                </div>
-                                <div class="role-dates">Mar 2021 — Aug 2021</div>
-                                <ul class="role-bullets">
-                                    <li>Decomposed a legacy monolith into <strong>Java Spring Boot
-                                        microservices</strong>, improving team velocity <strong>30%</strong>, cutting
-                                        query response time <strong>40%</strong>, and maintaining
-                                        <strong>80%+ test coverage</strong> throughout.
-                                    </li>
-                                    <li>Lowered <strong>p95 latency</strong> on core endpoints by building RESTful
-                                        APIs in Spring Boot and tuning the underlying MySQL queries.</li>
-                                </ul>
-                            </article>
-
-                        </div>
-                    </div>
+                <div class="section-head reveal">
+                    <span class="num">02</span>
+                    <h2>Experience</h2>
                 </div>
+
+                <article class="role reveal">
+                    <div class="role-top">
+                        <div class="role-co">TradeLiv</div>
+                        <div class="role-dates">Apr 2026 — Present</div>
+                    </div>
+                    <div class="role-ti">Founding Software Engineer</div>
+                    <ul class="role-bullets">
+                        <li>Sole engineer building a B2B SaaS platform from zero —
+                            <strong>40+ REST endpoints</strong>, PostgreSQL, Stripe payments, real-time
+                            SSE client portals, and role-based access across designer / admin / client
+                            tiers, live at <code>tradeliv.design</code>.
+                        </li>
+                        <li>Built an AI extraction pipeline using <strong>Claude + Puppeteer /
+                            Browserless Chrome</strong> that parses any e-commerce product URL into
+                            structured data — a single universal extractor replacing brittle per-site scrapers.</li>
+                        <li>Designed a 3-stage CI/CD pipeline that offloads Next.js and TypeScript builds
+                            to GitHub Actions runners, deploying compiled artifacts to a
+                            <strong>1GB OCI VM</strong> — no OOM kills, zero-downtime deploys.
+                        </li>
+                    </ul>
+                </article>
+
+                <article class="role reveal">
+                    <div class="role-top">
+                        <div class="role-co">Microsoft</div>
+                        <div class="role-dates">Aug 2025 — Mar 2026</div>
+                    </div>
+                    <div class="role-ti">Software Engineer</div>
+                    <ul class="role-bullets">
+                        <li>Built <strong>LLM-powered autonomous agents</strong> with tool-use, memory,
+                            and planning loops (FastAPI + LangChain + HubSpot OAuth 2.0); eliminated
+                            <strong>70%</strong> of manual data-handling overhead.
+                        </li>
+                        <li>Designed real-time ingestion pipelines for continuous <strong>RLHF / RLAIF
+                            feedback loops</strong>, improving model data freshness and inference
+                            availability by <strong>60%</strong>.</li>
+                        <li>Shipped Python ETL pipelines and REST API integrations replacing manual
+                            analyst workflows — cutting processing time <strong>70%</strong>, reporting
+                            from weekly to same-day.</li>
+                        <li>Containerized AI microservices via Docker + GitHub Actions on Azure;
+                            prompt-level regression testing cut integration defects <strong>40%</strong>
+                            with near zero-downtime releases.</li>
+                    </ul>
+                </article>
+
+                <article class="role reveal">
+                    <div class="role-top">
+                        <div class="role-co">Yellow.AI</div>
+                        <div class="role-dates">Sep 2021 — Jul 2023</div>
+                    </div>
+                    <div class="role-ti">Software Engineer — Forward Deployed / Studio Solutions</div>
+                    <ul class="role-bullets">
+                        <li>Delivered GenAI chatbot systems for <strong>24+ enterprise clients</strong> —
+                            IHCL, Dr. Reddy's, Bajaj Finserv, Spotify — embedding with each to scope use
+                            cases, check feasibility, and ship production agents.</li>
+                        <li>Led on-site integration of client CRM, ticketing, and data systems into
+                            deployed agents; drove <strong>InfoSec approvals on both sides</strong> to
+                            unblock launches stuck for weeks.</li>
+                        <li>Fine-tuned <strong>BERT and open-source LLMs (LoRA / QLoRA)</strong>; RLHF
+                            reward checkpoints cut harmful responses <strong>28%</strong> and lifted
+                            chatbot accuracy <strong>60%</strong> across
+                            <strong>100M+ daily conversations</strong>.
+                        </li>
+                        <li>Designed and operated event-driven microservices (Node.js, Python) processing
+                            <strong>100M+ events / day at 99.9% uptime</strong> — the core messaging
+                            backbone for enterprise bot workflows.
+                        </li>
+                        <li>Cut API response time <strong>40%</strong> by overhauling MySQL / MongoDB
+                            query plans, adding indexes, and introducing Redis caching — then used that
+                            headroom to onboard <strong>50+ enterprise CRM integrations</strong> without
+                            touching latency.</li>
+                        <li>Migrated legacy rule-based pipelines to LLM-powered systems
+                            (<strong>−50%</strong> maintenance overhead); automated end-to-end ML
+                            deployment on AWS (EC2, Lambda, S3) with Docker + Jenkins CI/CD — release
+                            cycles down <strong>3×</strong> across 13 production chatbots.</li>
+                    </ul>
+                </article>
+
+                <article class="role reveal">
+                    <div class="role-top">
+                        <div class="role-co">Cognizant</div>
+                        <div class="role-dates">Mar 2021 — Aug 2021</div>
+                    </div>
+                    <div class="role-ti">Program Trainee Analyst — Full-Stack</div>
+                    <ul class="role-bullets">
+                        <li>Decomposed a legacy monolith into <strong>Java Spring Boot
+                            microservices</strong>, improving team velocity <strong>30%</strong>, cutting
+                            query response time <strong>40%</strong>, and maintaining
+                            <strong>80%+ test coverage</strong> throughout.
+                        </li>
+                        <li>Lowered <strong>p95 latency</strong> on core endpoints by building RESTful
+                            APIs in Spring Boot and tuning the underlying MySQL queries.</li>
+                    </ul>
+                </article>
             </div>
         </section>
 
         <!-- ─── Work / Projects ─── -->
-        <section id="work" class="section-pad">
+        <section id="work">
             <div class="wrap">
-                <div class="grid">
-                    <div class="section-label reveal">
-                        <span class="num">03</span>
-                        <span class="name">Selected Work</span>
-                    </div>
-                    <div class="section-body">
-                        <div class="projects">
+                <div class="section-head reveal">
+                    <span class="num">03</span>
+                    <h2>Selected Work</h2>
+                </div>
 
-                            <article class="project reveal">
-                                <div class="project-left">
-                                    <div class="project-meta">
-                                        <span class="project-num">/ 01 — Agent</span>
-                                        <a href="https://github.com/Manishrdy/role-collector" target="_blank"
-                                            rel="noopener" class="project-link">
-                                            GitHub <span class="project-arrow">↗</span>
-                                        </a>
-                                    </div>
-                                    <h3>Role Collector — Job Sourcing Agent</h3>
-                                    <div class="project-sub">May 2026 → Present</div>
-                                    <div class="project-stack">
-                                        <span>LangGraph</span><span>Ollama</span><span>Qwen3 8B</span><span>Pydantic</span><span>SQLite</span><span>Langfuse</span><span>Streamlit</span>
-                                    </div>
-                                </div>
-                                <div class="project-right">
-                                    <p>Built a local-first sourcing agent on a <strong>13-node LangGraph
-                                        workflow</strong> with a local Ollama LLM (<code>qwen3:8b</code>) and Langfuse
-                                        tracing with PII redaction — full observability on every run.</p>
-                                    <p>Enforced a hard-coded <strong>URL-allowlist guardrail</strong> in code, before
-                                        any browser tool runs — the agent can never touch login, apply, shortener, or
-                                        non-allowlisted URLs.</p>
-                                    <p>Beat Google's <strong>CDP-layer bot detection</strong> — which defeated every
-                                        Playwright / Puppeteer stealth variant — with a nodriver WebSocket-debug
-                                        approach, backed by <strong>55 passing tests</strong> and a deterministic
-                                        query generator.</p>
-                                </div>
-                            </article>
-
-                            <article class="project reveal">
-                                <div class="project-left">
-                                    <div class="project-meta">
-                                        <span class="project-num">/ 02 — Real-Time</span>
-                                        <a href="https://simcricketx.app/" target="_blank" rel="noopener"
-                                            class="project-link">
-                                            Live <span class="project-arrow">↗</span>
-                                        </a>
-                                    </div>
-                                    <h3>SimCricketX — Simulation Backend</h3>
-                                    <div class="project-sub">Probabilistic engine · In production</div>
-                                    <div class="project-stack">
-                                        <span>Python</span><span>FastAPI</span><span>Nginx</span><span>Oracle Cloud</span><span>PostgreSQL</span>
-                                    </div>
-                                </div>
-                                <div class="project-right">
-                                    <p>Built a probabilistic cricket simulation engine serving
-                                        <strong>256+ users</strong> and <strong>444+ matches</strong> in production
-                                        on OCI — resolves <strong>120 deliveries per match in under 5
-                                        seconds</strong>.
-                                    </p>
-                                    <p><strong>~21K lines of Python</strong>: a 126-endpoint REST API, a 13-model
-                                        SQLAlchemy schema, and a <strong>7-layer Game State Momentum Engine</strong>
-                                        with exponential decay over a 13-dimensional state vector.</p>
-                                    <p>Kept concurrent match state correct under load with per-match threading locks;
-                                        <strong>80%+ test coverage</strong> across a 6-config CI matrix. Shipped solo
-                                        with session auth, Nginx, and zero-downtime deploys.</p>
-                                </div>
-                            </article>
-
-                            <article class="project reveal">
-                                <div class="project-left">
-                                    <div class="project-meta">
-                                        <span class="project-num">/ 03 — RAG</span>
-                                        <a href="https://github.com/Manishrdy/AI-Driven-Resume-Builder" target="_blank"
-                                            rel="noopener" class="project-link">
-                                            GitHub <span class="project-arrow">↗</span>
-                                        </a>
-                                    </div>
-                                    <h3>AI-Driven Resume Tailoring</h3>
-                                    <div class="project-sub">Aug 2025 — Sep 2025</div>
-                                    <div class="project-stack">
-                                        <span>FAISS</span><span>QLoRA</span><span>Llama</span><span>RLHF</span><span>FastAPI</span><span>HuggingFace</span>
-                                    </div>
-                                </div>
-                                <div class="project-right">
-                                    <p>Built a full RAG pipeline with <strong>FAISS hybrid dense retrieval</strong>
-                                        and cross-encoder re-ranking + a QLoRA-fine-tuned Llama — improved
-                                        resume-to-JD match scores <strong>45%</strong>.</p>
-                                    <p>Added <strong>RLHF-style preference re-ranking</strong> driven by live user
-                                        feedback; deployed as autoscaling FastAPI microservices with
-                                        <strong>4-bit quantization</strong> (60% less GPU memory).
-                                    </p>
-                                    <p>Constitutional AI self-critique loops for output quality control.</p>
-                                </div>
-                            </article>
-
-                            <article class="project reveal">
-                                <div class="project-left">
-                                    <div class="project-meta">
-                                        <span class="project-num">/ 04 — Async</span>
-                                        <a href="https://github.com/Manishrdy/async-audio-pipeline" target="_blank"
-                                            rel="noopener" class="project-link">
-                                            GitHub <span class="project-arrow">↗</span>
-                                        </a>
-                                    </div>
-                                    <h3>Async Audio Intelligence Pipeline</h3>
-                                    <div class="project-sub">Nov 2025 — Dec 2025</div>
-                                    <div class="project-stack">
-                                        <span>FastAPI</span><span>Redis</span><span>Whisper</span><span>Gemini</span><span>GPT-4</span><span>Async Workers</span>
-                                    </div>
-                                </div>
-                                <div class="project-right">
-                                    <p>Built a <strong>3-worker async pipeline</strong> over Redis queues that
-                                        processes 1-hour meetings in <strong>7–11 minutes</strong>, down from a 45–75
-                                        minute baseline.</p>
-                                    <p>Integrated <strong>Whisper + Gemini / GPT-4</strong> via fully decoupled
-                                        workers with idempotent retry logic — horizontal scaling needs no API or
-                                        state-layer changes.</p>
-                                    <p>Prompt-engineered tool-call chains for structured entity extraction (action
-                                        items, owners, deadlines); cut manual post-meeting review
-                                        <strong>80%</strong>.
-                                    </p>
-                                </div>
-                            </article>
-
-                            <article class="project reveal">
-                                <div class="project-left">
-                                    <div class="project-meta">
-                                        <span class="project-num">/ 05 — Backend</span>
-                                        <a href="https://github.com/Manishrdy/applyd" target="_blank" rel="noopener"
-                                            class="project-link">
-                                            GitHub <span class="project-arrow">↗</span>
-                                        </a>
-                                    </div>
-                                    <h3>Applyd — Job Aggregation Platform</h3>
-                                    <div class="project-sub">Multi-service backend</div>
-                                    <div class="project-stack">
-                                        <span>FastAPI</span><span>SQLite</span><span>FTS5</span><span>Argon2id</span>
-                                    </div>
-                                </div>
-                                <div class="project-right">
-                                    <p>Built a two-service backend (<strong>FastAPI identity service +
-                                        dashboard</strong>) with cookie-based Argon2id authentication, role-gated
-                                        admin APIs, and runtime-tunable per-IP and per-email rate limiting.</p>
-                                    <p>Designed a three-signal expired-job lifecycle across <strong>10+ ATS
-                                        providers</strong> — a state machine gated by two kill switches and per-ATS
-                                        <strong>circuit breakers that fail closed</strong>.</p>
-                                    <p>Engineered safe data operations: idempotent URL-keyed UPSERTs, partial
-                                        indexes, FTS5 search, atomic SQLite backups behind a multi-gate restore, and
-                                        a tamper-evident admin audit log.</p>
-                                </div>
-                            </article>
-
+                <article class="project reveal">
+                    <div class="project-left">
+                        <div class="project-meta">
+                            <span class="project-num">01 — Agent</span>
+                            <a href="https://github.com/Manishrdy/role-collector" target="_blank" rel="noopener"
+                                class="project-link">GitHub <span class="project-arrow">↗</span></a>
+                        </div>
+                        <h3>Role Collector — Job Sourcing Agent</h3>
+                        <div class="project-sub">May 2026 → Present</div>
+                        <div class="project-stack">
+                            <span>LangGraph</span><span>Ollama</span><span>Qwen3 8B</span><span>Pydantic</span><span>SQLite</span><span>Langfuse</span><span>Streamlit</span>
                         </div>
                     </div>
-                </div>
+                    <ul class="project-right">
+                        <li>Built a local-first sourcing agent on a <strong>13-node LangGraph
+                            workflow</strong> with a local Ollama LLM (<code>qwen3:8b</code>) and Langfuse
+                            tracing with PII redaction — full observability on every run.</li>
+                        <li>Enforced a hard-coded <strong>URL-allowlist guardrail</strong> in code, before
+                            any browser tool runs — the agent can never touch login, apply, shortener, or
+                            non-allowlisted URLs.</li>
+                        <li>Beat Google's <strong>CDP-layer bot detection</strong> — which defeated every
+                            Playwright / Puppeteer stealth variant — with a nodriver WebSocket-debug
+                            approach, backed by <strong>55 passing tests</strong> and a deterministic
+                            query generator.</li>
+                    </ul>
+                </article>
+
+                <article class="project reveal">
+                    <div class="project-left">
+                        <div class="project-meta">
+                            <span class="project-num">02 — Real-Time</span>
+                            <a href="https://simcricketx.app/" target="_blank" rel="noopener"
+                                class="project-link">Live <span class="project-arrow">↗</span></a>
+                        </div>
+                        <h3>SimCricketX — Simulation Backend</h3>
+                        <div class="project-sub">Probabilistic engine · In production</div>
+                        <div class="project-stack">
+                            <span>Python</span><span>FastAPI</span><span>Nginx</span><span>Oracle Cloud</span><span>PostgreSQL</span>
+                        </div>
+                    </div>
+                    <ul class="project-right">
+                        <li>Built a probabilistic cricket simulation engine serving
+                            <strong>256+ users</strong> and <strong>444+ matches</strong> in production
+                            on OCI — resolves <strong>120 deliveries per match in under 5 seconds</strong>.
+                        </li>
+                        <li><strong>~21K lines of Python</strong>: a 126-endpoint REST API, a 13-model
+                            SQLAlchemy schema, and a <strong>7-layer Game State Momentum Engine</strong>
+                            with exponential decay over a 13-dimensional state vector.</li>
+                        <li>Kept concurrent match state correct under load with per-match threading locks;
+                            <strong>80%+ test coverage</strong> across a 6-config CI matrix. Shipped solo
+                            with session auth, Nginx, and zero-downtime deploys.</li>
+                    </ul>
+                </article>
+
+                <article class="project reveal">
+                    <div class="project-left">
+                        <div class="project-meta">
+                            <span class="project-num">03 — RAG</span>
+                            <a href="https://github.com/Manishrdy/AI-Driven-Resume-Builder" target="_blank"
+                                rel="noopener" class="project-link">GitHub <span class="project-arrow">↗</span></a>
+                        </div>
+                        <h3>AI-Driven Resume Tailoring</h3>
+                        <div class="project-sub">Aug 2025 — Sep 2025</div>
+                        <div class="project-stack">
+                            <span>FAISS</span><span>QLoRA</span><span>Llama</span><span>RLHF</span><span>FastAPI</span><span>HuggingFace</span>
+                        </div>
+                    </div>
+                    <ul class="project-right">
+                        <li>Built a full RAG pipeline with <strong>FAISS hybrid dense retrieval</strong>
+                            and cross-encoder re-ranking + a QLoRA-fine-tuned Llama — improved
+                            resume-to-JD match scores <strong>45%</strong>.</li>
+                        <li>Added <strong>RLHF-style preference re-ranking</strong> driven by live user
+                            feedback; deployed as autoscaling FastAPI microservices with
+                            <strong>4-bit quantization</strong> (60% less GPU memory).
+                        </li>
+                        <li>Constitutional AI self-critique loops for output quality control.</li>
+                    </ul>
+                </article>
+
+                <article class="project reveal">
+                    <div class="project-left">
+                        <div class="project-meta">
+                            <span class="project-num">04 — Async</span>
+                            <a href="https://github.com/Manishrdy/async-audio-pipeline" target="_blank"
+                                rel="noopener" class="project-link">GitHub <span class="project-arrow">↗</span></a>
+                        </div>
+                        <h3>Async Audio Intelligence Pipeline</h3>
+                        <div class="project-sub">Nov 2025 — Dec 2025</div>
+                        <div class="project-stack">
+                            <span>FastAPI</span><span>Redis</span><span>Whisper</span><span>Gemini</span><span>GPT-4</span><span>Async Workers</span>
+                        </div>
+                    </div>
+                    <ul class="project-right">
+                        <li>Built a <strong>3-worker async pipeline</strong> over Redis queues that
+                            processes 1-hour meetings in <strong>7–11 minutes</strong>, down from a 45–75
+                            minute baseline.</li>
+                        <li>Integrated <strong>Whisper + Gemini / GPT-4</strong> via fully decoupled
+                            workers with idempotent retry logic — horizontal scaling needs no API or
+                            state-layer changes.</li>
+                        <li>Prompt-engineered tool-call chains for structured entity extraction (action
+                            items, owners, deadlines); cut manual post-meeting review
+                            <strong>80%</strong>.
+                        </li>
+                    </ul>
+                </article>
+
+                <article class="project reveal">
+                    <div class="project-left">
+                        <div class="project-meta">
+                            <span class="project-num">05 — Backend</span>
+                            <a href="https://github.com/Manishrdy/applyd" target="_blank" rel="noopener"
+                                class="project-link">GitHub <span class="project-arrow">↗</span></a>
+                        </div>
+                        <h3>Applyd — Job Aggregation Platform</h3>
+                        <div class="project-sub">Multi-service backend</div>
+                        <div class="project-stack">
+                            <span>FastAPI</span><span>SQLite</span><span>FTS5</span><span>Argon2id</span>
+                        </div>
+                    </div>
+                    <ul class="project-right">
+                        <li>Built a two-service backend (<strong>FastAPI identity service +
+                            dashboard</strong>) with cookie-based Argon2id authentication, role-gated
+                            admin APIs, and runtime-tunable per-IP and per-email rate limiting.</li>
+                        <li>Designed a three-signal expired-job lifecycle across <strong>10+ ATS
+                            providers</strong> — a state machine gated by two kill switches and per-ATS
+                            <strong>circuit breakers that fail closed</strong>.</li>
+                        <li>Engineered safe data operations: idempotent URL-keyed UPSERTs, partial
+                            indexes, FTS5 search, atomic SQLite backups behind a multi-gate restore, and
+                            a tamper-evident admin audit log.</li>
+                    </ul>
+                </article>
             </div>
         </section>
 
         <!-- ─── Skills ─── -->
-        <section id="skills" class="section-pad">
+        <section id="skills">
             <div class="wrap">
-                <div class="grid">
-                    <div class="section-label reveal">
-                        <span class="num">04</span>
-                        <span class="name">Toolbox</span>
+                <div class="section-head reveal">
+                    <span class="num">04</span>
+                    <h2>Toolbox</h2>
+                </div>
+
+                <div class="skill-row reveal">
+                    <div class="skill-cat">AI / ML</div>
+                    <div class="skill-items">
+                        <span>RLHF</span><span>RLAIF</span><span>Reward Modeling</span><span>Fine-Tuning (QLoRA, LoRA, PEFT)</span><span>RAG Pipelines</span><span>Constitutional AI</span><span>Claude Code</span>
                     </div>
-                    <div class="section-body">
-                        <div class="skills">
-                            <div class="skill-row reveal">
-                                <div class="skill-cat">AI / ML</div>
-                                <div class="skill-items">
-                                    <span>RLHF</span><span>RLAIF</span><span>Reward Modeling</span><span>Fine-Tuning (QLoRA, LoRA, PEFT)</span><span>RAG Pipelines</span><span>Constitutional AI</span><span>Claude Code</span>
-                                </div>
-                            </div>
-                            <div class="skill-row reveal">
-                                <div class="skill-cat">Agentic &amp; NLP</div>
-                                <div class="skill-items">
-                                    <span>LangChain</span><span>LangGraph</span><span>ReAct</span><span>Tool-Use Agents</span><span>Multi-Agent Orchestration</span><span>Memory &amp; Planning</span><span>Langfuse</span><span>Transformers</span><span>BERT</span><span>Sentence Embeddings</span><span>Whisper</span><span>Gemini</span><span>OpenAI</span><span>Claude</span><span>Ollama</span><span>HuggingFace</span>
-                                </div>
-                            </div>
-                            <div class="skill-row reveal">
-                                <div class="skill-cat">Languages</div>
-                                <div class="skill-items">
-                                    <span>Python</span><span>Node.js</span><span>TypeScript</span><span>Java</span><span>SQL</span>
-                                </div>
-                            </div>
-                            <div class="skill-row reveal">
-                                <div class="skill-cat">Frameworks</div>
-                                <div class="skill-items">
-                                    <span>FastAPI</span><span>Flask</span><span>Django</span><span>Express.js</span><span>Spring Boot</span>
-                                </div>
-                            </div>
-                            <div class="skill-row reveal">
-                                <div class="skill-cat">Data &amp; Vectors</div>
-                                <div class="skill-items">
-                                    <span>PostgreSQL</span><span>MySQL</span><span>MongoDB</span><span>SQLite</span><span>FAISS</span><span>Chroma</span>
-                                </div>
-                            </div>
-                            <div class="skill-row reveal">
-                                <div class="skill-cat">Messaging &amp; Caching</div>
-                                <div class="skill-items">
-                                    <span>Redis</span><span>Kafka</span><span>Redis Queues</span><span>WebSockets</span>
-                                </div>
-                            </div>
-                            <div class="skill-row reveal">
-                                <div class="skill-cat">Cloud</div>
-                                <div class="skill-items">
-                                    <span>AWS (EC2, S3, Lambda, CloudWatch)</span><span>Azure</span><span>Oracle Cloud</span>
-                                </div>
-                            </div>
-                            <div class="skill-row reveal">
-                                <div class="skill-cat">DevOps</div>
-                                <div class="skill-items">
-                                    <span>Docker</span><span>GitHub Actions</span><span>Jenkins</span><span>Nginx</span><span>Gunicorn</span>
-                                </div>
-                            </div>
-                            <div class="skill-row reveal">
-                                <div class="skill-cat">APIs &amp; Auth</div>
-                                <div class="skill-items">
-                                    <span>REST</span><span>JWT</span><span>OAuth 2.0</span>
-                                </div>
-                            </div>
-                            <div class="skill-row reveal">
-                                <div class="skill-cat">Customer &amp; Delivery</div>
-                                <div class="skill-items">
-                                    <span>Client Onboarding</span><span>On-Site Integration</span><span>InfoSec / Security Reviews</span><span>Stakeholder Demos</span><span>Agile / Standups</span>
-                                </div>
-                            </div>
-                        </div>
+                </div>
+                <div class="skill-row reveal">
+                    <div class="skill-cat">Agentic &amp; NLP</div>
+                    <div class="skill-items">
+                        <span>LangChain</span><span>LangGraph</span><span>ReAct</span><span>Tool-Use Agents</span><span>Multi-Agent Orchestration</span><span>Memory &amp; Planning</span><span>Langfuse</span><span>Transformers</span><span>BERT</span><span>Sentence Embeddings</span><span>Whisper</span><span>Gemini</span><span>OpenAI</span><span>Claude</span><span>Ollama</span><span>HuggingFace</span>
+                    </div>
+                </div>
+                <div class="skill-row reveal">
+                    <div class="skill-cat">Languages</div>
+                    <div class="skill-items">
+                        <span>Python</span><span>Node.js</span><span>TypeScript</span><span>Java</span><span>SQL</span>
+                    </div>
+                </div>
+                <div class="skill-row reveal">
+                    <div class="skill-cat">Frameworks</div>
+                    <div class="skill-items">
+                        <span>FastAPI</span><span>Flask</span><span>Django</span><span>Express.js</span><span>Spring Boot</span>
+                    </div>
+                </div>
+                <div class="skill-row reveal">
+                    <div class="skill-cat">Data &amp; Vectors</div>
+                    <div class="skill-items">
+                        <span>PostgreSQL</span><span>MySQL</span><span>MongoDB</span><span>SQLite</span><span>FAISS</span><span>Chroma</span>
+                    </div>
+                </div>
+                <div class="skill-row reveal">
+                    <div class="skill-cat">Messaging &amp; Caching</div>
+                    <div class="skill-items">
+                        <span>Redis</span><span>Kafka</span><span>Redis Queues</span><span>WebSockets</span>
+                    </div>
+                </div>
+                <div class="skill-row reveal">
+                    <div class="skill-cat">Cloud</div>
+                    <div class="skill-items">
+                        <span>AWS (EC2, S3, Lambda, CloudWatch)</span><span>Azure</span><span>Oracle Cloud</span>
+                    </div>
+                </div>
+                <div class="skill-row reveal">
+                    <div class="skill-cat">DevOps</div>
+                    <div class="skill-items">
+                        <span>Docker</span><span>GitHub Actions</span><span>Jenkins</span><span>Nginx</span><span>Gunicorn</span>
+                    </div>
+                </div>
+                <div class="skill-row reveal">
+                    <div class="skill-cat">APIs &amp; Auth</div>
+                    <div class="skill-items">
+                        <span>REST</span><span>JWT</span><span>OAuth 2.0</span>
+                    </div>
+                </div>
+                <div class="skill-row reveal">
+                    <div class="skill-cat">Customer &amp; Delivery</div>
+                    <div class="skill-items">
+                        <span>Client Onboarding</span><span>On-Site Integration</span><span>InfoSec / Security Reviews</span><span>Stakeholder Demos</span><span>Agile / Standups</span>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- ─── Education ─── -->
-        <section id="education" class="section-pad">
+        <section id="education">
             <div class="wrap">
-                <div class="grid">
-                    <div class="section-label reveal">
-                        <span class="num">05</span>
-                        <span class="name">Education</span>
-                    </div>
-                    <div class="section-body">
-                        <div class="edus">
-                            <article class="edu reveal">
-                                <div class="edu-head">
-                                    <div class="school">California State University, San Bernardino</div>
-                                    <div class="degree">M.S. Computer Science</div>
-                                    <div class="course">
-                                        Distributed Systems · Advanced Algorithms · Machine Learning · Database
-                                        Systems · Cloud Computing
-                                    </div>
-                                </div>
-                                <div class="edu-dates">Aug 2023 — May 2025</div>
-                            </article>
-                            <article class="edu reveal">
-                                <div class="edu-head">
-                                    <div class="school">Amrita Vishwa Vidyapeetham</div>
-                                    <div class="degree">B.S. Computer Science · Coimbatore, India</div>
-                                    <div class="course">
-                                        Data Structures · Operating Systems · Computer Networks · Software Engineering
-                                    </div>
-                                </div>
-                                <div class="edu-dates">Jul 2017 — May 2021</div>
-                            </article>
+                <div class="section-head reveal">
+                    <span class="num">05</span>
+                    <h2>Education</h2>
+                </div>
+
+                <article class="edu reveal">
+                    <div class="edu-head">
+                        <div class="school">California State University, San Bernardino</div>
+                        <div class="degree">M.S. Computer Science</div>
+                        <div class="course">
+                            Distributed Systems · Advanced Algorithms · Machine Learning · Database
+                            Systems · Cloud Computing
                         </div>
                     </div>
-                </div>
+                    <div class="edu-dates">Aug 2023 — May 2025</div>
+                </article>
+                <article class="edu reveal">
+                    <div class="edu-head">
+                        <div class="school">Amrita Vishwa Vidyapeetham</div>
+                        <div class="degree">B.S. Computer Science · Coimbatore, India</div>
+                        <div class="course">
+                            Data Structures · Operating Systems · Computer Networks · Software Engineering
+                        </div>
+                    </div>
+                    <div class="edu-dates">Jul 2017 — May 2021</div>
+                </article>
             </div>
         </section>
 
         <!-- ─── Contact ─── -->
         <section id="contact" class="end">
             <div class="wrap">
-                <div class="grid">
-                    <div class="section-label reveal">
-                        <span class="num">06</span>
-                        <span class="name">Contact</span>
-                    </div>
-                    <div class="section-body">
-                        <h2 class="reveal">
-                            Let's build <span class="light">the next one.</span>
-                        </h2>
-                        <p class="reveal">
-                            Open to <strong>Software Engineer, AI Engineer, GenAI Developer</strong> and
-                            <strong>Forward Deployed Engineer</strong> roles — and I'll talk to anyone building
-                            something interesting.
-                        </p>
-                        <a href="mailto:mabotta12@gmail.com" class="end-email reveal">
-                            mabotta12@gmail.com <span>→</span>
-                        </a>
+                <div class="section-head reveal">
+                    <span class="num">06</span>
+                    <h2 style="font-size:30px">Contact</h2>
+                </div>
+                <h2 class="reveal">
+                    Let's build <span class="light">the next one.</span>
+                </h2>
+                <p class="reveal">
+                    Open to <strong>Software Engineer, AI Engineer, GenAI Developer</strong> and
+                    <strong>Forward Deployed Engineer</strong> roles — and I'll talk to anyone building
+                    something interesting.
+                </p>
+                <a href="mailto:mabotta12@gmail.com" class="end-email reveal">
+                    mabotta12@gmail.com <span>→</span>
+                </a>
 
-                        <div class="end-links">
-                            <div class="end-link">
-                                <span class="l">GitHub</span>
-                                <span class="v"><a href="https://github.com/manishrdy" target="_blank"
-                                        rel="noopener">manishrdy</a></span>
-                            </div>
-                            <div class="end-link">
-                                <span class="l">LinkedIn</span>
-                                <span class="v"><a href="https://linkedin.com/in/manish-reddyb" target="_blank"
-                                        rel="noopener">manish-reddyb</a></span>
-                            </div>
-                            <div class="end-link">
-                                <span class="l">Based</span>
-                                <span class="v">Los Angeles, CA</span>
-                            </div>
-                        </div>
+                <div class="end-links">
+                    <div class="end-link">
+                        <span class="l">GitHub</span>
+                        <span class="v"><a href="https://github.com/manishrdy" target="_blank"
+                                rel="noopener">manishrdy</a></span>
+                    </div>
+                    <div class="end-link">
+                        <span class="l">LinkedIn</span>
+                        <span class="v"><a href="https://linkedin.com/in/manish-reddyb" target="_blank"
+                                rel="noopener">manish-reddyb</a></span>
+                    </div>
+                    <div class="end-link">
+                        <span class="l">Based</span>
+                        <span class="v">San Francisco, CA</span>
                     </div>
                 </div>
             </div>
@@ -1628,7 +1342,7 @@
         <div class="wrap">
             <div class="foot-inner">
                 <span>© <span id="year"></span> Manish Botta</span>
-                <span>Designed &amp; built · Inter / JetBrains Mono</span>
+                <span>Inter / Newsreader / JetBrains Mono</span>
             </div>
         </div>
     </footer>
@@ -1643,8 +1357,7 @@
         const iconDark = document.getElementById('iconDark');
 
         const saved = localStorage.getItem('mb-theme');
-        if (saved) applyTheme(saved);
-        else applyTheme('light');
+        applyTheme(saved || 'light');
 
         themeBtn.addEventListener('click', () => {
             const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
@@ -1654,16 +1367,11 @@
 
         function applyTheme(t) {
             root.setAttribute('data-theme', t);
-            if (t === 'dark') {
-                iconLight.style.display = 'none';
-                iconDark.style.display = 'block';
-            } else {
-                iconLight.style.display = 'block';
-                iconDark.style.display = 'none';
-            }
+            iconLight.style.display = t === 'dark' ? 'none' : 'block';
+            iconDark.style.display = t === 'dark' ? 'block' : 'none';
         }
 
-        // Nav scrolled
+        // Nav border on scroll
         const nav = document.getElementById('nav');
         const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 8);
         window.addEventListener('scroll', onScroll, { passive: true });
@@ -1682,15 +1390,32 @@
         sections.forEach(s => spy.observe(s));
 
         // Reveal
-        const reveal = new IntersectionObserver(entries => {
-            entries.forEach(e => {
-                if (e.isIntersecting) {
-                    e.target.classList.add('in');
-                    reveal.unobserve(e.target);
+        const revealEls = document.querySelectorAll('.reveal');
+        if ('IntersectionObserver' in window) {
+            const reveal = new IntersectionObserver((entries, obs) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('in');
+                        obs.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+            revealEls.forEach(el => reveal.observe(el));
+
+            // Safety net: reveal anything already in view on load, in case the
+            // observer skips its initial callback for above-the-fold elements.
+            const revealInView = () => revealEls.forEach(el => {
+                const r = el.getBoundingClientRect();
+                if (r.top < window.innerHeight && r.bottom > 0) {
+                    el.classList.add('in');
+                    reveal.unobserve(el);
                 }
             });
-        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-        document.querySelectorAll('.reveal').forEach(el => reveal.observe(el));
+            requestAnimationFrame(revealInView);
+            setTimeout(revealInView, 80);
+        } else {
+            revealEls.forEach(el => el.classList.add('in'));
+        }
     </script>
 </body>
 
